@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>b7e1d390-36b2-4891-ba45-f168337939cb</ProjectGuid>
+    <ProjectGuid>{B7E1D390-36B2-4891-BA45-F168337939CB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Toggles</RootNamespace>
@@ -14,11 +14,12 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>..\..\Program Files %28x86%29\Steam\steamapps\common\RimWorld\Mods\Toggles\Assemblies\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -31,20 +32,66 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\Users\Emil\Desktop\Rimworld\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\Constants.cs" />
+    <Compile Include="Source\DebugUtility.cs" />
+    <Compile Include="Source\Dialog_Settings.cs" />
+    <Compile Include="Source\ModSettings_Toggles.cs" />
+    <Compile Include="Source\Mod_Toggles.cs" />
+    <Compile Include="Source\Patcher.cs" />
+    <Compile Include="Source\Patches\AlertsReadout_Patch.cs" />
+    <Compile Include="Source\Patches\ColonistBar_Patch.cs" />
+    <Compile Include="Source\Patches\DateReadout_Patch.cs" />
+    <Compile Include="Source\Patches\GlobalControls_Patch.cs" />
+    <Compile Include="Source\Patches\GUI_Patch.cs" />
+    <Compile Include="Source\Patches\IncidentWorker_Patch.cs" />
+    <Compile Include="Source\Patches\Letter_Patch.cs" />
+    <Compile Include="Source\Patches\ListableOption_Patch.cs" />
+    <Compile Include="Source\Patches\ListableOption_WebLink_Patch.cs" />
+    <Compile Include="Source\Patches\MouseoverReadout_Patch.cs" />
+    <Compile Include="Source\Patches\Patch.cs" />
+    <Compile Include="Source\Patches\PlaySettings_Patch.cs" />
+    <Compile Include="Source\Patches\ResourceReadout_Patch.cs" />
+    <Compile Include="Source\Patches\UI_BackgroundMain_Patch.cs" />
+    <Compile Include="Source\Patches\VersionControl_Patch.cs" />
+    <Compile Include="Source\Patches\WeatherManager_Patch.cs" />
+    <Compile Include="Source\Patches\Widgets_Patch.cs" />
+    <Compile Include="Source\StringUtil.cs" />
+    <Compile Include="Source\Todo.cs" />
+    <Compile Include="Source\Toggle.cs" />
+    <Compile Include="Source\ToggleFactory.cs" />
+    <Compile Include="Source\ToggleHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\InitDB.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About\About.xml" />
+    <Content Include="Assemblies\0Harmony.dll" />
+    <Content Include="Languages\English\Keyed\Toggles_Settings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+  <PropertyGroup>
+    <PreBuildEvent>xcopy /i /s "$(SolutionDir)About" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\About\"
+xcopy /i /s "$(SolutionDir)Languages" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Languages\"</PreBuildEvent>
+  </PropertyGroup>
+</Project>

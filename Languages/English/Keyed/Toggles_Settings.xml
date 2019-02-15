@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <DeactivateOptions>You are about to deactive the 'Options'-button.\n\nIf you do, you won't be able to reenter these mod settings and reactivate it. You will need to deactive the mod or change the config file.\n\nAre you sure you want to deactivate it?</DeactivateOptions>
+  
+  
+  
+  <!-- Root Labels -->
+  <StartScreenUI>Start Screen</StartScreenUI>
+  <DevToolsEntry>Developer Tools</DevToolsEntry>
+  <ElementsEntry>Misc Elements</ElementsEntry>
+  <ToggleLogWindowEntry>Debug Log</ToggleLogWindowEntry>
+  <ToggleLogWindowEntry>Debug Log</ToggleLogWindowEntry>
+  <MainMenuButtons>Menu Buttons</MainMenuButtons>
+  <MainMenuLinks>Links</MainMenuLinks>
+  
+  <InGameUI>In-Game Screen</InGameUI>
+  <DevToolsPlay>Developer Tools</DevToolsPlay>
+  <PauseMenu>Pause Menu</PauseMenu>	
+  <HUD>HUD</HUD>
+  <Alerts>Alerts</Alerts>
+  
+  <!--Misc Start screen elements-->
+  <VersionControlEntry>Version Control</VersionControlEntry>
+  <VersionControlEntryDesc>The game version info.</VersionControlEntryDesc>
+  
+  <VersionControlEntry>Colonist Bar</VersionControlEntry>
+  <VersionControlEntryDesc>The bar showing all your colonists.</VersionControlEntryDesc>
+  
+  <Background>Background Image</Background>
+  <BackgroundDesc>The background image on the start screen</BackgroundDesc>
+  <MainPageCreditEntry>Subheader</MainPageCreditEntry>
+  <MainPageCreditEntryDesc>The start screen subheader; 'A story generator by Tynan Sylvester'.</MainPageCreditEntryDesc>
+  <GameTitleEntry>RimWorld Title</GameTitleEntry>
+  <GameTitleEntryDesc>The 'RimWorld' title on the start screen</GameTitleEntryDesc>
+  <LudeonLogoSmallEntry>Ludeon Logo</LudeonLogoSmallEntry>
+  <LudeonLogoSmallEntryDesc>The 'Ludeon' logo on the start screen</LudeonLogoSmallEntryDesc>
+  <LangIconEntry>Language Icon</LangIconEntry>
+  <LangIconEntryDesc>The language icon on the start screen</LangIconEntryDesc>
+  
+  <!--Main Menu Buttons-->
+  <TutorialEntry>Tutorial</TutorialEntry>
+  <TutorialEntryDesc>The 'Tutorial' button on the start screen.</TutorialEntryDesc>
+  <NewColonyEntry>New Colony</NewColonyEntry>
+  <NewColonyEntryDesc>The 'New colony' button on the start screen.</NewColonyEntryDesc>
+  <LoadGameEntry>Load Game</LoadGameEntry>
+  <LoadGameEntryDesc>The 'Load game' button on the start screen.</LoadGameEntryDesc>
+  <OptionsEntry>Options</OptionsEntry>
+  <OptionsEntryDesc>The 'Options' button on the start screen.</OptionsEntryDesc>
+  <SaveTranslationReportEntry>Translations Report</SaveTranslationReportEntry>
+  <SaveTranslationReportEntryDesc>The 'Save Translations Report' button on the start screen.</SaveTranslationReportEntryDesc>
+  <ModsEntry>Mods Button</ModsEntry>
+  <ModsEntryDesc>The 'Mods' button on the start screen.</ModsEntryDesc>
+  <CreditsEntry>Credits Button</CreditsEntry>
+  <CreditsEntryDesc>The 'Credits' button on the start screen.</CreditsEntryDesc>
+  <QuitToOSEntry>Quit To OS</QuitToOSEntry>
+  <QuitToOSEntryDesc>The 'Quit To OS' button on the start screen.</QuitToOSEntryDesc>
+
+  <!--Main Menu Links-->
+  <FictionPrimerEntry>Fiction Primer</FictionPrimerEntry>
+  <FictionPrimerEntryDesc>The web link to the RimWorld Fiction Primer.</FictionPrimerEntryDesc>
+  <LudeonBlogEntry>Blog</LudeonBlogEntry>
+  <LudeonBlogEntryDesc>The web link to the Ludeon Studios blog.</LudeonBlogEntryDesc>
+  <OfficialWikiEntry>Wiki</OfficialWikiEntry>
+  <OfficialWikiEntryDesc>The web link to the RimWorld official wiki.</OfficialWikiEntryDesc>
+  <TynansTwitterEntry>Twitter</TynansTwitterEntry>
+  <TynansTwitterEntryDesc>The web link to the game developer's Twitter page.</TynansTwitterEntryDesc>
+  <TynansDesignBookEntry>Design Book</TynansDesignBookEntry>
+  <TynansDesignBookEntryDesc>The web link to the game developer's design book.</TynansDesignBookEntryDesc>
+  <HelpTranslateRimWorldEntry>Translate</HelpTranslateRimWorldEntry>
+  <HelpTranslateRimWorldEntryDesc>The web link to the guide for helping translate RimWorld.</HelpTranslateRimWorldEntryDesc>
+  <BuySoundtrackEntry>Soundtrack</BuySoundtrackEntry>
+  <BuySoundtrackEntryDesc>The web link to the game's soundtrack.</BuySoundtrackEntryDesc>
+  <ForumsEntry>Forum</ForumsEntry>
+  <ForumsEntryDesc>The web link to the Ludeon Studios forum.</ForumsEntryDesc>
+  
+  <!--Game screen-->
+  <VersionControlPlay>Version Control</VersionControlPlay>
+  <VersionControlPlayDesc>The game version info.</VersionControlPlayDesc>
+
+  <!--Game Menu Buttons-->
+  <GameMenuButtons>Pause Menu Buttons</GameMenuButtons>
+  
+  <OptionsPlay>Options</OptionsPlay>
+  <OptionsPlayDesc>The 'Options' button on the pause screen.</OptionsPlayDesc>
+  <QuitToOSPlay>Quit To OS</QuitToOSPlay>
+  <QuitToOSPlayDesc>The 'Quit To OS' button on the pause screen.</QuitToOSPlayDesc>
+  <SavePlay>Save</SavePlay>
+  <SavePlayDesc>The 'Save' button on the pause screen.</SavePlayDesc>
+  <ReviewScenarioPlay>Review</ReviewScenarioPlay>
+  <ReviewScenarioPlayDesc>The 'Review Scenario' button on the pause screen.</ReviewScenarioPlayDesc>
+  <QuitToMainMenuPlay>Quit to Main Menu</QuitToMainMenuPlay>
+  <QuitToMainMenuPlayDesc>The 'Quit to Main Menu' button on the pause screen.</QuitToMainMenuPlayDesc>
+
+  <!--Game Menu Links-->
+  <GameMenuLinks>Pause Menu Links</GameMenuLinks>
+
+  <FictionPrimerPlay>Fiction Primer</FictionPrimerPlay>
+  <FictionPrimerPlayDesc>The web link to the RimWorld Fiction Primer.</FictionPrimerPlayDesc>
+  <LudeonBlogPlay>Blog</LudeonBlogPlay>
+  <LudeonBlogPlayDesc>The web link to the Ludeon Studios blog.</LudeonBlogPlayDesc>
+  <OfficialWikiPlay>Wiki</OfficialWikiPlay>
+  <OfficialWikiPlayDesc>The web link to the RimWorld official wiki.</OfficialWikiPlayDesc>
+  <TynansTwitterPlay>Twitter</TynansTwitterPlay>
+  <TynansTwitterPlayDesc>The web link to the game developer's Twitter page.</TynansTwitterPlayDesc>
+  <TynansDesignBookPlay>Design Book</TynansDesignBookPlay>
+  <TynansDesignBookPlayDesc>The web link to the game developer's design book.</TynansDesignBookPlayDesc>
+  <HelpTranslateRimWorldPlay>Translate</HelpTranslateRimWorldPlay>
+  <HelpTranslateRimWorldPlayDesc>The web link to the guide for helping translate RimWorld.</HelpTranslateRimWorldPlayDesc>
+  <BuySoundtrackPlay>Soundtrack</BuySoundtrackPlay>
+  <BuySoundtrackPlayDesc>The web link to the game's soundtrack.</BuySoundtrackPlayDesc>
+  <ForumsPlay>Forum</ForumsPlay>
+  <ForumsPlayDesc>The web link to the Ludeon Studios forum.</ForumsPlayDesc>
+  
+  <!--Toggleicons-->
+  <ShowLearningHelper>Learning Helper</ShowLearningHelper>
+  <ShowLearningHelperDesc>Toggle visibility of the learning helper when it is empty.\n\nThe learning helper is always visible if there is a concept activated to be learned. This toggle makes it disappear when no concept is active.\n\nNote: This only toggles the button being shown, not the action of the button itself.</ShowLearningHelperDesc>
+  <ShowZones>Zone Visibility</ShowZones>
+  <ShowZonesDesc>Toggle visiblity of zones.\n\nNote: This only toggles the button being shown, not the action of the button itself.</ShowZonesDesc>
+  <ShowBeauty>Beauty</ShowBeauty>
+  <ShowBeautyDesc>Toggle the beauty display.\n\nDisplays the beauty of the world as would be perceived by a character standing where the mouse is pointing.\n\nNote: This only toggles the button being shown, not the action of the button itself.</ShowBeautyDesc>
+  <ShowRoomStats>Room Stats</ShowRoomStats>
+  <ShowRoomStatsDesc>Toggle room stats display.\n\nDisplays room stats of the room where the mouse is pointing.\n\nNote: This only toggles the button being shown, not the action of the button itself.</ShowRoomStatsDesc>
+  <ShowColonistBar>Colonist Bar</ShowColonistBar>
+  <ShowColonistBarDesc>Toggle colonist bar.\n\nDisplays icons and basic status for all colonists along the top of the screen.\n\nYou can reorder the colonists in the colonist bar by right-click and dragging them.\n\nNote: This only toggles the button being shown, not the action of the button itself.</ShowColonistBarDesc>
+  <ShowRoofOverlay>Roof Overlay</ShowRoofOverlay>
+  <ShowRoofOverlayDesc>Toggle visibility of roofs.\n\nNote: This only toggles the button being shown, not the action of the button itself.</ShowRoofOverlayDesc>
+  <AutoHomeArea>Auto Home Area</AutoHomeArea>
+  <AutoHomeAreaDesc>Toggle automatically expanding the home area around new constructions.\n\nNote: This only toggles the button being shown, not the action of the button itself.</AutoHomeAreaDesc>
+  <AutoRebuild>Auto Rebuild</AutoRebuild>
+  <AutoRebuildDesc>Toggle automatic rebuild of destroyed structures in the home area.\n\nNote: This only toggles the button being shown, not the action of the button itself.</AutoRebuildDesc>
+  <ResourceReadoutCategorized>Resource Category</ResourceReadoutCategorized>
+  <ResourceReadoutCategorizedDesc>Toggle categorized mode on the resource readout.\n\nNote: This only toggles the button being shown, not the action of the button itself.</ResourceReadoutCategorizedDesc>
+  <MouseoverReadout>Mouseover Inspector</MouseoverReadout>
+  <MouseoverReadoutDesc>Toggles the readout on displaying information about where the mouse is pointing.</MouseoverReadoutDesc>
+  <ResourceReadout>Resources</ResourceReadout>
+  <ResourceReadoutDesc>Toggles the resource readout.</ResourceReadoutDesc>
+  <TemperatureReadout>Temperature</TemperatureReadout>
+  <TemperatureReadoutDesc>Toggles the temperature readout.</TemperatureReadoutDesc>
+  <WeatherReadout>Weather</WeatherReadout>
+  <WeatherReadoutDesc>Toggles the weather readout.</WeatherReadoutDesc>
+  <Date>Date</Date>
+  <DateDesc>Toggles the date readout.</DateDesc>
+  <TimeControls>Time Controls</TimeControls>
+  <TimeControlsDesc>Toggles the time controls.\n\nNote: This only toggles the buttons being shown, not the actions of the buttons themselves.</TimeControlsDesc>
+
+  <!--Alerts-->
+  <Alert_AwaitingMedicalOperation>Awaiting Medical Operation</Alert_AwaitingMedicalOperation>
+  <Alert_AwaitingMedicalOperationDesc>Patients await medical operation.</Alert_AwaitingMedicalOperationDesc>
+
+  <Alert_BilliardsTableOnWall>Billiards Needs Space</Alert_BilliardsTableOnWall>
+  <Alert_BilliardsTableOnWallDesc>Your billiards table is adjacent to an obstruction.</Alert_BilliardsTableOnWallDesc>
+
+  <Alert_Boredom>Boredom</Alert_Boredom>
+  <Alert_BoredomDesc>Your colonist is bored.</Alert_BoredomDesc>
+
+  <Alert_BrawlerHasRangedWeapon>Brawler Has Ranged Weapon</Alert_BrawlerHasRangedWeapon>
+  <Alert_BrawlerHasRangedWeaponDesc>Your colonist has the Brawler personality trait, but is carrying a ranged weapon.</Alert_BrawlerHasRangedWeaponDesc>
+
+  <Alert_ColonistNeedsRescuing>Colonist Needs Rescue</Alert_ColonistNeedsRescuing>
+  <Alert_ColonistNeedsRescuingDesc>Your colonist needs rescuing.</Alert_ColonistNeedsRescuingDesc>
+
+  <Alert_ColonistNeedsTend>Colonist Needs Tending</Alert_ColonistNeedsTend>
+  <Alert_ColonistNeedsTendDesc>Your colonist needs tending.</Alert_ColonistNeedsTendDesc>
+
+  <Alert_ColonistsIdle>Colonist is Idle</Alert_ColonistsIdle>
+  <Alert_ColonistsIdleDesc>Your colonist is idle.</Alert_ColonistsIdleDesc>
+
+  <Alert_Exhaustion>Exhaustion</Alert_Exhaustion>
+  <Alert_ExhaustionDesc>Your colonist is exhausted and needs rest.</Alert_ExhaustionDesc>
+
+  <Alert_FireInHomeArea>Fire In Home Area</Alert_FireInHomeArea>
+  <Alert_FireInHomeAreaDesc>There is a fire in the home area.</Alert_FireInHomeAreaDesc>
+
+  <Alert_HunterHasShieldAndRangedWeapon>Hunter Has Shield and Ranged Weapon</Alert_HunterHasShieldAndRangedWeapon>
+  <Alert_HunterHasShieldAndRangedWeaponDesc>Your hunter is using a ranged weapon and wearing a shield belt which prevents shooting at range.</Alert_HunterHasShieldAndRangedWeaponDesc>
+
+  <Alert_HunterLacksRangedWeapon>Hunter Lacks Ranged Weapon</Alert_HunterLacksRangedWeapon>
+  <Alert_HunterLacksRangedWeaponDesc>A colonist is assigned as a hunter but does not have a ranged weapon.\n\nThey will not hunt until they are carrying a ranged weapon.</Alert_HunterLacksRangedWeaponDesc>
+
+  <Alert_Hypothermia>Colonist Hypothermia</Alert_Hypothermia>
+  <Alert_HypothermiaDesc>Your colonist is suffering from hypothermia.</Alert_HypothermiaDesc>
+
+  <Alert_HypothermicAnimals>Animal Hypothermia</Alert_HypothermicAnimals>
+  <Alert_HypothermicAnimalsDesc>Your animal is suffering from hypothermia.</Alert_HypothermicAnimalsDesc>
+
+  <Alert_ImmobileCaravan>Immobile Caravan</Alert_ImmobileCaravan>
+  <Alert_ImmobileCaravanDesc>Your caravan is immobile because it carries too much.</Alert_ImmobileCaravanDesc>
+
+  <Alert_LifeThreateningHediff>Medical Emergency</Alert_LifeThreateningHediff>
+  <Alert_LifeThreateningHediffDesc>Your colonist is at risk of death because of severe illness.</Alert_LifeThreateningHediffDesc>
+
+  <Alert_LowFood>Low Food</Alert_LowFood>
+  <Alert_LowFoodDesc>You are dangerously low on food.</Alert_LowFoodDesc>
+
+  <Alert_LowMedicine>Low Medicine</Alert_LowMedicine>
+  <Alert_LowMedicineDesc>You are low on medicine.</Alert_LowMedicineDesc>
+
+  <Alert_MinorBreakRisk>Minor Break Risk</Alert_MinorBreakRisk>
+  <Alert_MinorBreakRiskDesc>Your colonist is in a poor mood and may have a minor mental break at any time.</Alert_MinorBreakRiskDesc>
+
+  <Alert_NeedBatteries>Need Batteries</Alert_NeedBatteries>
+  <Alert_NeedBatteriesDesc>You have a solar or wind generator, but no batteries.</Alert_NeedBatteriesDesc>
+
+  <Alert_NeedColonistBeds>Need Colonist Beds</Alert_NeedColonistBeds>
+  <Alert_NeedColonistBedsDesc>You have more colonists than you have colonist beds.</Alert_NeedColonistBedsDesc>
+
+  <Alert_NeedDefenses>Need Defenses</Alert_NeedDefenses>
+  <Alert_NeedDefensesDesc>You've been here some time and have probably been seen. Pirate raids will start soon.\n\nYou should prepare defenses, like sandbags or traps.</Alert_NeedDefensesDesc>
+
+  <Alert_NeedDoctor>Need Doctor</Alert_NeedDoctor>
+  <Alert_NeedDoctorDesc>Your colonist needs medical care, but you have no healthy colonists assigned as doctors.</Alert_NeedDoctorDesc>
+
+  <Alert_NeedJoySources>Need Recreation Variety</Alert_NeedJoySources>
+  <Alert_NeedJoySourcesDesc>Your colonist needs recreation variety. Provide recreation variety supplying a new, different kind of recreation.</Alert_NeedJoySourcesDesc>
+
+  <Alert_NeedMealSource>Need Meal Source</Alert_NeedMealSource>
+  <Alert_NeedMealSourceDesc>You have no way of preparing proper meals from raw food.</Alert_NeedMealSourceDesc>
+
+  <Alert_NeedMiner>Need Miner</Alert_NeedMiner>
+  <Alert_NeedMinerDesc>You have designated some rocks to be mined, but no colonist has the Mining work type.</Alert_NeedMinerDesc>
+
+  <Alert_NeedResearchProject>Need Research Project</Alert_NeedResearchProject>
+  <Alert_NeedResearchProjectDesc>You have the equipment to do research but have not selected a project.</Alert_NeedResearchProjectDesc>
+
+  <Alert_NeedWarden>Need Warden</Alert_NeedWarden>
+  <Alert_NeedWardenDesc>You have a prisoner, but no colonist has the Warden work type.</Alert_NeedWardenDesc>
+
+  <Alert_NeedWarmClothes>Need Warm Clothes</Alert_NeedWarmClothes>
+  <Alert_NeedWarmClothesDesc>Your colonists will lack warm clothes when the cold season comes.</Alert_NeedWarmClothesDesc>
+
+  <Alert_PasteDispenserNeedsHopper>Need Food Hopper</Alert_PasteDispenserNeedsHopper>
+  <Alert_PasteDispenserNeedsHopperDesc>You have a nutrient dispenser with no hopper next to it.</Alert_PasteDispenserNeedsHopperDesc>
+
+  <Alert_NeedMiner>Need Miner</Alert_NeedMiner>
+  <Alert_NeedMinerDesc>You have designated some rocks to be mined, but no colonist has the Mining work type.</Alert_NeedMinerDesc>
+
+  <Alert_NeedMiner>Need Miner</Alert_NeedMiner>
+  <Alert_NeedMinerDesc>You have designated some rocks to be mined, but no colonist has the Mining work type.</Alert_NeedMinerDesc>
+
+  <Alert_ShieldUserHasRangedWeapon>Shield User Has Ranged Weapon</Alert_ShieldUserHasRangedWeapon>
+  <Alert_ShieldUserHasRangedWeaponDesc>Your colonist has a shield belt and is carrying a ranged weapon.</Alert_ShieldUserHasRangedWeaponDesc>
+
+  <Alert_StarvationAnimals>Animal Starvation</Alert_StarvationAnimals>
+  <Alert_StarvationAnimalsDesc>Your animal is starving.</Alert_StarvationAnimalsDesc>
+
+  <Alert_StarvationColonists>Colonist Starvation</Alert_StarvationColonists>
+  <Alert_StarvationColonistsDesc>Your colonist is starving.</Alert_StarvationColonistsDesc>
+
+  <Alert_TatteredApparel>Tattered Apparel</Alert_TatteredApparel>
+  <Alert_TatteredApparelDesc>Your colonist is wearing tattered apparel, which is making her sad.</Alert_TatteredApparelDesc>
+
+  <Alert_UnhappyNudity>Unhappy Nudity</Alert_UnhappyNudity>
+  <Alert_UnhappyNudityDesc>Your colonist is nude and not happy about it.</Alert_UnhappyNudityDesc>
+  
+  <!-- Letters -->
+  
+  <LetterThreatBig>Big Threat</LetterThreatBig>
+  <LetterThreatBigDesc>Your colonist is nude and not happy about it.</LetterThreatBigDesc>
+  
+  <LetterThreatSmall>Small Threat</LetterThreatSmall>
+  <LetterThreatSmallDesc>Your colonist is nude and not happy about it.</LetterThreatSmallDesc>
+  
+  <LetterNegativeEvent>Negative Event</LetterNegativeEvent>
+  <LetterNegativeEventDesc>Your colonist is nude and not happy about it.</LetterNegativeEventDesc>
+  
+  <LetterNeutralEvent>Neutral Event</LetterNeutralEvent>
+  <LetterNeutralEventDesc>Your colonist is nude and not happy about it.</LetterNeutralEventDesc>
+  
+  <LetterPositiveEvent>Positive Event</LetterPositiveEvent>
+  <LetterPositiveEventDesc>Your colonist is nude and not happy about it.</LetterPositiveEventDesc>
+  
+  <LetterDeath>Death</LetterDeath>
+  <LetterDeathDesc>Your colonist is nude and not happy about it.</LetterDeathDesc>
+  
+  <LetterRansomDemand>Ransom Demand</LetterRansomDemand>
+  <LetterRansomDemandDesc>Your colonist is nude and not happy about it.</LetterRansomDemandDesc>
+
+</LanguageData>
