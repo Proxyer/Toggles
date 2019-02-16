@@ -29,7 +29,8 @@ namespace Toggles
 
         public static bool Check()
         {
-            Log.Message("Fethed show value: " + show.ToString());
+            Log.Message("Fetched show value: " + show.ToString());
+
             return show;
         }
 

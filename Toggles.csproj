@@ -70,7 +70,7 @@
     <Compile Include="Source\Patches\ListableOption_WebLink_Patch.cs" />
     <Compile Include="Source\Patches\MouseoverReadout_Patch.cs" />
     <Compile Include="Source\Patches\Patch.cs" />
-    <Compile Include="Source\Patches\PlaySettings_Patch.cs" />
+    <Compile Include="Unused\___PlaySettings_Patch.cs" />
     <Compile Include="Source\Patches\ResourceReadout_Patch.cs" />
     <Compile Include="Source\Patches\UI_BackgroundMain_Patch.cs" />
     <Compile Include="Source\Patches\VersionControl_Patch.cs" />
@@ -81,6 +81,7 @@
     <Compile Include="Source\Toggle.cs" />
     <Compile Include="Source\ToggleFactory.cs" />
     <Compile Include="Source\ToggleHandler.cs" />
+    <Compile Include="Source\Patches\PlaySettings_Patch.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\InitDB.xml" />
@@ -90,9 +91,10 @@
     <Content Include="Assemblies\0Harmony.dll" />
     <Content Include="Languages\English\Keyed\Toggles_Settings.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>xcopy /i /s "$(SolutionDir)About" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\About\"
-xcopy /i /s "$(SolutionDir)Languages" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Languages\"</PreBuildEvent>
+    <PreBuildEvent>xcopy /i /s /y "$(SolutionDir)About" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\About\"
+xcopy /i /s /y "$(SolutionDir)Languages" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Languages\"</PreBuildEvent>
   </PropertyGroup>
 </Project>

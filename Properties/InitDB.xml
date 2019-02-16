@@ -3,16 +3,51 @@
   <StartScreen>
     <!--Start Screen-->
 
-    <LearningHelperButton>
-      <group>Test</group>
+    <LearningHelperToggle>
+      <group>Toggleable Buttons</group>
       <root>InGameUI</root>
       <patch>PlaySettings_Patch</patch>
-    </LearningHelperButton>
-    <ZoneVisibilityButton>
-      <group>Test</group>
+    </LearningHelperToggle>
+    <ZoneVisibilityToggle>
+      <group>Toggleable Buttons</group>
       <root>InGameUI</root>
       <patch>PlaySettings_Patch</patch>
-    </ZoneVisibilityButton>
+    </ZoneVisibilityToggle>
+    <ShowBeautyToggle>
+      <group>Toggleable Buttons</group>
+      <root>InGameUI</root>
+      <patch>PlaySettings_Patch</patch>
+    </ShowBeautyToggle>
+    <ShowRoomStatsToggle>
+      <group>Toggleable Buttons</group>
+      <root>InGameUI</root>
+      <patch>PlaySettings_Patch</patch>
+    </ShowRoomStatsToggle>
+    <ShowColonistBarToggle>
+      <group>Toggleable Buttons</group>
+      <root>InGameUI</root>
+      <patch>PlaySettings_Patch</patch>
+    </ShowColonistBarToggle>
+    <ShowRoofOverlayToggle>
+      <group>Toggleable Buttons</group>
+      <root>InGameUI</root>
+      <patch>PlaySettings_Patch</patch>
+    </ShowRoofOverlayToggle>
+    <AutoHomeAreaToggle>
+      <group>Toggleable Buttons</group>
+      <root>InGameUI</root>
+      <patch>PlaySettings_Patch</patch>
+    </AutoHomeAreaToggle>
+    <AutoRebuildToggle>
+      <group>Toggleable Buttons</group>
+      <root>InGameUI</root>
+      <patch>PlaySettings_Patch</patch>
+    </AutoRebuildToggle>
+    <CategorizedResourceReadoutToggle>
+      <group>Toggleable Buttons</group>
+      <root>InGameUI</root>
+      <patch>PlaySettings_Patch</patch>
+    </CategorizedResourceReadoutToggle>
 
     <!--Misc Start screen Elements-->
     <MainPageCreditEntry>
