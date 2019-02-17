@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,17 +14,41 @@ namespace Toggles
     [StaticConstructorOnStartup]
     internal static class ToggleHandler
     {
-        // Generate dynamic toggles.
-        internal static void InitGenerated()
-        {
-            //DebugUtil.Log("Entering InitGenerated. IncidentDefs: " + DefDatabase<IncidentDef>.AllDefsListForReading.Count);
-            foreach (IncidentDef incident in DefDatabase<IncidentDef>.AllDefsListForReading)
-                ToggleFactory.Add("Incident" + incident.defName, "Incidents", "InGameUI", "IncidentWorker_Patch");
-        }
-
         internal static List<Toggle> Toggles { get; } = new List<Toggle>();
 
         internal static Dictionary<string, Toggle> ToggleActive { get; } = new Dictionary<string, Toggle>();
+
+        // Generate dynamic toggles.
+        internal static void InitGenerated()
+        {
+            foreach (IncidentDef incident in DefDatabase<IncidentDef>.AllDefsListForReading)
+                ToggleFactory.Add(
+                    label: "Incident" + incident.defName,
+                    translatableLabel: incident.defName,
+                    group: "Incidents",
+                    root: "InGameUI",
+                    patch: "IncidentWorker_Patch",
+                    description: incident.description
+                    );
+
+            foreach (Type alert in typeof(Alert).AllLeafSubclasses())
+                ToggleFactory.Add(
+                    label: alert.Name,
+                    translatableLabel: alert.Name,
+                    group: "Alerts",
+                    root: "InGameUI",
+                    patch: "AlertsReadout_Patch"
+                    );
+
+            foreach (LetterDef letter in DefDatabase<LetterDef>.AllDefsListForReading)
+                ToggleFactory.Add(
+                    label: "Letter" + letter.defName,
+                    translatableLabel: letter.defName,
+                    group: "Letters",
+                    root: "InGameUI",
+                    patch: "Letter_Patch"
+                    );
+        }
 
         // Fast check for whether a toggle is active.
         internal static bool IsActive(string label)

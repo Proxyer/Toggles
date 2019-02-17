@@ -29,7 +29,6 @@ namespace Toggles
             new Letter_Patch(),
             new AlertsReadout_Patch(),
             new IncidentWorker_Patch(),
-            new PlayDataLoader_Patch(),
 
             //new DevTools_Patch(),
             //new ReceiveLetter_Patch(),

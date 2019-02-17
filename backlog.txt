@@ -1,0 +1,8 @@
+﻿- Translations Overhaul
+- Harmony Attributes
+- DB init
+- Creation of Toggles
+
+- Initialize new save game with unchangable settings (i.e. 'Prepare Carefully')
+- Gizmos
+- HugsLib UI

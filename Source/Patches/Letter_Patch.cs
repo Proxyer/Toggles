@@ -12,12 +12,11 @@ namespace Toggles.Patches
             )
         { }
 
-        static string Label { get; } = "Letter";
+        static string PrefixLabel { get; } = "Letter";
 
         static void Postfix(ref Letter __instance, ref bool __result)
         {
-            if (!ToggleHandler.IsActive(Label + __instance.def.defName))
-                __result = false;
+            __result = ToggleHandler.IsActive(PrefixLabel + __instance.def.defName) ? __result : false;
         }
     }
 }

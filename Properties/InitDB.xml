@@ -3,12 +3,6 @@
   <StartScreen>
     <!--Start Screen-->
 
-    <!--<IncidentAmbrosiaSprout>
-      <group>Incidents</group>
-      <root>InGameUI</root>
-      <patch>IncidentWorker_Patch</patch>
-    </IncidentAmbrosiaSprout>-->
-
     <LearningHelperToggle>
       <group>Toggleable Buttons</group>
       <root>InGameUI</root>
@@ -345,7 +339,7 @@
     </TynansTwitterPlay>
   </GameMenuLinks>
 
-  <Alerts>
+  <!--<Alerts>
     <Alert_AwaitingMedicalOperation>
       <group>Alerts</group>
       <root>InGameUI</root>
@@ -381,11 +375,13 @@
       <root>InGameUI</root>
       <patch>AlertsReadout_Patch</patch>
     </Alert_ColonistsIdle>
-    <!--<Alert_Critical>
+    -->
+  <!--<Alert_Critical>
       <group>Alerts</group>
       <root>InGameUI</root>
       <patch>AlertsReadout_Patch</patch>
     </Alert_Critical>-->
+  <!--
     <Alert_Exhaustion>
       <group>Alerts</group>
       <root>InGameUI</root>
@@ -436,11 +432,13 @@
       <root>InGameUI</root>
       <patch>AlertsReadout_Patch</patch>
     </Alert_LowMedicine>
-    <!--<Alert_MajorOrExtremeBreakRisk>
+    -->
+  <!--<Alert_MajorOrExtremeBreakRisk>
       <group>Alerts</group>
       <root>InGameUI</root>
       <patch>AlertsReadout_Patch</patch>
     </Alert_MajorOrExtremeBreakRisk>-->
+  <!--
     <Alert_MinorBreakRisk>
       <group>Alerts</group>
       <root>InGameUI</root>
@@ -521,19 +519,21 @@
       <root>InGameUI</root>
       <patch>AlertsReadout_Patch</patch>
     </Alert_TatteredApparel>
-    <!--<Alert_Thought>
+    -->
+  <!--<Alert_Thought>
       <group>Alerts</group>
       <root>InGameUI</root>
       <patch>AlertsReadout_Patch</patch>
     </Alert_Thought>-->
+  <!--
     <Alert_UnhappyNudity>
       <group>Alerts</group>
       <root>InGameUI</root>
       <patch>AlertsReadout_Patch</patch>
     </Alert_UnhappyNudity>
-  </Alerts>
+  </Alerts>-->
   <!--Letters-->
-  <Letters>
+  <!--<Letters>
     <LetterThreatBig>
       <group>Letters</group>
       <root>InGameUI</root>
@@ -568,9 +568,9 @@
       <group>Letters</group>
       <root>InGameUI</root>
       <patch>Letter_Patch</patch>
-    </LetterRansomDemand>
+    </LetterRansomDemand>-->
 
-    <!--<LetterLabelBeaversArrived>
+  <!--<LetterLabelBeaversArrived>
       <group>Letters</group>
       <root>InGameUI</root>
       <patch>Letter_Patch</patch>
@@ -919,5 +919,5 @@
       <root>InGameUI</root>
       <patch>Letter_Patch</patch>
     </LetterLabelTraitDisease>-->
-  </Letters>
+  <!--</Letters>-->
 </Database>

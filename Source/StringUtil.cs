@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Toggles
 {
@@ -15,6 +17,18 @@ namespace Toggles
             // Uppercase all letters at start of word
             str = Regex.Replace(str, @"\b\w", (Match match) => match.ToString().ToUpper());
             return str.Replace(" ", string.Empty);
+        }
+
+        // Attempts to make auto-generated strings pretty-ish.
+        internal static string Pretty(string input)
+        {
+            string str = input;
+            str = str.StartsWith("Alert_") ? str.Replace("Alert_", "") : str;
+
+            // Puts space between letter and capital letter.
+            str = Regex.Replace(str, "([a-z])([A-Z])", "$1 $2");
+            str = str.Replace("_", ": ");
+            return str;
         }
     }
 }

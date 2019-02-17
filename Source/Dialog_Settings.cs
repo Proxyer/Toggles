@@ -1,5 +1,4 @@
-﻿using RimWorld;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Verse;
@@ -58,12 +57,7 @@ namespace Toggles
                 }
                 leftView.Gap();
             }
-            //
-            if (leftView.ButtonText("Incidents gen?"))
-            {
-                //DebugUtil.Log("Incidents " + DefDatabase<IncidentDef>.AllDefsListForReading.Count.ToString());
-            }
-            //
+
             leftViewRect.height = leftY;
             leftView.End();
             GUI.EndScrollView();
@@ -113,11 +107,7 @@ namespace Toggles
 
             // Draw toggles in right view depending on what button is active in left view.
             foreach (Toggle toggle in ToggleHandler.Toggles.Where(x => x.Group.Equals(ActiveGroup)))
-            {
-                rightView.CheckboxLabeled(toggle.Label.CanTranslate() ? toggle.Label.Translate() : toggle.Label,
-                    ref toggle.active,
-                    toggle.Description.CanTranslate() ? toggle.Description.Translate() : toggle.Description);
-            }
+                rightView.CheckboxLabeled(toggle.TranslatableLabel, ref toggle.active);
 
             // Opens confirmation window if user has deactivated the Options button.
             CheckOptionsActive("OptionsEntry", optionsEntryFlag);
