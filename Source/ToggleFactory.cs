@@ -3,6 +3,11 @@
     // Class for creating instances of Toggles and saving these to memory.
     internal static class ToggleFactory
     {
+        internal static void Add(string label, string group, string root, string patch, string mod = null)
+        {
+            ToggleHandler.Toggles.Add(new Toggle(label, group, root, patch, mod));
+        }
+
         // Creates a new toggle with given label, if it does not already exist.
         // Also adds values to fields of toggles matching the cases.
         internal static void Add(string label, string key, string value)

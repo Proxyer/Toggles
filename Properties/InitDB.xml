@@ -3,6 +3,12 @@
   <StartScreen>
     <!--Start Screen-->
 
+    <!--<IncidentAmbrosiaSprout>
+      <group>Incidents</group>
+      <root>InGameUI</root>
+      <patch>IncidentWorker_Patch</patch>
+    </IncidentAmbrosiaSprout>-->
+
     <LearningHelperToggle>
       <group>Toggleable Buttons</group>
       <root>InGameUI</root>

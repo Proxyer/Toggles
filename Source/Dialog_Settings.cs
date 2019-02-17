@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using RimWorld;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Verse;
@@ -24,15 +25,6 @@ namespace Toggles
         static Vector2 scrollPositionRight;
 
         static MultiCheckboxState state;
-
-        static bool show = true;
-
-        public static bool Check()
-        {
-            Log.Message("Fetched show value: " + show.ToString());
-
-            return show;
-        }
 
         internal static void DoWindowContents(Rect mainRect)
         {
@@ -67,10 +59,9 @@ namespace Toggles
                 leftView.Gap();
             }
             //
-            if (leftView.ButtonText("Toggle IL"))
+            if (leftView.ButtonText("Incidents gen?"))
             {
-                show = !show;
-                Log.Message("Flipped show to " + show.ToString());
+                //DebugUtil.Log("Incidents " + DefDatabase<IncidentDef>.AllDefsListForReading.Count.ToString());
             }
             //
             leftViewRect.height = leftY;

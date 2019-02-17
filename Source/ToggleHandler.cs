@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using RimWorld;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -9,13 +10,15 @@ using Verse;
 namespace Toggles
 {
     // Populates mod with toggles.
+    [StaticConstructorOnStartup]
     internal static class ToggleHandler
     {
-        static ToggleHandler()
+        // Generate dynamic toggles.
+        internal static void InitGenerated()
         {
-            Init();
-            TrimToggles();
-            MakeLookUp();
+            //DebugUtil.Log("Entering InitGenerated. IncidentDefs: " + DefDatabase<IncidentDef>.AllDefsListForReading.Count);
+            foreach (IncidentDef incident in DefDatabase<IncidentDef>.AllDefsListForReading)
+                ToggleFactory.Add("Incident" + incident.defName, "Incidents", "InGameUI", "IncidentWorker_Patch");
         }
 
         internal static List<Toggle> Toggles { get; } = new List<Toggle>();
@@ -29,8 +32,8 @@ namespace Toggles
             return tog != null ? tog.active : true;
         }
 
-        // Read DB into memory.
-        static void Init()
+        // Read DB into memory from XML.
+        internal static void InitHardcoded()
         {
             Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(Constants.DBPath);
             XmlReader reader = XmlReader.Create(stream);
@@ -40,13 +43,13 @@ namespace Toggles
         }
 
         // Create fast lookup for checking whether a certain toggle is active.
-        static void MakeLookUp()
+        internal static void MakeLookUp()
         {
             Toggles.ForEach(x => ToggleActive.Add(x.Label, x));
         }
 
         // Removes toggles from DB whose dependent mod is not active.
-        static void TrimToggles()
+        internal static void TrimToggles()
         {
             Toggles.Where(x => !x.Mod.NullOrEmpty()).ToList().ForEach(x =>
             {

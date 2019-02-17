@@ -12,9 +12,18 @@ namespace Toggles.Patches
             )
         { }
 
-        static bool Prefix(ref IncidentWorker __instance)
+        static string PrefixLabel { get; } = "Incident";
+        static string Label { get; } = "AmbrosiaSprout";
+
+        static bool Prefix(ref IncidentWorker __instance, ref bool __result)
         {
-            DebugUtil.Log("Incident: " + __instance.def.defName);
+            DebugUtil.Log("INCIDENT: " + __instance.def.defName);
+            if (!ToggleHandler.IsActive(PrefixLabel + Label))
+            {
+                __result = false;
+                return false;
+            }
+
             return true;
         }
     }

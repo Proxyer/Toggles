@@ -24,11 +24,12 @@ namespace Toggles
             new GlobalControls_Patch(),
             new GUI_Patch(),
             new ColonistBar_Patch(),
-            new IncidentWorker_Patch(),
             new PlaySettings_Patch(),
             new TimeControls_Patch(),
             new Letter_Patch(),
             new AlertsReadout_Patch(),
+            new IncidentWorker_Patch(),
+            new PlayDataLoader_Patch(),
 
             //new DevTools_Patch(),
             //new ReceiveLetter_Patch(),
