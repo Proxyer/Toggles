@@ -1,9 +1,8 @@
-﻿using Harmony;
-using Verse;
+﻿using Verse;
 
 namespace Toggles.Patches
 {
-    // Toggles all letter on the HUD. NB! Does not apply to letters spawned by debug menu. (Can patch ReceiveLetter for that)
+    // Toggles all letter on the HUD.
     internal class Letter_Patch : Patch
     {
         internal Letter_Patch() : base(
@@ -15,13 +14,10 @@ namespace Toggles.Patches
 
         static string Label { get; } = "Letter";
 
-        static bool Prefix(ref Letter __instance, ref bool __result)
+        static void Postfix(ref Letter __instance, ref bool __result)
         {
-            foreach (LetterDef def in DefDatabase<LetterDef>.AllDefs)
-                if (__instance.def == def && !ToggleHandler.IsActive(Label + def))
-                    __result = false;
-
-            return true;
+            if (!ToggleHandler.IsActive(Label + __instance.def.defName))
+                __result = false;
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -10,7 +9,6 @@ using Verse;
 namespace Toggles
 {
     // Populates mod with toggles.
-    [StaticConstructorOnStartup]
     internal static class ToggleHandler
     {
         static ToggleHandler()
@@ -20,9 +18,9 @@ namespace Toggles
             MakeLookUp();
         }
 
-        internal static List<Toggle> Toggles { get; private set; } = new List<Toggle>();
+        internal static List<Toggle> Toggles { get; } = new List<Toggle>();
 
-        internal static Dictionary<string, Toggle> ToggleActive { get; private set; } = new Dictionary<string, Toggle>();
+        internal static Dictionary<string, Toggle> ToggleActive { get; } = new Dictionary<string, Toggle>();
 
         // Fast check for whether a toggle is active.
         internal static bool IsActive(string label)
@@ -55,14 +53,6 @@ namespace Toggles
                 if (!Mod_Toggles.ModIsActive(x.Mod))
                     Toggles.Remove(x);
             });
-        }
-
-        [Obsolete]
-        static void Init_Old()
-        {
-            XElement mainNode = XElement.Load(Constants.InitFilePath);
-            mainNode.DescendantNodesAndSelf().Where(x => x.NodeType == XmlNodeType.Comment).Remove();
-            LoadXML(mainNode, Toggles);
         }
 
         // Walks through DB and creates Toggles out of nodes.

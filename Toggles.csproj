@@ -70,6 +70,7 @@
     <Compile Include="Source\Patches\ListableOption_WebLink_Patch.cs" />
     <Compile Include="Source\Patches\MouseoverReadout_Patch.cs" />
     <Compile Include="Source\Patches\Patch.cs" />
+    <Compile Include="Source\Patches\TimeControls_Patch.cs" />
     <Compile Include="Unused\___PlaySettings_Patch.cs" />
     <Compile Include="Source\Patches\ResourceReadout_Patch.cs" />
     <Compile Include="Source\Patches\UI_BackgroundMain_Patch.cs" />

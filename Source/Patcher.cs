@@ -1,12 +1,12 @@
 ﻿using Harmony;
-using Verse;
+using System.Linq;
 
 namespace Toggles
 {
-    [StaticConstructorOnStartup]
+    // Applies relevant patches to the game.
     internal static class Patcher
     {
-        static HarmonyInstance Harmony { get; set; } = HarmonyInstance.Create(Constants.ModName);
+        static HarmonyInstance Harmony { get; } = HarmonyInstance.Create(Constants.ModName);
 
         static Patcher() => DoPatches();
 
@@ -16,6 +16,7 @@ namespace Toggles
             foreach (var patch in Constants.Patches)
                 patch.Apply(Harmony);
 
+            // Apply patches required according to user settings.
             //foreach (var patch in Constants.Patches)
             //{
             //    if (ToggleHandler.Toggles

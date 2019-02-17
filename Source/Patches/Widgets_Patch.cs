@@ -1,5 +1,4 @@
-﻿using Harmony;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
 namespace Toggles.Patches

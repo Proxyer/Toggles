@@ -1,5 +1,4 @@
-﻿using Harmony;
-using RimWorld;
+﻿using RimWorld;
 
 namespace Toggles.Patches
 {

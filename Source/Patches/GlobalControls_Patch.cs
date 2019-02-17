@@ -1,8 +1,8 @@
-﻿using Harmony;
-using RimWorld;
+﻿using RimWorld;
 
 namespace Toggles.Patches
 {
+    // Toggles the temperature readout on the HUD.
     internal class GlobalControls_Patch : Patch
     {
         internal GlobalControls_Patch() : base(

@@ -1,5 +1,4 @@
-﻿using Harmony;
-using RimWorld;
+﻿using RimWorld;
 using System;
 using System.Collections.Generic;
 using Verse;
@@ -18,7 +17,7 @@ namespace Toggles.Patches
 
         static List<Type> AllAlerts;
 
-        static bool Prefix(ref List<Alert> ___AllAlerts, ref List<Alert> ___activeAlerts)
+        static void Postfix(ref List<Alert> ___AllAlerts, ref List<Alert> ___activeAlerts)
         {
             // Saves all available alerts for reference.
             if (AllAlerts == null)
@@ -45,8 +44,6 @@ namespace Toggles.Patches
                         ___AllAlerts.Add((Alert)Activator.CreateInstance(alert));
                 }
             }
-
-            return true;
         }
     }
 }

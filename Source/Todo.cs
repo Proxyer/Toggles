@@ -5,8 +5,6 @@
 
 // DrawGizmoGrid postfix gives weird error. Cant patch? Want to get gizmos.
 
-// private variables underscore _foo
-
 // Transpiler. Opscode.Nop, RemoveRange, or jump? Probably Jump, to retain codes for toggling.
 // Seems to be: put bool on stack, consume with brfalse, which moves to target if consumed code is false.
 

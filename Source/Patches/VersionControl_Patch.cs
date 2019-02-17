@@ -1,5 +1,4 @@
-﻿using Harmony;
-using RimWorld;
+﻿using RimWorld;
 using UnityEngine.SceneManagement;
 
 namespace Toggles.Patches
