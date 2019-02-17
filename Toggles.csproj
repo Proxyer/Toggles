@@ -93,8 +93,8 @@
   <ItemGroup>
     <Content Include="About\About.xml" />
     <Content Include="Assemblies\0Harmony.dll" />
+    <Content Include="log.txt" />
     <Content Include="Languages\English\Keyed\Toggles_Settings.xml" />
-    <Content Include="backlog.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

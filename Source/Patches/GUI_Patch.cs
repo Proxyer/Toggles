@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Verse;
 
@@ -14,18 +15,31 @@ namespace Toggles.Patches
             )
         { }
 
-        static List<string> texList = new List<string>
+        internal override void InitToggles()
+        {
+            foreach (string element in Dict.Values)
+                ToggleFactory.Add(
+                        label: element,
+                        root: "StartScreenUI",
+                        group: "ElementsEntry",
+                        patch: "GUI_Patch"
+                        );
+        }
+
+        static Dictionary<string, string> Dict = new List<string>
         {
             "GameTitle",
             "LudeonLogoSmall",
             "LangIcon"
-        };
+        }
+        .ToDictionary(x => x, x => StringUtil.Pretty(x));
 
         static bool Prefix(Rect position, ref Texture image)
         {
             if (Current.ProgramState == ProgramState.Entry)
-                if (texList.Contains(image.name) && !ToggleHandler.IsActive(image.name + GenScene.EntrySceneName))
-                    image = Constants.TexEmpty;
+                if (Dict.ContainsKey(image.name))
+                    if (!ToggleHandler.IsActive(Dict.TryGetValue(image.name)))
+                        image = Constants.TexEmpty;
 
             return true;
         }

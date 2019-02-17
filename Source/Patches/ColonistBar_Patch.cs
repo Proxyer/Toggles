@@ -12,6 +12,16 @@ namespace Toggles.Patches
             )
         { }
 
+        internal override void InitToggles()
+        {
+            ToggleFactory.Add(
+                    label: Label,
+                    root: "InGameUI",
+                    group: "HUD",
+                    patch: "ColonistBar_Patch"
+                    );
+        }
+
         static string Label { get; } = "ColonistBar";
 
         // Adds vanilla toggle for Colonist Bar to the mod.

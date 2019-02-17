@@ -19,6 +19,18 @@ namespace Toggles.Patches
             )
         { }
 
+        internal override void InitToggles()
+        {
+            ToggleFactory.Add(
+                    label: Label,
+                    root: "InGameUI",
+                    group: "HUD",
+                    patch: "TimeControls_Patch"
+                    );
+        }
+
+        static string Label { get; } = "TimeControls";
+
         // Proxy method for showing the time control buttons.
         static bool ButtonImage_Proxy(Rect rect, Texture2D tex)
         {
@@ -36,8 +48,6 @@ namespace Toggles.Patches
         {
             return ToggleHandler.IsActive(Label) ? tex : Constants.TexEmpty;
         }
-
-        static string Label { get; } = "TimeControls";
 
         static MethodInfo _ButtonImage_Method { get; } = AccessTools.Method(typeof(Widgets), "ButtonImage", new Type[] { typeof(Rect), typeof(Texture2D) });
         static MethodInfo _ButtonImage_Proxy { get; } = AccessTools.Method(typeof(TimeControls_Patch), "ButtonImage_Proxy", new Type[] { typeof(Rect), typeof(Texture2D) });

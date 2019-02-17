@@ -30,8 +30,6 @@ namespace Toggles
             new AlertsReadout_Patch(),
             new IncidentWorker_Patch(),
 
-            //new DevTools_Patch(),
-            //new ReceiveLetter_Patch(),
             //new GizmoGrid_Patch(),
             //new Pawn_Patch(),
             //new Command_Patch(),

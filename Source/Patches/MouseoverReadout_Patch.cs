@@ -11,7 +11,17 @@ namespace Toggles.Patches
             )
         { }
 
-        static string Label { get; } = "MouseoverReadout";
+        internal override void InitToggles()
+        {
+            ToggleFactory.Add(
+                    label: Label,
+                    root: "InGameUI",
+                    group: "HUD",
+                    patch: "MouseoverReadout_Patch"
+                    );
+        }
+
+        static string Label { get; } = "Date";
 
         static bool Prefix()
         {

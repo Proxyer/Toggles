@@ -23,29 +23,25 @@ namespace Toggles
         {
             foreach (IncidentDef incident in DefDatabase<IncidentDef>.AllDefsListForReading)
                 ToggleFactory.Add(
-                    label: "Incident" + incident.defName,
-                    translatableLabel: incident.defName,
-                    group: "Incidents",
+                    label: incident.defName,
                     root: "InGameUI",
-                    patch: "IncidentWorker_Patch",
-                    description: incident.description
+                    group: "Incidents",
+                    patch: "IncidentWorker_Patch"
                     );
 
             foreach (Type alert in typeof(Alert).AllLeafSubclasses())
                 ToggleFactory.Add(
-                    label: alert.Name,
-                    translatableLabel: alert.Name,
-                    group: "Alerts",
+                    label: alert.Name.Replace("Alert_", ""),
                     root: "InGameUI",
+                    group: "Alerts",
                     patch: "AlertsReadout_Patch"
                     );
 
             foreach (LetterDef letter in DefDatabase<LetterDef>.AllDefsListForReading)
                 ToggleFactory.Add(
-                    label: "Letter" + letter.defName,
-                    translatableLabel: letter.defName,
-                    group: "Letters",
+                    label: letter.defName,
                     root: "InGameUI",
+                    group: "Letters",
                     patch: "Letter_Patch"
                     );
         }
@@ -71,16 +67,6 @@ namespace Toggles
         internal static void MakeLookUp()
         {
             Toggles.ForEach(x => ToggleActive.Add(x.Label, x));
-        }
-
-        // Removes toggles from DB whose dependent mod is not active.
-        internal static void TrimToggles()
-        {
-            Toggles.Where(x => !x.Mod.NullOrEmpty()).ToList().ForEach(x =>
-            {
-                if (!Mod_Toggles.ModIsActive(x.Mod))
-                    Toggles.Remove(x);
-            });
         }
 
         // Walks through DB and creates Toggles out of nodes.

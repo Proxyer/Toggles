@@ -11,6 +11,16 @@ namespace Toggles.Patches
             )
         { }
 
+        internal override void InitToggles()
+        {
+            ToggleFactory.Add(
+                    label: Label,
+                    root: "StartScreenUI",
+                    group: "ElementsEntry",
+                    patch: "UI_BackgroundMain_Patch"
+                    );
+        }
+
         static string Label { get; } = "Background";
 
         static bool Prefix()

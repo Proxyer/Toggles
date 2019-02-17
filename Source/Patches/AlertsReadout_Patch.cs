@@ -1,6 +1,7 @@
 ﻿using RimWorld;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Verse;
 
 namespace Toggles.Patches
@@ -15,28 +16,29 @@ namespace Toggles.Patches
             )
         { }
 
-        static List<Type> AllAlerts;
+        static Dictionary<Type, string> Dict = new List<Type>(typeof(Alert).AllLeafSubclasses())
+            .ToDictionary(x => x, x => x.Name.Replace("Alert_", ""));
+
+        internal override void InitToggles()
+        {
+            foreach (Type alert in Dict.Keys)
+                ToggleFactory.Add(
+                    label: Dict.TryGetValue(alert),
+                    root: "InGameUI",
+                    group: "Alerts",
+                    patch: "AlertsReadout_Patch"
+                    );
+        }
 
         static void Postfix(ref List<Alert> ___AllAlerts, ref List<Alert> ___activeAlerts)
         {
-            // Saves all available alerts for reference.
-            if (AllAlerts == null)
+            foreach (Type alert in Dict.Keys)
             {
-                AllAlerts = new List<Type>();
-                foreach (Type type in typeof(Alert).AllLeafSubclasses())
-                    AllAlerts.Add(type);
-            }
-
-            foreach (Type alert in AllAlerts)
-            {
-                string name = alert.Name;
+                string name = Dict.TryGetValue(alert);
                 if (!ToggleHandler.IsActive(name))
                 {
-                    if (___AllAlerts.Exists(x => x.GetType().Name.Equals(name)))
-                    {
-                        ___AllAlerts.RemoveAll(x => x.GetType().Name.Equals(name));
-                        ___activeAlerts.RemoveAll(x => x.GetType().Name.Equals(name));
-                    }
+                    ___AllAlerts.RemoveAll(x => x.GetType().Name.Equals(name));
+                    ___activeAlerts.RemoveAll(x => x.GetType().Name.Equals(name));
                 }
                 else
                 {

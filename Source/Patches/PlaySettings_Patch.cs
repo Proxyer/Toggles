@@ -40,6 +40,17 @@ namespace Toggles.Patches
             {"CategorizedResourceReadoutToggleButton", "CategorizedResourceReadoutToggle" }
         };
 
+        internal override void InitToggles()
+        {
+            foreach (string label in Dict.Values)
+                ToggleFactory.Add(
+                    label: label,
+                    root: "InGameUI",
+                    group: "HUD",
+                    patch: "PlaySettings_Patch"
+                    );
+        }
+
         static MethodInfo _ToggleableIcon_Method { get; } = AccessTools.Method(typeof(WidgetRow), "ToggleableIcon", new Type[] { typeof(bool).MakeByRefType(), typeof(Texture2D), typeof(string), typeof(SoundDef), typeof(string) });
         static MethodInfo _ToggleableIcon_Proxy { get; } = AccessTools.Method(typeof(PlaySettings_Patch), "ToggleableIcon_Proxy", new Type[] { typeof(WidgetRow), typeof(bool).MakeByRefType(), typeof(Texture2D), typeof(string), typeof(SoundDef), typeof(string) });
         static MethodInfo Translate { get; } = AccessTools.Method(typeof(Translator), "Translate", new Type[] { typeof(string) });

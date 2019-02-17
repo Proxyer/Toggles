@@ -14,6 +14,16 @@ namespace Toggles.Patches
             )
         { }
 
+        internal override void InitToggles()
+        {
+            ToggleFactory.Add(
+                    label: Label,
+                    root: "InGameUI",
+                    group: "HUD",
+                    patch: "DateReadout_Patch"
+                    );
+        }
+
         static string Label { get; } = "Date";
 
         // Stops the date from being drawn if setting is inactive.

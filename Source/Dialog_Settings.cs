@@ -107,7 +107,7 @@ namespace Toggles
 
             // Draw toggles in right view depending on what button is active in left view.
             foreach (Toggle toggle in ToggleHandler.Toggles.Where(x => x.Group.Equals(ActiveGroup)))
-                rightView.CheckboxLabeled(toggle.TranslatableLabel, ref toggle.active);
+                rightView.CheckboxLabeled(toggle.Label, ref toggle.active);
 
             // Opens confirmation window if user has deactivated the Options button.
             CheckOptionsActive("OptionsEntry", optionsEntryFlag);

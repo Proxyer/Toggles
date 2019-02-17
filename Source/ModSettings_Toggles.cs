@@ -8,7 +8,8 @@ namespace Toggles
         public override void ExposeData()
         {
             base.ExposeData();
-            ToggleHandler.Toggles.ForEach(x => Scribe_Values.Look(ref x.active, x.Label, true));
+            //ToggleHandler.Toggles.ForEach(x => Scribe_Values.Look(ref x.active, x.Label, true));
+            ToggleHandler.Toggles.ForEach(x => Scribe_Values.Look(ref x.active, x.Root + x.Group + x.LabelInternal, true));
         }
     }
 }

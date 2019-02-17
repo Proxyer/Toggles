@@ -12,11 +12,20 @@ namespace Toggles.Patches
             )
         { }
 
-        static string PrefixLabel { get; } = "Letter";
+        internal override void InitToggles()
+        {
+            foreach (LetterDef letter in DefDatabase<LetterDef>.AllDefsListForReading)
+                ToggleFactory.Add(
+                    label: letter.defName,
+                    root: "InGameUI",
+                    group: "Letters",
+                    patch: "Letter_Patch"
+                    );
+        }
 
         static void Postfix(ref Letter __instance, ref bool __result)
         {
-            __result = ToggleHandler.IsActive(PrefixLabel + __instance.def.defName) ? __result : false;
+            __result = ToggleHandler.IsActive(__instance.def.defName) ? __result : false;
         }
     }
 }

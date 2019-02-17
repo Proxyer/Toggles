@@ -13,6 +13,16 @@ namespace Toggles.Patches
             )
         { }
 
+        internal override void InitToggles()
+        {
+            ToggleFactory.Add(
+                    label: Label,
+                    root: "InGameUI",
+                    group: "HUD",
+                    patch: "WeatherManager_Patch"
+                    );
+        }
+
         static string Label { get; } = "WeatherReadout";
 
         static bool Prefix()

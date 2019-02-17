@@ -12,6 +12,16 @@ namespace Toggles.Patches
             )
         { }
 
+        internal override void InitToggles()
+        {
+            ToggleFactory.Add(
+                    label: Label,
+                    root: "InGameUI",
+                    group: "HUD",
+                    patch: "GlobalControls_Patch"
+                    );
+        }
+
         static string Label { get; } = "TemperatureReadout";
 
         static string Postfix(string __result)

@@ -12,7 +12,6 @@
             base.DefsLoaded();
             ToggleHandler.InitHardcoded();
             ToggleHandler.InitGenerated();
-            ToggleHandler.TrimToggles();
             ToggleHandler.MakeLookUp();
             Mod_Toggles.CustomLoadSettings();
         }

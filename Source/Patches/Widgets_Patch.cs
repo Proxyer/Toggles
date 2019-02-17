@@ -13,6 +13,16 @@ namespace Toggles.Patches
             )
         { }
 
+        internal override void InitToggles()
+        {
+            ToggleFactory.Add(
+                    label: Label,
+                    root: "StartScreenUI",
+                    group: "ElementsEntry",
+                    patch: "Widgets_Patch"
+                    );
+        }
+
         static string Label { get; } = "MainPageCredit";
 
         static bool Prefix(string label)

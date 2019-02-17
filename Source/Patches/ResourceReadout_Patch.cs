@@ -11,6 +11,16 @@ namespace Toggles.Patches
             )
         { }
 
+        internal override void InitToggles()
+        {
+            ToggleFactory.Add(
+                    label: Label,
+                    root: "InGameUI",
+                    group: "HUD",
+                    patch: "ResourceReadout_Patch"
+                    );
+        }
+
         static string Label { get; } = "ResourceReadout";
 
         static bool Prefix()

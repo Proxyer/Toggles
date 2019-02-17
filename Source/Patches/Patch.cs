@@ -48,5 +48,7 @@ namespace Toggles.Patches
         {
             harmony.Unpatch(Method, HarmonyPatchType.All);
         }
+
+        internal abstract void InitToggles();
     }
 }

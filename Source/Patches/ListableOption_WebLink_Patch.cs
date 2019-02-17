@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using Verse;
 
@@ -13,6 +14,38 @@ namespace Toggles.Patches
             paramTypes: new[] { typeof(Vector2), typeof(float) }
             )
         { }
+
+        internal override void InitToggles()
+        {
+            foreach (string link in AllLinks)
+                ToggleFactory.Add(
+                        label: link,
+                        root: link.EndsWith("Entry") ? "StartScreenUI" : "InGameUI",
+                        group: link.EndsWith("Entry") ? "MainMenuLinks" : "PauseMenu",
+                        patch: "DateReadout_Patch"
+                        );
+        }
+
+        static List<string> AllLinks = new List<string>
+        {
+            { "BuySoundtrackEntry" },
+            { "TynansDesignBookEntry" },
+            { "FictionPrimerEntry" },
+            { "ForumsEntry" },
+            { "LudeonBlogEntry" },
+            { "OfficialWikiEntry" },
+            { "HelpTranslateRimWorldEntry" },
+            { "TynansTwitterEntry" },
+
+            { "BuySoundtrackPlay" },
+            { "TynansDesignBookPlay" },
+            { "FictionPrimerPlay" },
+            { "ForumsPlay" },
+            { "LudeonBlogPlay" },
+            { "OfficialWikiPlay" },
+            { "HelpTranslateRimWorldPlay" },
+            { "TynansTwitterPlay" }
+        };
 
         static bool Prefix(ListableOption_WebLink __instance)
         {

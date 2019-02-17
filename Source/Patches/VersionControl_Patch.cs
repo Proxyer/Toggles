@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 namespace Toggles.Patches
@@ -11,6 +12,23 @@ namespace Toggles.Patches
             originMethod: "DrawInfoInCorner"
             )
         { }
+
+        internal override void InitToggles()
+        {
+            foreach (string label in AllLabels)
+                ToggleFactory.Add(
+                        label: Label,
+                        root: label.EndsWith("Entry") ? "StartScreenUI" : "InGameUI",
+                        group: label.EndsWith("Entry") ? "ElementsEntry" : "PauseMenu",
+                        patch: "VersionControl_Patch"
+                        );
+        }
+
+        static List<string> AllLabels = new List<string>
+        {
+            { "VersionControlEntry" },
+            { "VersionControlPlay" },
+        };
 
         static string Label { get; } = "VersionControl";
 
