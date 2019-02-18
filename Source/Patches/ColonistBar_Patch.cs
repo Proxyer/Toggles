@@ -1,33 +1,31 @@
-﻿using RimWorld;
+﻿using Harmony;
+using RimWorld;
+using Toggles.Source;
 
 namespace Toggles.Patches
 {
     // Toggles the Colonist bar.
-    internal class ColonistBar_Patch : Patch
+    [HarmonyPatch(typeof(ColonistBar))]
+    [HarmonyPatch("Visible", MethodType.Getter)]
+    class ColonistBar_Patch
     {
-        internal ColonistBar_Patch() : base(
-            patchType: typeof(ColonistBar_Patch),
-            originType: typeof(ColonistBar),
-            originMethod: "get_Visible"
-            )
-        { }
+        internal ColonistBar_Patch() => InitToggles();
 
-        internal override void InitToggles()
+        static void InitToggles()
         {
             ToggleFactory.Add(
-                    label: Label,
-                    root: "InGameUI",
-                    group: "HUD",
-                    patch: "ColonistBar_Patch"
+                    label: GetLabel(),
+                    root: ButtonCat.InGameUI,
+                    group: "HUD"
                     );
         }
 
-        static string Label { get; } = "ColonistBar";
+        static string GetLabel() => "HUD_ColonistBar";
 
         // Adds vanilla toggle for Colonist Bar to the mod.
-        static void Postfix(ref bool __result)
+        public static void Postfix(ref bool __result)
         {
-            __result = ToggleHandler.IsActive(Label);
+            __result = ToggleHandler.IsActive(GetLabel());
         }
     }
 }

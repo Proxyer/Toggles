@@ -1,4 +1,5 @@
 ﻿using Harmony;
+using Toggles.Patches;
 using Verse;
 
 namespace Toggles
@@ -13,25 +14,26 @@ namespace Toggles
 
         internal static void DoPatches()
         {
-            // DEBUG Patch All
-            foreach (var patch in Constants.Patches)
-                patch.Apply(Harmony);
-
-            //if (DefDatabase<IncidentDef>.AllDefsListForReading.NullOrEmpty())
-            //    Log.Message("Empty...");
-            //else
-            //    DefDatabase<IncidentDef>.AllDefsListForReading.ForEach(x => Log.Message(x.defName));
-
-            // Apply patches required according to user settings.
             //foreach (var patch in Constants.Patches)
-            //{
-            //    if (ToggleHandler.Toggles
-            //        .Where(x => x.Patch.Equals(patch.GetType().Name)).ToList()
-            //        .Exists(x => x.active == false))
-            //        patch.Apply(Harmony);
-            //    else
-            //        patch.Undo(Harmony);
-            //}
+            //    patch.Apply(Harmony);
+
+            new ListableOption_Patch();
+            new ListableOption_WebLink_Patch();
+            new VersionControl_Patch();
+            new Widgets_Patch();
+            new UI_BackgroundMain_Patch();
+            new DateReadout_Patch();
+            new ResourceReadout_Patch();
+            new MouseoverReadout_Patch();
+            new WeatherManager_Patch();
+            new GlobalControls_Patch();
+            new GUI_Patch();
+            new ColonistBar_Patch();
+            new PlaySettings_Patch();
+            new TimeControls_Patch();
+            new Letter_Patch();
+            new AlertsReadout_Patch();
+            new IncidentWorker_Patch();
         }
     }
 }

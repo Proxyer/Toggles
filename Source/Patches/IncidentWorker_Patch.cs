@@ -1,32 +1,32 @@
-﻿using RimWorld;
+﻿using Harmony;
+using RimWorld;
+using Toggles.Source;
 using Verse;
 
 namespace Toggles.Patches
 {
-    internal class IncidentWorker_Patch : Patch
+    [HarmonyPatch(typeof(IncidentWorker))]
+    [HarmonyPatch("TryExecute")]
+    [HarmonyPatch(new[] { typeof(IncidentParms) })]
+    class IncidentWorker_Patch
     {
-        internal IncidentWorker_Patch() : base(
-            patchType: typeof(IncidentWorker_Patch),
-            originType: typeof(IncidentWorker),
-            originMethod: "TryExecute",
-            paramTypes: new[] { typeof(IncidentParms) }
-            )
-        { }
+        internal IncidentWorker_Patch() => InitToggles();
 
-        internal override void InitToggles()
+        void InitToggles()
         {
             foreach (IncidentDef incident in DefDatabase<IncidentDef>.AllDefsListForReading)
                 ToggleFactory.Add(
-                    label: incident.defName,
-                    root: "InGameUI",
-                    group: "Incidents",
-                    patch: "IncidentWorker_Patch"
+                    label: GetLabel(incident),
+                    root: ButtonCat.Play,
+                    group: "Incidents"
                     );
         }
 
+        static string GetLabel(IncidentDef incident) => "Incident_" + incident.defName;
+
         static bool Prefix(ref IncidentWorker __instance, ref bool __result)
         {
-            if (!ToggleHandler.IsActive(__instance.def.defName))
+            if (!ToggleHandler.IsActive(GetLabel(__instance.def)))
             {
                 __result = false;
                 return false;

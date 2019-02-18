@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database>
-  <StartScreen>
-    <!--Start Screen-->
+  <!--<StartScreen>-->
+  <!--Start Screen-->
 
-    <LearningHelperToggle>
+  <!--<LearningHelperToggle>
       <group>Toggleable Buttons</group>
       <root>InGameUI</root>
       <patch>PlaySettings_Patch</patch>
@@ -47,10 +47,10 @@
       <group>Toggleable Buttons</group>
       <root>InGameUI</root>
       <patch>PlaySettings_Patch</patch>
-    </CategorizedResourceReadoutToggle>
+    </CategorizedResourceReadoutToggle>-->
 
-    <!--Misc Start screen Elements-->
-    <MainPageCreditEntry>
+  <!--Misc Start screen Elements-->
+  <!--<MainPageCreditEntry>
       <group>ElementsEntry</group>
       <root>StartScreenUI</root>
       <patch>Widgets_Patch</patch>
@@ -79,10 +79,10 @@
       <group>ElementsEntry</group>
       <root>StartScreenUI</root>
       <patch>GUI_Patch</patch>
-    </LangIconEntry>
-  </StartScreen>
+    </LangIconEntry>-->
+  <!--</StartScreen>-->
   <!--Main Menu Buttons-->
-  <MainMenuButtons>
+  <!--<MainMenuButtons>
     <TutorialEntry>
       <group>MainMenuButtons</group>
       <root>StartScreenUI</root>
@@ -123,10 +123,10 @@
       <root>StartScreenUI</root>
       <patch>ListableOption_Patch</patch>
     </QuitToOSEntry>
-  </MainMenuButtons>
+  </MainMenuButtons>-->
 
   <!--Main Menu Links-->
-  <MainMenuLinks>
+  <!--<MainMenuLinks>
     <BuySoundtrackEntry>
       <group>MainMenuLinks</group>
       <root>StartScreenUI</root>
@@ -167,12 +167,12 @@
       <root>StartScreenUI</root>
       <patch>ListableOption_WebLink_Patch</patch>
     </TynansTwitterEntry>
-  </MainMenuLinks>
+  </MainMenuLinks>-->
 
-  <GameScreen>
-    <!--Game screen elements-->
+  <!--<GameScreen>-->
+  <!--Game screen elements-->
 
-    <ColonistBar>
+  <!--<ColonistBar>
       <group>HUD</group>
       <root>InGameUI</root>
       <patch>ColonistBar_Patch</patch>
@@ -183,7 +183,9 @@
       <root>InGameUI</root>
       <patch>VersionControl_Patch</patch>
     </VersionControlPlay>
-    <!--Widgets Toggleicons-->
+    -->
+  <!--Widgets Toggleicons-->
+  <!--
     <ShowLearningHelper>
       <group>HUD</group>
       <root>InGameUI</root>
@@ -267,7 +269,9 @@
     </TimeControls>
   </GameScreen>
 
+  -->
   <!--Game Menu Buttons-->
+  <!--
   <GameMenuButtons>
     <OptionsPlay>
       <group>PauseMenu</group>
@@ -296,7 +300,9 @@
     </SavePlay>
   </GameMenuButtons>
   <GameMenuLinks>
-    <!--Game Menu Links-->
+    -->
+  <!--Game Menu Links-->
+  <!--
     <BuySoundtrackPlay>
       <group>PauseMenu</group>
       <root>InGameUI</root>
@@ -337,7 +343,7 @@
       <root>InGameUI</root>
       <patch>ListableOption_WebLink_Patch</patch>
     </TynansTwitterPlay>
-  </GameMenuLinks>
+  </GameMenuLinks>-->
 
   <!--<Alerts>
     <Alert_AwaitingMedicalOperation>

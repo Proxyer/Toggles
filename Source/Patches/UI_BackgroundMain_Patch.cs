@@ -1,31 +1,32 @@
-﻿using RimWorld;
+﻿using Harmony;
+using RimWorld;
+using Toggles.Source;
 
 namespace Toggles.Patches
 {
-    internal class UI_BackgroundMain_Patch : Patch
+    [HarmonyPatch(typeof(UI_BackgroundMain))]
+    [HarmonyPatch("BackgroundOnGUI")]
+    class UI_BackgroundMain_Patch
     {
-        internal UI_BackgroundMain_Patch() : base(
-            patchType: typeof(UI_BackgroundMain_Patch),
-            originType: typeof(UI_BackgroundMain),
-            originMethod: "BackgroundOnGUI"
-            )
-        { }
+        internal UI_BackgroundMain_Patch() => InitToggles();
 
-        internal override void InitToggles()
+        void InitToggles()
         {
             ToggleFactory.Add(
-                    label: Label,
-                    root: "StartScreenUI",
-                    group: "ElementsEntry",
-                    patch: "UI_BackgroundMain_Patch"
+                    label: GetLabel(),
+                    root: ButtonCat.StartScreenUI,
+                    group: "ElementsEntry"
                     );
         }
 
-        static string Label { get; } = "Background";
+        static string GetLabel()
+        {
+            return "ElementsEntry_Background";
+        }
 
         static bool Prefix()
         {
-            return ToggleHandler.IsActive(Label);
+            return ToggleHandler.IsActive(GetLabel());
         }
     }
 }

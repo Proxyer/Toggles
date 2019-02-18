@@ -1,49 +1,51 @@
-﻿using RimWorld;
+﻿using Harmony;
+using RimWorld;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using Toggles.Source;
 using Verse;
 
 namespace Toggles.Patches
 {
     // Toggles all alerts on the HUD.
-    internal class AlertsReadout_Patch : Patch
+    [HarmonyPatch(typeof(AlertsReadout))]
+    [HarmonyPatch("AlertsReadoutUpdate")]
+    class AlertsReadout_Patch
     {
-        internal AlertsReadout_Patch() : base(
-            patchType: typeof(AlertsReadout_Patch),
-            originType: typeof(AlertsReadout),
-            originMethod: "AlertsReadoutUpdate"
-            )
-        { }
+        internal AlertsReadout_Patch() => InitToggles();
 
-        static Dictionary<Type, string> Dict = new List<Type>(typeof(Alert).AllLeafSubclasses())
-            .ToDictionary(x => x, x => x.Name.Replace("Alert_", ""));
+        static List<Alert> Alerts { get; } = new List<Alert>();
 
-        internal override void InitToggles()
+        static void InitToggles()
         {
-            foreach (Type alert in Dict.Keys)
+            foreach (Type type in typeof(Alert).AllLeafSubclasses())
+            {
+                Alert alert = (Alert)Activator.CreateInstance(type);
+                Alerts.Add(alert);
                 ToggleFactory.Add(
-                    label: Dict.TryGetValue(alert),
-                    root: "InGameUI",
-                    group: "Alerts",
-                    patch: "AlertsReadout_Patch"
+                    label: GetLabel(alert),
+                    root: ButtonCat.Play,
+                    group: "Alerts"
                     );
+            }
         }
+
+        static string GetLabel(Alert alert) => alert.GetType().Name;
 
         static void Postfix(ref List<Alert> ___AllAlerts, ref List<Alert> ___activeAlerts)
         {
-            foreach (Type alert in Dict.Keys)
+            foreach (Alert alert in Alerts)
             {
-                string name = Dict.TryGetValue(alert);
-                if (!ToggleHandler.IsActive(name))
+                string label = GetLabel(alert);
+                if (!ToggleHandler.IsActive(GetLabel(alert)))
                 {
-                    ___AllAlerts.RemoveAll(x => x.GetType().Name.Equals(name));
-                    ___activeAlerts.RemoveAll(x => x.GetType().Name.Equals(name));
+                    ___AllAlerts.RemoveAll(x => x.GetType().Name.Equals(label));
+                    ___activeAlerts.RemoveAll(x => x.GetType().Name.Equals(label));
                 }
                 else
                 {
-                    if (!___AllAlerts.Exists(x => x.GetType().Name.Equals(name)))
-                        ___AllAlerts.Add((Alert)Activator.CreateInstance(alert));
+                    if (!___AllAlerts.Exists(x => x.GetType().Name.Equals(label)))
+                        ___AllAlerts.Add((Alert)Activator.CreateInstance(alert.GetType()));
                 }
             }
         }

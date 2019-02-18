@@ -1,44 +1,45 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Harmony;
+using System.Collections.Generic;
+using Toggles.Source;
 using UnityEngine;
 using Verse;
 
 namespace Toggles.Patches
 {
-    internal class GUI_Patch : Patch
+    [HarmonyPatch(typeof(GUI))]
+    [HarmonyPatch("DrawTexture")]
+    [HarmonyPatch(new[] { typeof(Rect), typeof(Texture), typeof(ScaleMode), typeof(bool) })]
+    class GUI_Patch
     {
-        internal GUI_Patch() : base(
-            patchType: typeof(GUI_Patch),
-            originType: typeof(GUI),
-            originMethod: "DrawTexture",
-            paramTypes: new[] { typeof(Rect), typeof(Texture), typeof(ScaleMode), typeof(bool) }
-            )
-        { }
+        internal GUI_Patch() => InitToggles();
 
-        internal override void InitToggles()
+        void InitToggles()
         {
-            foreach (string element in Dict.Values)
+            foreach (string element in Elements)
                 ToggleFactory.Add(
-                        label: element,
-                        root: "StartScreenUI",
-                        group: "ElementsEntry",
-                        patch: "GUI_Patch"
+                        label: GetLabel(element),
+                        root: ButtonCat.StartScreenUI,
+                        group: "ElementsEntry"
                         );
         }
 
-        static Dictionary<string, string> Dict = new List<string>
+        static List<string> Elements { get; } = new List<string>
         {
             "GameTitle",
             "LudeonLogoSmall",
             "LangIcon"
+        };
+
+        static string GetLabel(string input)
+        {
+            return "ElementsEntry_" + input;
         }
-        .ToDictionary(x => x, x => StringUtil.Pretty(x));
 
         static bool Prefix(Rect position, ref Texture image)
         {
             if (Current.ProgramState == ProgramState.Entry)
-                if (Dict.ContainsKey(image.name))
-                    if (!ToggleHandler.IsActive(Dict.TryGetValue(image.name)))
+                if (Elements.Contains(image.name))
+                    if (!ToggleHandler.IsActive(GetLabel(image.name)))
                         image = Constants.TexEmpty;
 
             return true;

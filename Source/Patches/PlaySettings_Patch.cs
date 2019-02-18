@@ -4,26 +4,24 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
+using Toggles.Source;
 using UnityEngine;
 using Verse;
 
 namespace Toggles.Patches
 {
     // Toggles the buttons for various elements on the HUD, e.g. colonist bar and learning helper.
-    internal class PlaySettings_Patch : Patch
+    [HarmonyPatch(typeof(PlaySettings))]
+    [HarmonyPatch("DoPlaySettingsGlobalControls")]
+    [HarmonyPatch(new[] { typeof(WidgetRow), typeof(bool) })]
+    class PlaySettings_Patch
     {
-        internal PlaySettings_Patch() : base(
-            patchType: typeof(PlaySettings_Patch),
-            originType: typeof(PlaySettings),
-            originMethod: "DoPlaySettingsGlobalControls",
-            paramTypes: new[] { typeof(WidgetRow), typeof(bool) }
-            )
-        { }
+        internal PlaySettings_Patch() => InitToggles();
 
         // Proxy method for filtering out which buttons to display depending on their string labels.
         static void ToggleableIcon_Proxy(WidgetRow instance, ref bool toggleable, Texture2D tex, string label, SoundDef mouseoverSound = null, string tutorTag = null)
         {
-            if (!Dict.ContainsKey(label) || (Dict.ContainsKey(label) && ToggleHandler.IsActive(Dict.TryGetValue(label))))
+            if (!Dict.ContainsKey(label) || (Dict.ContainsKey(label) && ToggleHandler.IsActive("HUDIcon_" + Dict.TryGetValue(label))))
                 instance.ToggleableIcon(ref toggleable, tex, label.Translate(), SoundDefOf.Mouseover_ButtonToggle, null);
         }
 
@@ -40,14 +38,13 @@ namespace Toggles.Patches
             {"CategorizedResourceReadoutToggleButton", "CategorizedResourceReadoutToggle" }
         };
 
-        internal override void InitToggles()
+        void InitToggles()
         {
             foreach (string label in Dict.Values)
                 ToggleFactory.Add(
-                    label: label,
-                    root: "InGameUI",
-                    group: "HUD",
-                    patch: "PlaySettings_Patch"
+                    label: "HUDIcon_" + label,
+                    root: ButtonCat.InGameUI,
+                    group: "HUDIcon"
                     );
         }
 

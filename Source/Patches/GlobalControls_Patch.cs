@@ -1,32 +1,30 @@
-﻿using RimWorld;
+﻿using Harmony;
+using RimWorld;
+using Toggles.Source;
 
 namespace Toggles.Patches
 {
     // Toggles the temperature readout on the HUD.
-    internal class GlobalControls_Patch : Patch
+    [HarmonyPatch(typeof(GlobalControls))]
+    [HarmonyPatch("TemperatureString")]
+    class GlobalControls_Patch
     {
-        internal GlobalControls_Patch() : base(
-            patchType: typeof(GlobalControls_Patch),
-            originType: typeof(GlobalControls),
-            originMethod: "TemperatureString"
-            )
-        { }
+        internal GlobalControls_Patch() => InitToggles();
 
-        internal override void InitToggles()
+        static void InitToggles()
         {
             ToggleFactory.Add(
-                    label: Label,
-                    root: "InGameUI",
-                    group: "HUD",
-                    patch: "GlobalControls_Patch"
+                    label: GetLabel(),
+                    root: ButtonCat.InGameUI,
+                    group: "HUD"
                     );
         }
 
-        static string Label { get; } = "TemperatureReadout";
+        static string GetLabel() => "HUD_TemperatureReadout";
 
         static string Postfix(string __result)
         {
-            return ToggleHandler.IsActive(Label) ? __result : string.Empty;
+            return ToggleHandler.IsActive(GetLabel()) ? __result : string.Empty;
         }
     }
 }

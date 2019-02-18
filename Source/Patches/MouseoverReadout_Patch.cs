@@ -1,27 +1,25 @@
-﻿using Verse;
+﻿using Harmony;
+using Toggles.Source;
+using Verse;
 
 namespace Toggles.Patches
 {
-    internal class MouseoverReadout_Patch : Patch
+    [HarmonyPatch(typeof(MouseoverReadout))]
+    [HarmonyPatch("MouseoverReadoutOnGUI")]
+    class MouseoverReadout_Patch
     {
-        internal MouseoverReadout_Patch() : base(
-            patchType: typeof(MouseoverReadout_Patch),
-            originType: typeof(MouseoverReadout),
-            originMethod: "MouseoverReadoutOnGUI"
-            )
-        { }
+        internal MouseoverReadout_Patch() => InitToggles();
 
-        internal override void InitToggles()
+        void InitToggles()
         {
             ToggleFactory.Add(
                     label: Label,
-                    root: "InGameUI",
-                    group: "HUD",
-                    patch: "MouseoverReadout_Patch"
+                    root: ButtonCat.Play,
+                    group: ButtonCat.InGameUI
                     );
         }
 
-        static string Label { get; } = "Date";
+        static string Label { get; } = $"{ButtonCat.InGameUI}_MouseoverReadout";
 
         static bool Prefix()
         {

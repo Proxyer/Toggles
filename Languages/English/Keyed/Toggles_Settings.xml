@@ -1,32 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 
-  <DeactivateOptions>You are about to deactive the 'Options'-button.\n\nIf you do, you won't be able to reenter these mod settings and reactivate it. You will need to deactive the mod or change the config file.\n\nAre you sure you want to deactivate it?</DeactivateOptions>
-  
-  
-  
+  <DeactivateOptions>
+    You are about to deactive the 'Options'-button.\n\nIf you do, you won't be able to reenter these mod settings and
+    reactivate it. You will need to deactive the mod or change the config file.\n\nAre you sure you want to deactivate it?
+  </DeactivateOptions>
+
   <!-- Root Labels -->
-  <StartScreenUI>Start Screen</StartScreenUI>
+  <!--<StartScreenUI>Start Screen</StartScreenUI>
   <DevToolsEntry>Developer Tools</DevToolsEntry>
   <ElementsEntry>Misc Elements</ElementsEntry>
   <ToggleLogWindowEntry>Debug Log</ToggleLogWindowEntry>
   <ToggleLogWindowEntry>Debug Log</ToggleLogWindowEntry>
   <MainMenuButtons>Menu Buttons</MainMenuButtons>
-  <MainMenuLinks>Links</MainMenuLinks>
-  
-  <InGameUI>In-Game Screen</InGameUI>
-  <DevToolsPlay>Developer Tools</DevToolsPlay>
-  <PauseMenu>Pause Menu</PauseMenu>	
-  <HUD>HUD</HUD>
-  <Alerts>Alerts</Alerts>
-  
+  <MainMenuLinks>Links</MainMenuLinks>-->
+
   <!--Misc Start screen elements-->
+  <!--
   <VersionControlEntry>Version Control</VersionControlEntry>
   <VersionControlEntryDesc>The game version info.</VersionControlEntryDesc>
-  
+
   <VersionControlEntry>Colonist Bar</VersionControlEntry>
   <VersionControlEntryDesc>The bar showing all your colonists.</VersionControlEntryDesc>
-  
+
   <Background>Background Image</Background>
   <BackgroundDesc>The background image on the start screen</BackgroundDesc>
   <MainPageCreditEntry>Subheader</MainPageCreditEntry>
@@ -37,8 +33,10 @@
   <LudeonLogoSmallEntryDesc>The 'Ludeon' logo on the start screen</LudeonLogoSmallEntryDesc>
   <LangIconEntry>Language Icon</LangIconEntry>
   <LangIconEntryDesc>The language icon on the start screen</LangIconEntryDesc>
-  
+
+  -->
   <!--Main Menu Buttons-->
+  <!--
   <TutorialEntry>Tutorial</TutorialEntry>
   <TutorialEntryDesc>The 'Tutorial' button on the start screen.</TutorialEntryDesc>
   <NewColonyEntry>New Colony</NewColonyEntry>
@@ -56,7 +54,9 @@
   <QuitToOSEntry>Quit To OS</QuitToOSEntry>
   <QuitToOSEntryDesc>The 'Quit To OS' button on the start screen.</QuitToOSEntryDesc>
 
+  -->
   <!--Main Menu Links-->
+  <!--
   <FictionPrimerEntry>Fiction Primer</FictionPrimerEntry>
   <FictionPrimerEntryDesc>The web link to the RimWorld Fiction Primer.</FictionPrimerEntryDesc>
   <LudeonBlogEntry>Blog</LudeonBlogEntry>
@@ -73,14 +73,18 @@
   <BuySoundtrackEntryDesc>The web link to the game's soundtrack.</BuySoundtrackEntryDesc>
   <ForumsEntry>Forum</ForumsEntry>
   <ForumsEntryDesc>The web link to the Ludeon Studios forum.</ForumsEntryDesc>
-  
+
+  -->
   <!--Game screen-->
+  <!--
   <VersionControlPlay>Version Control</VersionControlPlay>
   <VersionControlPlayDesc>The game version info.</VersionControlPlayDesc>
 
+  -->
   <!--Game Menu Buttons-->
+  <!--
   <GameMenuButtons>Pause Menu Buttons</GameMenuButtons>
-  
+
   <OptionsPlay>Options</OptionsPlay>
   <OptionsPlayDesc>The 'Options' button on the pause screen.</OptionsPlayDesc>
   <QuitToOSPlay>Quit To OS</QuitToOSPlay>
@@ -92,7 +96,9 @@
   <QuitToMainMenuPlay>Quit to Main Menu</QuitToMainMenuPlay>
   <QuitToMainMenuPlayDesc>The 'Quit to Main Menu' button on the pause screen.</QuitToMainMenuPlayDesc>
 
+  -->
   <!--Game Menu Links-->
+  <!--
   <GameMenuLinks>Pause Menu Links</GameMenuLinks>
 
   <FictionPrimerPlay>Fiction Primer</FictionPrimerPlay>
@@ -111,8 +117,10 @@
   <BuySoundtrackPlayDesc>The web link to the game's soundtrack.</BuySoundtrackPlayDesc>
   <ForumsPlay>Forum</ForumsPlay>
   <ForumsPlayDesc>The web link to the Ludeon Studios forum.</ForumsPlayDesc>
-  
+
+  -->
   <!--Toggleicons-->
+  <!--
   <ShowLearningHelper>Learning Helper</ShowLearningHelper>
   <ShowLearningHelperDesc>Toggle visibility of the learning helper when it is empty.\n\nThe learning helper is always visible if there is a concept activated to be learned. This toggle makes it disappear when no concept is active.\n\nNote: This only toggles the button being shown, not the action of the button itself.</ShowLearningHelperDesc>
   <ShowZones>Zone Visibility</ShowZones>
@@ -144,7 +152,9 @@
   <TimeControls>Time Controls</TimeControls>
   <TimeControlsDesc>Toggles the time controls.\n\nNote: This only toggles the buttons being shown, not the actions of the buttons themselves.</TimeControlsDesc>
 
+  -->
   <!--Alerts-->
+  <!--
   <Alert_AwaitingMedicalOperation>Awaiting Medical Operation</Alert_AwaitingMedicalOperation>
   <Alert_AwaitingMedicalOperationDesc>Patients await medical operation.</Alert_AwaitingMedicalOperationDesc>
 
@@ -252,28 +262,29 @@
 
   <Alert_UnhappyNudity>Unhappy Nudity</Alert_UnhappyNudity>
   <Alert_UnhappyNudityDesc>Your colonist is nude and not happy about it.</Alert_UnhappyNudityDesc>
-  
+
+  -->
   <!-- Letters -->
-  
+  <!--
+
   <LetterThreatBig>Big Threat</LetterThreatBig>
   <LetterThreatBigDesc>Your colonist is nude and not happy about it.</LetterThreatBigDesc>
-  
+
   <LetterThreatSmall>Small Threat</LetterThreatSmall>
   <LetterThreatSmallDesc>Your colonist is nude and not happy about it.</LetterThreatSmallDesc>
-  
+
   <LetterNegativeEvent>Negative Event</LetterNegativeEvent>
   <LetterNegativeEventDesc>Your colonist is nude and not happy about it.</LetterNegativeEventDesc>
-  
+
   <LetterNeutralEvent>Neutral Event</LetterNeutralEvent>
   <LetterNeutralEventDesc>Your colonist is nude and not happy about it.</LetterNeutralEventDesc>
-  
+
   <LetterPositiveEvent>Positive Event</LetterPositiveEvent>
   <LetterPositiveEventDesc>Your colonist is nude and not happy about it.</LetterPositiveEventDesc>
-  
+
   <LetterDeath>Death</LetterDeath>
   <LetterDeathDesc>Your colonist is nude and not happy about it.</LetterDeathDesc>
-  
-  <LetterRansomDemand>Ransom Demand</LetterRansomDemand>
-  <LetterRansomDemandDesc>Your colonist is nude and not happy about it.</LetterRansomDemandDesc>
 
+  <LetterRansomDemand>Ransom Demand</LetterRansomDemand>
+  <LetterRansomDemandDesc>Your colonist is nude and not happy about it.</LetterRansomDemandDesc>-->
 </LanguageData>

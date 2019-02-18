@@ -1,54 +1,71 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Harmony;
+using System.Collections.Generic;
+using Toggles.Source;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Verse;
 
 namespace Toggles.Patches
 {
-    internal class ListableOption_Patch : Patch
+    [HarmonyPatch(typeof(ListableOption))]
+    [HarmonyPatch("DrawOption")]
+    [HarmonyPatch(new[] { typeof(Vector2), typeof(float) })]
+    class ListableOption_Patch
     {
-        internal ListableOption_Patch() : base(
-            patchType: typeof(ListableOption_Patch),
-            originType: typeof(ListableOption),
-            originMethod: "DrawOption",
-            paramTypes: new[] { typeof(Vector2), typeof(float) }
-            )
-        { }
+        internal ListableOption_Patch() => InitToggles();
 
-        internal override void InitToggles()
+        void InitToggles()
         {
-            foreach (string button in AllButtons)
+            foreach (string button in EntryButtons)
                 ToggleFactory.Add(
-                        label: button,
-                        root: button.EndsWith("Entry") ? "StartScreenUI" : "InGameUI",
-                        group: button.EndsWith("Entry") ? "MainMenuButtons" : "PauseMenu",
-                        patch: "ListableOption_Patch"
+                        label: GetLabel(button, ProgramState.Entry),
+                        root: ButtonCat.StartScreenUI,
+                        group: ButtonCat.MainMenuButtons
+                        );
+
+            foreach (string button in PlayButtons)
+                ToggleFactory.Add(
+                        label: GetLabel(button, ProgramState.Playing),
+                        root: ButtonCat.InGameUI,
+                        group: ButtonCat.PauseMenu
                         );
         }
 
-        static List<string> AllButtons = new List<string>
+        List<string> EntryButtons { get; } = new List<string>
         {
-            { "TutorialEntry" },
-            { "NewColonyEntry" },
-            { "LoadGameEntry" },
-            { "OptionsEntry" },
-            { "SaveTranslationReportEntry" },
-            { "ModsEntry" },
-            { "CreditsEntry" },
-            { "QuitToOSEntry" },
-
-            { "OptionsPlay" },
-            { "QuitToMainMenuPlay" },
-            { "QuitToOSPlay" },
-            { "ReviewScenarioPlay" },
-            { "SavePlay" }
+            { "Tutorial" },
+            { "NewColony" },
+            { "LoadGame" },
+            { "Options" },
+            { "SaveTranslationReport" },
+            { "Mods" },
+            { "Credits" },
+            { "QuitToOS" }
         };
+
+        List<string> PlayButtons { get; } = new List<string>
+        {
+            { "Options" },
+            { "QuitToMainMenu" },
+            { "QuitToOS" },
+            { "ReviewScenario" },
+            { "Save" },
+            { "LoadGame" }
+        };
+
+        static string GetLabel(string option, ProgramState state)
+        {
+            string preLabel = string.Empty;
+            if (state == ProgramState.Entry)
+                preLabel = ButtonCat.StartScreenUI;
+            else if (state == ProgramState.Playing)
+                preLabel = ButtonCat.InGameUI;
+
+            return $"{preLabel}_{StringUtil.Conform(option)}";
+        }
 
         static bool Prefix(ListableOption __instance)
         {
-            string label = StringUtil.Conform(__instance.label) + SceneManager.GetActiveScene().name;
-            return ToggleHandler.IsActive(label);
+            return ToggleHandler.IsActive(GetLabel(__instance.label, Current.ProgramState));
         }
     }
 }

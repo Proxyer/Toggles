@@ -1,40 +1,47 @@
-﻿using RimWorld;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
+﻿using Harmony;
+using RimWorld;
+using Toggles.Source;
+using Verse;
 
 namespace Toggles.Patches
 {
-    internal class VersionControl_Patch : Patch
+    [HarmonyPatch(typeof(VersionControl))]
+    [HarmonyPatch("DrawInfoInCorner")]
+    class VersionControl_Patch
     {
-        internal VersionControl_Patch() : base(
-            patchType: typeof(VersionControl_Patch),
-            originType: typeof(VersionControl),
-            originMethod: "DrawInfoInCorner"
-            )
-        { }
+        internal VersionControl_Patch() => InitToggles();
 
-        internal override void InitToggles()
+        void InitToggles()
         {
-            foreach (string label in AllLabels)
-                ToggleFactory.Add(
-                        label: Label,
-                        root: label.EndsWith("Entry") ? "StartScreenUI" : "InGameUI",
-                        group: label.EndsWith("Entry") ? "ElementsEntry" : "PauseMenu",
-                        patch: "VersionControl_Patch"
-                        );
+            ToggleFactory.Add(
+                    label: GetLabel(Label, ProgramState.Entry),
+                    root: ButtonCat.Entry,
+                    group: ButtonCat.StartScreenUI
+                    );
+
+            ToggleFactory.Add(
+                    label: GetLabel(Label, ProgramState.Playing),
+                    root: ButtonCat.Play,
+                    group: ButtonCat.PauseMenu
+                    );
         }
 
-        static List<string> AllLabels = new List<string>
+        static string GetLabel(string label, ProgramState state)
         {
-            { "VersionControlEntry" },
-            { "VersionControlPlay" },
-        };
+            string preLabel = string.Empty;
+            if (state == ProgramState.Entry)
+                preLabel = ButtonCat.StartScreenUI;
+            else if (state == ProgramState.Playing)
+                preLabel = ButtonCat.PauseMenu;
+
+            return $"{preLabel}_{label}";
+        }
 
         static string Label { get; } = "VersionControl";
 
         static bool Prefix()
         {
-            return ToggleHandler.IsActive(Label + SceneManager.GetActiveScene().name);
+            return ToggleHandler.IsActive(GetLabel(Label, Current.ProgramState));
         }
     }
 }

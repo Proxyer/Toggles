@@ -1,33 +1,31 @@
-﻿using RimWorld;
+﻿using Harmony;
+using RimWorld;
+using Toggles.Source;
 using UnityEngine;
 
 namespace Toggles.Patches
 {
-    internal class WeatherManager_Patch : Patch
+    [HarmonyPatch(typeof(WeatherManager))]
+    [HarmonyPatch("DoWeatherGUI")]
+    [HarmonyPatch(new[] { typeof(Rect) })]
+    class WeatherManager_Patch
     {
-        internal WeatherManager_Patch() : base(
-            patchType: typeof(WeatherManager_Patch),
-            originType: typeof(WeatherManager),
-            originMethod: "DoWeatherGUI",
-            paramTypes: new[] { typeof(Rect) }
-            )
-        { }
+        internal WeatherManager_Patch() => InitToggles();
 
-        internal override void InitToggles()
+        void InitToggles()
         {
             ToggleFactory.Add(
-                    label: Label,
-                    root: "InGameUI",
-                    group: "HUD",
-                    patch: "WeatherManager_Patch"
+                    label: GetLabel(),
+                    root: ButtonCat.InGameUI,
+                    group: "HUD"
                     );
         }
 
-        static string Label { get; } = "WeatherReadout";
+        static string GetLabel() => "HUD_WeatherReadout";
 
         static bool Prefix()
         {
-            return ToggleHandler.IsActive(Label);
+            return ToggleHandler.IsActive(GetLabel());
         }
     }
 }

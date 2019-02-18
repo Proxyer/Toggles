@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace Toggles
 {
@@ -23,7 +21,12 @@ namespace Toggles
         internal static string Pretty(string input)
         {
             string str = input;
-            str = str.StartsWith("Alert_") ? str.Replace("Alert_", "") : str;
+            //if (str.EndsWith("Entry"))
+            //    str.Replace("Entry", "");
+            //if (str.EndsWith("Play"))
+            //    str.Replace("Play", "");
+
+            str = str.Substring(str.IndexOf("_") + 1);
 
             // Puts space between letter and capital letter.
             str = Regex.Replace(str, "([a-z])([A-Z])", "$1 $2");

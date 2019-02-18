@@ -1,33 +1,31 @@
-﻿using UnityEngine;
+﻿using Harmony;
+using Toggles.Source;
+using UnityEngine;
 using Verse;
 
 namespace Toggles.Patches
 {
-    internal class Widgets_Patch : Patch
+    [HarmonyPatch(typeof(Widgets))]
+    [HarmonyPatch("Label")]
+    [HarmonyPatch(new[] { typeof(Rect), typeof(string) })]
+    class Widgets_Patch
     {
-        internal Widgets_Patch() : base(
-            patchType: typeof(Widgets_Patch),
-            originType: typeof(Widgets),
-            originMethod: "Label",
-            paramTypes: new[] { typeof(Rect), typeof(string) }
-            )
-        { }
+        internal Widgets_Patch() => InitToggles();
 
-        internal override void InitToggles()
+        void InitToggles()
         {
             ToggleFactory.Add(
-                    label: Label,
-                    root: "StartScreenUI",
-                    group: "ElementsEntry",
-                    patch: "Widgets_Patch"
+                    label: GetLabel(),
+                    root: ButtonCat.StartScreenUI,
+                    group: "ElementsEntry"
                     );
         }
 
-        static string Label { get; } = "MainPageCredit";
+        static string GetLabel() => "ElementsEntry_MainPageCredit";
 
         static bool Prefix(string label)
         {
-            return label.Equals(Label.Translate()) ? ToggleHandler.IsActive(Label + GenScene.EntrySceneName) : true;
+            return label.Equals("MainPageCredit".Translate()) ? ToggleHandler.IsActive(GetLabel()) : true;
         }
     }
 }

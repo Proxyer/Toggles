@@ -45,13 +45,13 @@ namespace Toggles
             // Sets up category labels in the left view according to each unique toggle root.
             foreach (string root in ToggleHandler.Toggles.Select(x => x.Root).Distinct())
             {
-                leftView.Label(root.Translate());
+                leftView.Label(root);
                 // Populates each root label with each respective toggles according to their group.
                 foreach (string group in ToggleHandler.Toggles.Where(x => x.Root.Equals(root)).Select(x => x.Group).Distinct())
                 {
                     if (ActiveGroup.Equals(group))
                         GUI.color = ClickedColor;
-                    if (leftView.ButtonText(group.CanTranslate() ? group.Translate() : group))
+                    if (leftView.ButtonText(group))
                         ActiveGroup = group;
                     GUI.color = DefaultColor;
                 }
@@ -107,7 +107,7 @@ namespace Toggles
 
             // Draw toggles in right view depending on what button is active in left view.
             foreach (Toggle toggle in ToggleHandler.Toggles.Where(x => x.Group.Equals(ActiveGroup)))
-                rightView.CheckboxLabeled(toggle.Label, ref toggle.active);
+                rightView.CheckboxLabeled(toggle.PrettyLabel, ref toggle.active);
 
             // Opens confirmation window if user has deactivated the Options button.
             CheckOptionsActive("OptionsEntry", optionsEntryFlag);
@@ -120,9 +120,6 @@ namespace Toggles
             Rect resetRect = new Rect(0f, mainRect.height + 40f, 120f, 40f);
             if (Widgets.ButtonText(resetRect, "ResetButton".Translate(), true, false, true))
                 ToggleHandler.Toggles.ForEach(x => x.active = true);
-
-            // --------------------
-            CheckChanges();
         }
 
         // Asks for confirmation of deactiving Options buttons.
@@ -134,22 +131,6 @@ namespace Toggles
                 toggle.active = true;
                 Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("DeactivateOptions".Translate(), delegate { toggle.active = false; }, true, null));
             }
-        }
-
-        // Checks whether changes have been made, updates if they have.
-        static void CheckChanges()
-        {
-            foreach (Toggle toggle in ToggleHandler.Toggles)
-                if (RefChanged.TryGetValue(toggle.Label) != toggle.active)
-                    Update();
-        }
-
-        // Updates settings references with new settings, and tells mod to reapply patches according to new settings.
-        static void Update()
-        {
-            RefChanged = new Dictionary<string, bool>();
-            ToggleHandler.Toggles.ForEach(x => RefChanged.Add(x.Label, x.active));
-            Patcher.DoPatches();
         }
     }
 }

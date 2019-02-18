@@ -3,33 +3,30 @@ using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Toggles.Source;
 using UnityEngine;
 using Verse;
 
 namespace Toggles.Patches
 {
     // Toggles visibility of the buttons for time controls.
-    internal class TimeControls_Patch : Patch
+    [HarmonyPatch(typeof(TimeControls))]
+    [HarmonyPatch("DoTimeControlsGUI")]
+    [HarmonyPatch(new[] { typeof(Rect) })]
+    class TimeControls_Patch
     {
-        internal TimeControls_Patch() : base(
-            patchType: typeof(TimeControls_Patch),
-            originType: typeof(TimeControls),
-            originMethod: "DoTimeControlsGUI",
-            paramTypes: new[] { typeof(Rect) }
-            )
-        { }
+        internal TimeControls_Patch() => InitToggles();
 
-        internal override void InitToggles()
+        void InitToggles()
         {
             ToggleFactory.Add(
-                    label: Label,
-                    root: "InGameUI",
-                    group: "HUD",
-                    patch: "TimeControls_Patch"
+                    label: GetLabel(),
+                    root: ButtonCat.InGameUI,
+                    group: "HUD"
                     );
         }
 
-        static string Label { get; } = "TimeControls";
+        static string GetLabel() => "HUD_TimeControls";
 
         // Proxy method for showing the time control buttons.
         static bool ButtonImage_Proxy(Rect rect, Texture2D tex)
@@ -46,7 +43,7 @@ namespace Toggles.Patches
         // Returns empty texture to draw if toggled off.
         static Texture2D GetTexture(Texture2D tex)
         {
-            return ToggleHandler.IsActive(Label) ? tex : Constants.TexEmpty;
+            return ToggleHandler.IsActive(GetLabel()) ? tex : Constants.TexEmpty;
         }
 
         static MethodInfo _ButtonImage_Method { get; } = AccessTools.Method(typeof(Widgets), "ButtonImage", new Type[] { typeof(Rect), typeof(Texture2D) });
