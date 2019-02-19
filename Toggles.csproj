@@ -71,7 +71,6 @@
     <Compile Include="Source\Patches\GlobalControls_Patch.cs" />
     <Compile Include="Source\Patches\GUI_Patch.cs" />
     <Compile Include="Source\Patches\IncidentWorker_Patch.cs" />
-    <Compile Include="Source\Patches\LetterStack_Patch.cs" />
     <Compile Include="Source\Patches\Letter_Patch.cs" />
     <Compile Include="Source\Patches\ListableOption_Patch.cs" />
     <Compile Include="Source\Patches\ListableOption_WebLink_Patch.cs" />

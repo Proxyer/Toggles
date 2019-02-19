@@ -1,4 +1,5 @@
 ﻿using Harmony;
+using System.Collections.Generic;
 using Toggles.Source;
 using Verse;
 
@@ -23,9 +24,16 @@ namespace Toggles.Patches
 
         static string GetLabel(LetterDef letter) => ButtonCat.Letters + "_" + letter.defName;
 
+        internal static List<string> LoggedLetters { get; } = new List<string>();
+
         static void Postfix(ref Letter __instance, ref bool __result)
         {
-            __result = ToggleHandler.IsActive(GetLabel(__instance.def)) ? __result : false;
+            if (!LoggedLetters.Contains(__instance.label))
+            {
+                Log.Message(__instance.label);
+                LoggedLetters.Add(__instance.label);
+            }
+            //__result = ToggleHandler.IsActive(GetLabel(__instance.def)) ? __result : false;
         }
     }
 }

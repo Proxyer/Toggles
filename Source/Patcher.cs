@@ -30,9 +30,6 @@ namespace Toggles
             new Letter_Patch();
             new AlertsReadout_Patch();
             new IncidentWorker_Patch();
-
-            // Work in progress
-            //new LetterStack_Patch();
         }
     }
 }

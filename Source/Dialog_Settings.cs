@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Toggles.Patches;
 using UnityEngine;
 using Verse;
 
@@ -57,6 +58,9 @@ namespace Toggles
                 }
                 leftView.Gap();
             }
+
+            // Trying out custom Letters.
+            Letter_Patch.LoggedLetters.ForEach(x => leftView.Label(x));
 
             leftViewRect.height = leftY;
             leftView.End();
