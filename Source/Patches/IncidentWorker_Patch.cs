@@ -12,13 +12,13 @@ namespace Toggles.Patches
     {
         internal IncidentWorker_Patch() => InitToggles();
 
-        void InitToggles()
+        static void InitToggles()
         {
             foreach (IncidentDef incident in DefDatabase<IncidentDef>.AllDefsListForReading)
                 ToggleFactory.Add(
                     label: GetLabel(incident),
-                    root: ButtonCat.Play,
-                    group: "Incidents"
+                    root: ButtonCat.Events,
+                    group: ButtonCat.Incidents
                     );
         }
 

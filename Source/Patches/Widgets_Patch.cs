@@ -12,16 +12,16 @@ namespace Toggles.Patches
     {
         internal Widgets_Patch() => InitToggles();
 
-        void InitToggles()
+        static void InitToggles()
         {
             ToggleFactory.Add(
                     label: GetLabel(),
-                    root: ButtonCat.StartScreenUI,
-                    group: "ElementsEntry"
+                    root: ButtonCat.StartScreen,
+                    group: ButtonCat.MiscellaneousEntry
                     );
         }
 
-        static string GetLabel() => "ElementsEntry_MainPageCredit";
+        static string GetLabel() => ButtonCat.MiscellaneousEntry + "_MainPageCredit";
 
         static bool Prefix(string label)
         {

@@ -13,24 +13,24 @@ namespace Toggles.Patches
     {
         internal ListableOption_Patch() => InitToggles();
 
-        void InitToggles()
+        static void InitToggles()
         {
             foreach (string button in EntryButtons)
                 ToggleFactory.Add(
                         label: GetLabel(button, ProgramState.Entry),
-                        root: ButtonCat.StartScreenUI,
-                        group: ButtonCat.MainMenuButtons
+                        root: ButtonCat.StartScreen,
+                        group: ButtonCat.ButtonsEntry
                         );
 
             foreach (string button in PlayButtons)
                 ToggleFactory.Add(
                         label: GetLabel(button, ProgramState.Playing),
-                        root: ButtonCat.InGameUI,
-                        group: ButtonCat.PauseMenu
+                        root: ButtonCat.PauseScreen,
+                        group: ButtonCat.ButtonsPlay
                         );
         }
 
-        List<string> EntryButtons { get; } = new List<string>
+        static List<string> EntryButtons { get; } = new List<string>
         {
             { "Tutorial" },
             { "NewColony" },
@@ -42,7 +42,7 @@ namespace Toggles.Patches
             { "QuitToOS" }
         };
 
-        List<string> PlayButtons { get; } = new List<string>
+        static List<string> PlayButtons { get; } = new List<string>
         {
             { "Options" },
             { "QuitToMainMenu" },
@@ -56,9 +56,9 @@ namespace Toggles.Patches
         {
             string preLabel = string.Empty;
             if (state == ProgramState.Entry)
-                preLabel = ButtonCat.StartScreenUI;
+                preLabel = ButtonCat.ButtonsEntry;
             else if (state == ProgramState.Playing)
-                preLabel = ButtonCat.InGameUI;
+                preLabel = ButtonCat.ButtonsPlay;
 
             return $"{preLabel}_{StringUtil.Conform(option)}";
         }

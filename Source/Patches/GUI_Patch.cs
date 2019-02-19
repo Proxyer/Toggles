@@ -13,13 +13,13 @@ namespace Toggles.Patches
     {
         internal GUI_Patch() => InitToggles();
 
-        void InitToggles()
+        static void InitToggles()
         {
             foreach (string element in Elements)
                 ToggleFactory.Add(
                         label: GetLabel(element),
-                        root: ButtonCat.StartScreenUI,
-                        group: "ElementsEntry"
+                        root: ButtonCat.StartScreen,
+                        group: ButtonCat.MiscellaneousEntry
                         );
         }
 
@@ -32,7 +32,7 @@ namespace Toggles.Patches
 
         static string GetLabel(string input)
         {
-            return "ElementsEntry_" + input;
+            return ButtonCat.MiscellaneousEntry + "_" + input;
         }
 
         static bool Prefix(Rect position, ref Texture image)

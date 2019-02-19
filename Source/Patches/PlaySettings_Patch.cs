@@ -21,7 +21,7 @@ namespace Toggles.Patches
         // Proxy method for filtering out which buttons to display depending on their string labels.
         static void ToggleableIcon_Proxy(WidgetRow instance, ref bool toggleable, Texture2D tex, string label, SoundDef mouseoverSound = null, string tutorTag = null)
         {
-            if (!Dict.ContainsKey(label) || (Dict.ContainsKey(label) && ToggleHandler.IsActive("HUDIcon_" + Dict.TryGetValue(label))))
+            if (!Dict.ContainsKey(label) || (Dict.ContainsKey(label) && ToggleHandler.IsActive(GetLabel(Dict.TryGetValue(label)))))
                 instance.ToggleableIcon(ref toggleable, tex, label.Translate(), SoundDefOf.Mouseover_ButtonToggle, null);
         }
 
@@ -42,11 +42,13 @@ namespace Toggles.Patches
         {
             foreach (string label in Dict.Values)
                 ToggleFactory.Add(
-                    label: "HUDIcon_" + label,
-                    root: ButtonCat.InGameUI,
-                    group: "HUDIcon"
+                    label: GetLabel(label),
+                    root: ButtonCat.PlayScreen,
+                    group: ButtonCat.ToggleIcons
                     );
         }
+
+        static string GetLabel(string label) => ButtonCat.ToggleIcons + "_" + label;
 
         static MethodInfo _ToggleableIcon_Method { get; } = AccessTools.Method(typeof(WidgetRow), "ToggleableIcon", new Type[] { typeof(bool).MakeByRefType(), typeof(Texture2D), typeof(string), typeof(SoundDef), typeof(string) });
         static MethodInfo _ToggleableIcon_Proxy { get; } = AccessTools.Method(typeof(PlaySettings_Patch), "ToggleableIcon_Proxy", new Type[] { typeof(WidgetRow), typeof(bool).MakeByRefType(), typeof(Texture2D), typeof(string), typeof(SoundDef), typeof(string) });

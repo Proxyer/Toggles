@@ -13,10 +13,5 @@ namespace Toggles
                     group: group
                     ));
         }
-
-        internal static void Add(string label, object root, string group)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

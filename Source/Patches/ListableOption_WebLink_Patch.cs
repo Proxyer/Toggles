@@ -13,24 +13,24 @@ namespace Toggles.Patches
     {
         internal ListableOption_WebLink_Patch() => InitToggles();
 
-        void InitToggles()
+        static void InitToggles()
         {
             foreach (string link in EntryLinks)
                 ToggleFactory.Add(
                         label: GetLabel(link, ProgramState.Entry),
-                        root: ButtonCat.StartScreenUI,
-                        group: ButtonCat.MainMenuButtons
+                        root: ButtonCat.StartScreen,
+                        group: ButtonCat.LinksEntry
                         );
 
             foreach (string link in PlayLinks)
                 ToggleFactory.Add(
                         label: GetLabel(link, ProgramState.Playing),
-                        root: ButtonCat.InGameUI,
-                        group: ButtonCat.PauseMenu
+                        root: ButtonCat.PauseScreen,
+                        group: ButtonCat.LinksPlay
                         );
         }
 
-        List<string> EntryLinks { get; } = new List<string>
+        static List<string> EntryLinks { get; } = new List<string>
         {
             { "BuySoundtrack" },
             { "TynansDesignBook" },
@@ -42,7 +42,7 @@ namespace Toggles.Patches
             { "TynansTwitter" }
         };
 
-        List<string> PlayLinks { get; } = new List<string>
+        static List<string> PlayLinks { get; } = new List<string>
         {
             { "BuySoundtrack" },
             { "TynansDesignBook" },
@@ -58,9 +58,9 @@ namespace Toggles.Patches
         {
             string preLabel = string.Empty;
             if (state == ProgramState.Entry)
-                preLabel = ButtonCat.StartScreenUI;
+                preLabel = ButtonCat.LinksEntry;
             else if (state == ProgramState.Playing)
-                preLabel = ButtonCat.InGameUI;
+                preLabel = ButtonCat.LinksPlay;
 
             return $"{preLabel}_{StringUtil.Conform(option)}";
         }

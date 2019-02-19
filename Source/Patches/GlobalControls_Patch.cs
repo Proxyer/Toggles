@@ -15,12 +15,12 @@ namespace Toggles.Patches
         {
             ToggleFactory.Add(
                     label: GetLabel(),
-                    root: ButtonCat.InGameUI,
-                    group: "HUD"
+                    root: ButtonCat.PlayScreen,
+                    group: ButtonCat.HUD
                     );
         }
 
-        static string GetLabel() => "HUD_TemperatureReadout";
+        static string GetLabel() => ButtonCat.HUD + "_Temperature";
 
         static string Postfix(string __result)
         {

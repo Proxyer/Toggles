@@ -11,18 +11,18 @@ namespace Toggles.Patches
     {
         internal VersionControl_Patch() => InitToggles();
 
-        void InitToggles()
+        static void InitToggles()
         {
             ToggleFactory.Add(
                     label: GetLabel(Label, ProgramState.Entry),
-                    root: ButtonCat.Entry,
-                    group: ButtonCat.StartScreenUI
+                    root: ButtonCat.StartScreen,
+                    group: ButtonCat.MiscellaneousEntry
                     );
 
             ToggleFactory.Add(
                     label: GetLabel(Label, ProgramState.Playing),
-                    root: ButtonCat.Play,
-                    group: ButtonCat.PauseMenu
+                    root: ButtonCat.PauseScreen,
+                    group: ButtonCat.MiscellaneousPlay
                     );
         }
 
@@ -30,9 +30,9 @@ namespace Toggles.Patches
         {
             string preLabel = string.Empty;
             if (state == ProgramState.Entry)
-                preLabel = ButtonCat.StartScreenUI;
+                preLabel = ButtonCat.MiscellaneousEntry;
             else if (state == ProgramState.Playing)
-                preLabel = ButtonCat.PauseMenu;
+                preLabel = ButtonCat.MiscellaneousPlay;
 
             return $"{preLabel}_{label}";
         }

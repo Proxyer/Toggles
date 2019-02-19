@@ -1,7 +1,9 @@
-﻿namespace Toggles.Source
+﻿using HugsLib;
+
+namespace Toggles.Source
 {
     // Hook for data initialization.
-    internal class ModBase_Toggles : HugsLib.ModBase
+    internal class ModBase_Toggles : ModBase
     {
         public override string ModIdentifier => Constants.ModName;
 

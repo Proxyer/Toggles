@@ -12,16 +12,16 @@ namespace Toggles.Patches
     {
         internal WeatherManager_Patch() => InitToggles();
 
-        void InitToggles()
+        static void InitToggles()
         {
             ToggleFactory.Add(
                     label: GetLabel(),
-                    root: ButtonCat.InGameUI,
-                    group: "HUD"
+                    root: ButtonCat.PlayScreen,
+                    group: ButtonCat.HUD
                     );
         }
 
-        static string GetLabel() => "HUD_WeatherReadout";
+        static string GetLabel() => ButtonCat.HUD + "_Weather";
 
         static bool Prefix()
         {

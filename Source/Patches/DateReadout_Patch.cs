@@ -17,12 +17,12 @@ namespace Toggles.Patches
         {
             ToggleFactory.Add(
                     label: GetLabel(),
-                    root: ButtonCat.InGameUI,
-                    group: "HUD"
+                    root: ButtonCat.PlayScreen,
+                    group: ButtonCat.HUD
                     );
         }
 
-        static string GetLabel() => "HUD_Date";
+        static string GetLabel() => ButtonCat.HUD + "_Date";
 
         // Stops the date from being drawn if setting is inactive.
         static bool Prefix()

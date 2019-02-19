@@ -17,16 +17,16 @@ namespace Toggles.Patches
     {
         internal TimeControls_Patch() => InitToggles();
 
-        void InitToggles()
+        static void InitToggles()
         {
             ToggleFactory.Add(
                     label: GetLabel(),
-                    root: ButtonCat.InGameUI,
-                    group: "HUD"
+                    root: ButtonCat.PlayScreen,
+                    group: ButtonCat.HUD
                     );
         }
 
-        static string GetLabel() => "HUD_TimeControls";
+        static string GetLabel() => ButtonCat.HUD + "_TimeControls";
 
         // Proxy method for showing the time control buttons.
         static bool ButtonImage_Proxy(Rect rect, Texture2D tex)

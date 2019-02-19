@@ -24,8 +24,8 @@ namespace Toggles.Patches
                 Alerts.Add(alert);
                 ToggleFactory.Add(
                     label: GetLabel(alert),
-                    root: ButtonCat.Play,
-                    group: "Alerts"
+                    root: ButtonCat.Events,
+                    group: ButtonCat.Alerts
                     );
             }
         }

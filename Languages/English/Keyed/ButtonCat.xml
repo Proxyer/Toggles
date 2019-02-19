@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <!--Root labels and groups-->
+  <Toggles_StartScreen>Start Screen</Toggles_StartScreen>
+  <Toggles_Entry_Buttons>Buttons</Toggles_Entry_Buttons>
+  <Toggles_Play_Buttons>Buttons</Toggles_Play_Buttons>
+  <Toggles_Entry_Links>Links</Toggles_Entry_Links>
+  <Toggles_Play_Links>Links</Toggles_Play_Links>
+  <Toggles_Entry_Miscellaneous>Miscellaneous</Toggles_Entry_Miscellaneous>
+  <Toggles_Play_Miscellaneous>Miscellaneous</Toggles_Play_Miscellaneous>
+  <Toggles_PauseScreen>Pause Screen</Toggles_PauseScreen>
+  <Toggles_PlayScreen>Play Screen</Toggles_PlayScreen>
+  <Toggles_VisibilityToggles>Visibility Toggles</Toggles_VisibilityToggles>
+  <Toggles_HUD>HUD</Toggles_HUD>
+  <Toggles_Events>Events</Toggles_Events>
+  <Toggles_Alerts>Alerts</Toggles_Alerts>
+  <Toggles_Incidents>Incidents</Toggles_Incidents>
+  <Toggles_Letters>Letters</Toggles_Letters>
+  <Toggles_CustomLetters>Custom Letters</Toggles_CustomLetters>
+</LanguageData>

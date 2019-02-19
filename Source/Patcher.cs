@@ -4,7 +4,6 @@ using Verse;
 
 namespace Toggles
 {
-    // Applies relevant patches to the game.
     [StaticConstructorOnStartup]
     internal static class Patcher
     {
@@ -14,9 +13,6 @@ namespace Toggles
 
         internal static void DoPatches()
         {
-            //foreach (var patch in Constants.Patches)
-            //    patch.Apply(Harmony);
-
             new ListableOption_Patch();
             new ListableOption_WebLink_Patch();
             new VersionControl_Patch();
@@ -34,6 +30,9 @@ namespace Toggles
             new Letter_Patch();
             new AlertsReadout_Patch();
             new IncidentWorker_Patch();
+
+            // Work in progress
+            //new LetterStack_Patch();
         }
     }
 }

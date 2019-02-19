@@ -45,13 +45,13 @@ namespace Toggles
             // Sets up category labels in the left view according to each unique toggle root.
             foreach (string root in ToggleHandler.Toggles.Select(x => x.Root).Distinct())
             {
-                leftView.Label(root);
+                leftView.Label(root.Translate());
                 // Populates each root label with each respective toggles according to their group.
                 foreach (string group in ToggleHandler.Toggles.Where(x => x.Root.Equals(root)).Select(x => x.Group).Distinct())
                 {
                     if (ActiveGroup.Equals(group))
                         GUI.color = ClickedColor;
-                    if (leftView.ButtonText(group))
+                    if (leftView.ButtonText(group.Translate()))
                         ActiveGroup = group;
                     GUI.color = DefaultColor;
                 }
@@ -110,8 +110,8 @@ namespace Toggles
                 rightView.CheckboxLabeled(toggle.PrettyLabel, ref toggle.active);
 
             // Opens confirmation window if user has deactivated the Options button.
-            CheckOptionsActive("OptionsEntry", optionsEntryFlag);
-            CheckOptionsActive("OptionsPlay", optionsPlayFlag);
+            CheckOptionsActive("Toggles_Entry_Buttons_Options", optionsEntryFlag);
+            CheckOptionsActive("Toggles_Play_Buttons_Options", optionsPlayFlag);
 
             rightView.End();
             GUI.EndScrollView();

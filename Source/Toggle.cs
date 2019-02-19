@@ -1,4 +1,6 @@
-﻿namespace Toggles
+﻿using Verse;
+
+namespace Toggles
 {
     // Holds all data about a particular setting in the mod.
     internal class Toggle
@@ -17,6 +19,15 @@
 
         internal string Label { get; set; }
 
-        internal string PrettyLabel => StringUtil.Pretty(Label);
+        internal string PrettyLabel
+        {
+            get
+            {
+                if (Label.CanTranslate())
+                    return Label.Translate();
+                else
+                    return StringUtil.Pretty(Label);
+            }
+        }
     }
 }

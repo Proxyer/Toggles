@@ -10,18 +10,18 @@ namespace Toggles.Patches
     {
         internal UI_BackgroundMain_Patch() => InitToggles();
 
-        void InitToggles()
+        static void InitToggles()
         {
             ToggleFactory.Add(
                     label: GetLabel(),
-                    root: ButtonCat.StartScreenUI,
-                    group: "ElementsEntry"
+                    root: ButtonCat.StartScreen,
+                    group: ButtonCat.MiscellaneousEntry
                     );
         }
 
         static string GetLabel()
         {
-            return "ElementsEntry_Background";
+            return ButtonCat.MiscellaneousEntry + "_Background";
         }
 
         static bool Prefix()

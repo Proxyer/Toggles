@@ -10,16 +10,16 @@ namespace Toggles.Patches
     {
         internal MouseoverReadout_Patch() => InitToggles();
 
-        void InitToggles()
+        static void InitToggles()
         {
             ToggleFactory.Add(
                     label: Label,
-                    root: ButtonCat.Play,
-                    group: ButtonCat.InGameUI
+                    root: ButtonCat.PlayScreen,
+                    group: ButtonCat.HUD
                     );
         }
 
-        static string Label { get; } = $"{ButtonCat.InGameUI}_MouseoverReadout";
+        static string Label { get; } = $"{ButtonCat.HUD}_MouseoverReadout";
 
         static bool Prefix()
         {

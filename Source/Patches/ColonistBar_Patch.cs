@@ -15,12 +15,12 @@ namespace Toggles.Patches
         {
             ToggleFactory.Add(
                     label: GetLabel(),
-                    root: ButtonCat.InGameUI,
-                    group: "HUD"
+                    root: ButtonCat.PlayScreen,
+                    group: ButtonCat.HUD
                     );
         }
 
-        static string GetLabel() => "HUD_ColonistBar";
+        static string GetLabel() => ButtonCat.HUD + "_ColonistBar";
 
         // Adds vanilla toggle for Colonist Bar to the mod.
         public static void Postfix(ref bool __result)

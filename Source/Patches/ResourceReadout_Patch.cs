@@ -10,18 +10,18 @@ namespace Toggles.Patches
     {
         internal ResourceReadout_Patch() => InitToggles();
 
-        void InitToggles()
+        static void InitToggles()
         {
             ToggleFactory.Add(
                     label: GetLabel(),
-                    root: ButtonCat.InGameUI,
-                    group: "HUD"
+                    root: ButtonCat.PlayScreen,
+                    group: ButtonCat.HUD
                     );
         }
 
         static string GetLabel()
         {
-            return "HUD_ResourceReadout";
+            return ButtonCat.HUD + "_ResourceReadout";
         }
 
         static bool Prefix()

@@ -11,17 +11,17 @@ namespace Toggles.Patches
     {
         internal Letter_Patch() => InitToggles();
 
-        void InitToggles()
+        static void InitToggles()
         {
             foreach (LetterDef letter in DefDatabase<LetterDef>.AllDefsListForReading)
                 ToggleFactory.Add(
                     label: GetLabel(letter),
-                    root: ButtonCat.Play,
-                    group: "Letters"
+                    root: ButtonCat.Events,
+                    group: ButtonCat.Letters
                     );
         }
 
-        static string GetLabel(LetterDef letter) => "Letter_" + letter.defName;
+        static string GetLabel(LetterDef letter) => ButtonCat.Letters + "_" + letter.defName;
 
         static void Postfix(ref Letter __instance, ref bool __result)
         {
