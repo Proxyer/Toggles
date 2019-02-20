@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Toggles
 {
@@ -13,6 +14,11 @@ namespace Toggles
                 Verse.Log.Message(str);
                 LogTracker.Add(str);
             }
+        }
+
+        internal static void Log(object p)
+        {
+            throw new NotImplementedException();
         }
     }
 }

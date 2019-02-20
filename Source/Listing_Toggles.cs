@@ -21,46 +21,21 @@ namespace Toggles.Source
         //    this.Begin(rect.AtZero());
         //}
 
-        public void BeginScrollView(Rect rect, ref Vector2 scrollPosition)
+        public void BeginListing(Rect rect, ref Vector2 scrollPosition, ref Rect viewRect, float height)
         {
-            base.Begin(rect);
+            Widgets.BeginScrollView(rect, ref scrollPosition, viewRect);
+            rect.height = height;
+            rect.width -= 20f;
+            base.Begin(rect.AtZero());
             Text.Font = font;
-
-            leftViewRect = new Rect(0f, 0f, 200f, 5000f);
-            scrollPosition = GUI.BeginScrollView(rect, scrollPosition, leftViewRect);
         }
 
-        Rect leftViewRect;
-
-        public void EndScrollView()
+        public void EndListing(ref Rect viewRect)
         {
-            //leftViewRect.height = leftY;
-            GUI.EndScrollView();
+            viewRect = new Rect(0f, 0f, this.listingRect.width, this.curY);
+            Widgets.EndScrollView();
             this.End();
         }
-
-        public override void End()
-        {
-            base.End();
-            //if (this.labelScrollbarPositions != null)
-            //{
-            //    for (int i = this.labelScrollbarPositions.Count - 1; i >= 0; i--)
-            //    {
-            //        if (!this.labelScrollbarPositionsSetThisFrame.Contains(this.labelScrollbarPositions[i].First))
-            //        {
-            //            this.labelScrollbarPositions.RemoveAt(i);
-            //        }
-            //    }
-            //    this.labelScrollbarPositionsSetThisFrame.Clear();
-            //}
-        }
-
-        //public void EndScrollView(ref Rect viewRect)
-        //{
-        //    viewRect = new Rect(0f, 0f, this.listingRect.width, this.curY);
-        //    Widgets.EndScrollView();
-        //    this.End();
-        //}
 
         public void Label(string label, float maxHeight = -1f, string tooltip = null)
         {

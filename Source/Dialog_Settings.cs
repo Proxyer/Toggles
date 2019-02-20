@@ -31,10 +31,12 @@ namespace Toggles
         {
             Rect leftRect = new Rect(mainRect.x, mainRect.y, mainRect.width / 4, mainRect.height);
             DoLeft(leftRect);
+            float f = 100f;
+
             Rect middleRect = new Rect(leftRect.width, mainRect.y, (mainRect.width - leftRect.width) / 2, mainRect.height);
             DoMiddle(middleRect);
-            Rect rightRect = new Rect(middleRect.xMax, mainRect.y, (mainRect.width - leftRect.width) / 2, mainRect.height);
-            DoRight(rightRect);
+            //Rect rightRect = new Rect(middleRect.xMax, mainRect.y, (mainRect.width - leftRect.width) / 2, mainRect.height);
+            //DoRight(rightRect);
 
             // Button for reset.
             Rect resetRect = new Rect(0f, mainRect.height + 40f, 120f, 40f);
@@ -44,6 +46,8 @@ namespace Toggles
 
         static void DoRight(Rect rightRect)
         {
+            Rect viewRect = new Rect(0f, 0f, rightRect.width - 16f, rightRect.height);
+
             float rightY = (ToggleHandler.Toggles.Where(x => x.Group.Equals(ActiveGroup)).Count() + 2) * 25f;
             Rect rightInRect = new Rect(0f, 0f, width: rightRect.width - 20f, height: rightY);
             Rect rightViewRect = new Rect(0f, 0f, 200f, rightY);
@@ -56,19 +60,16 @@ namespace Toggles
             //foreach (Toggle toggle in ToggleHandler.Toggles.Where(x => x.Group.Equals(ActiveGroup)))
             //    rightView.CheckboxLabeled(toggle.PrettyLabel, ref toggle.active);
 
-            rightView.End();
+            rightView.EndListing(ref viewRect);
             GUI.EndScrollView();
         }
 
         static void DoMiddle(Rect middleRect)
         {
             float middleY = (ToggleHandler.Toggles.Where(x => x.Group.Equals(ActiveGroup)).Count() + 2) * 25f;
-            Rect middleInRect = new Rect(0f, 0f, middleRect.width - 20f, middleY);
-            Rect middleViewRect = new Rect(0f, 0f, 200f, middleY);
-            scrollPositionMiddle = GUI.BeginScrollView(middleRect, scrollPositionMiddle, middleViewRect);
             var middleView = new Listing_Toggles();
-            middleView.ColumnWidth = middleInRect.width;
-            middleView.Begin(middleInRect);
+            Rect viewRect = new Rect(0f, 0f, middleRect.width - 16f, middleRect.height);
+            middleView.BeginListing(middleRect, ref scrollPositionMiddle, ref viewRect, middleY);
 
             bool optionsEntryFlag = ToggleHandler.IsActive("OptionsEntry");
             bool optionsPlayFlag = ToggleHandler.IsActive("OptionsPlay");
@@ -77,7 +78,7 @@ namespace Toggles
             // Only show if any button has been clicked at start.
             if (!ActiveGroup.NullOrEmpty())
             {
-                Rect multiRect = new Rect(middleInRect.width - 25f, 0f, 25f, 25f);
+                Rect multiRect = new Rect(middleRect.width - 25f, 0f, 25f, 25f);
                 List<Toggle> groupToggles = ToggleHandler.Toggles.Where(x => x.Group.Equals(ActiveGroup)).ToList();
                 bool wasPartial = false;
 
@@ -104,49 +105,41 @@ namespace Toggles
 
             // Draw toggles in right view depending on what button is active in left view.
             foreach (Toggle toggle in ToggleHandler.Toggles.Where(x => x.Group.Equals(ActiveGroup)))
+            {
                 middleView.CheckboxLabeled(toggle.PrettyLabel, ref toggle.active);
+            }
 
             // Opens confirmation window if user has deactivated the Options button.
             CheckOptionsActive("Toggles_Entry_Buttons_Options", optionsEntryFlag);
             CheckOptionsActive("Toggles_Play_Buttons_Options", optionsPlayFlag);
 
-            middleView.End();
-            GUI.EndScrollView();
+            middleView.EndListing(ref viewRect);
         }
 
         static void DoLeft(Rect leftRect)
         {
             var leftView = new Listing_Toggles();
-            leftView.BeginScrollView(leftRect, ref scrollPositionLeft);
+            float leftY = (ToggleHandler.Toggles.Select(x => x.Group).Distinct().Count() + 5) * 30f;
+            Rect viewRect = new Rect(0f, 0f, leftRect.width, leftRect.height);
+            leftView.BeginListing(leftRect, ref scrollPositionLeft, ref viewRect, leftY);
 
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
-            leftView.ButtonText("Text");
+            // Sets up category labels in the left view according to each unique toggle root.
+            foreach (string root in ToggleHandler.Toggles.Select(x => x.Root).Distinct())
+            {
+                leftView.Label(root.Translate());
+                // Populates each root label with each respective toggles according to their group.
+                foreach (string group in ToggleHandler.Toggles.Where(x => x.Root.Equals(root)).Select(x => x.Group).Distinct())
+                {
+                    if (ActiveGroup.Equals(group))
+                        GUI.color = ClickedColor;
+                    if (leftView.ButtonText(group.Translate()))
+                        ActiveGroup = group;
+                    GUI.color = DefaultColor;
+                }
+                leftView.Gap();
+            }
 
-            leftView.EndScrollView();
+            leftView.EndListing(ref viewRect);
         }
 
         // Asks for confirmation of deactiving Options buttons.
