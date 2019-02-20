@@ -60,7 +60,9 @@
     <Compile Include="Source\ButtonCat.cs" />
     <Compile Include="Source\Constants.cs" />
     <Compile Include="Source\DebugUtility.cs" />
+    <Compile Include="Source\Unused\Dialog_Settings - Copy.cs" />
     <Compile Include="Source\Dialog_Settings.cs" />
+    <Compile Include="Source\Listing_Toggles.cs" />
     <Compile Include="Source\ModBase_Toggles.cs" />
     <Compile Include="Source\ModSettings_Toggles.cs" />
     <Compile Include="Source\Mod_Toggles.cs" />
@@ -86,9 +88,6 @@
     <Compile Include="Source\ToggleFactory.cs" />
     <Compile Include="Source\ToggleHandler.cs" />
     <Compile Include="Source\Patches\PlaySettings_Patch.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\InitDB.xml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="About\About.xml" />
