@@ -8,7 +8,7 @@ namespace Toggles
     {
         internal static List<Toggle> Toggles { get; } = new List<Toggle>();
 
-        internal static Dictionary<string, Toggle> ToggleActive { get; } = new Dictionary<string, Toggle>();
+        internal static Dictionary<string, Toggle> ToggleActive { get; private set; } = new Dictionary<string, Toggle>();
 
         // Fast check for whether a toggle is active.
         internal static bool IsActive(string label)
@@ -20,6 +20,7 @@ namespace Toggles
         // Create fast lookup for checking whether a certain toggle is active.
         internal static void MakeLookUp()
         {
+            ToggleActive.Clear();
             Toggles.ForEach(x => ToggleActive.Add(x.Label, x));
         }
     }

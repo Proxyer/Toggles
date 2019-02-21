@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Toggles.Patches;
 using Toggles.Source;
 using UnityEngine;
 using Verse;
@@ -9,13 +10,6 @@ namespace Toggles
     // Draws settings window.
     internal static class Dialog_Settings
     {
-        static Dialog_Settings()
-        {
-            // Copies current settings for reference to changes made.
-            RefChanged = new Dictionary<string, bool>();
-            ToggleHandler.Toggles.ForEach(x => RefChanged.Add(x.Label, x.active));
-        }
-
         static string ActiveGroup { get; set; } = string.Empty;
         static Dictionary<string, bool> RefChanged { get; set; }
         static Color ClickedColor { get; } = new Color(0.55f, 1f, 0.55f);
@@ -31,12 +25,11 @@ namespace Toggles
         {
             Rect leftRect = new Rect(mainRect.x, mainRect.y, mainRect.width / 4, mainRect.height);
             DoLeft(leftRect);
-            float f = 100f;
 
             Rect middleRect = new Rect(leftRect.width, mainRect.y, (mainRect.width - leftRect.width) / 2, mainRect.height);
             DoMiddle(middleRect);
-            //Rect rightRect = new Rect(middleRect.xMax, mainRect.y, (mainRect.width - leftRect.width) / 2, mainRect.height);
-            //DoRight(rightRect);
+            Rect rightRect = new Rect(middleRect.xMax, mainRect.y, (mainRect.width - leftRect.width) / 2, mainRect.height);
+            DoRight(rightRect);
 
             // Button for reset.
             Rect resetRect = new Rect(0f, mainRect.height + 40f, 120f, 40f);
@@ -46,30 +39,33 @@ namespace Toggles
 
         static void DoRight(Rect rightRect)
         {
-            Rect viewRect = new Rect(0f, 0f, rightRect.width - 16f, rightRect.height);
+            if (ActiveGroup.Equals(ButtonCat.Letters))
+            {
+                List<string> loggedLetters = Letter_Patch.LoggedLetters.ListFullCopy();
 
-            float rightY = (ToggleHandler.Toggles.Where(x => x.Group.Equals(ActiveGroup)).Count() + 2) * 25f;
-            Rect rightInRect = new Rect(0f, 0f, width: rightRect.width - 20f, height: rightY);
-            Rect rightViewRect = new Rect(0f, 0f, 200f, rightY);
-            scrollPositionRight = GUI.BeginScrollView(rightRect, scrollPositionRight, rightViewRect);
-            var rightView = new Listing_Toggles();
-            rightView.ColumnWidth = rightInRect.width;
-            rightView.Begin(rightInRect);
+                float rightY = (loggedLetters.Count() + 2) * 25f;
 
-            // Draw toggles in right view depending on what button is active in left view.
-            //foreach (Toggle toggle in ToggleHandler.Toggles.Where(x => x.Group.Equals(ActiveGroup)))
-            //    rightView.CheckboxLabeled(toggle.PrettyLabel, ref toggle.active);
+                var rightView = new Listing_Toggles();
+                rightView.BeginListing(rightRect, ref scrollPositionRight, rightY);
 
-            rightView.EndListing(ref viewRect);
-            GUI.EndScrollView();
+                rightView.CustomLabel("      Received letters");
+                foreach (string letter in loggedLetters.Where(x => !ToggleHandler.Toggles.Exists(z => z.Label.Equals(x))))
+                {
+                    if (rightView.CustomButtonText(letter))
+                        Letter_Patch.LogToToggle(letter);
+                }
+
+                rightView.EndListing();
+            }
         }
 
         static void DoMiddle(Rect middleRect)
         {
-            float middleY = (ToggleHandler.Toggles.Where(x => x.Group.Equals(ActiveGroup)).Count() + 2) * 25f;
+            List<Toggle> groupToggles = ToggleHandler.Toggles.Where(x => x.Group.Equals(ActiveGroup)).ToList();
+            float middleY = (groupToggles.Count() + 2) * 25f;
+
             var middleView = new Listing_Toggles();
-            Rect viewRect = new Rect(0f, 0f, middleRect.width - 16f, middleRect.height);
-            middleView.BeginListing(middleRect, ref scrollPositionMiddle, ref viewRect, middleY);
+            middleView.BeginListing(middleRect, ref scrollPositionMiddle, middleY);
 
             bool optionsEntryFlag = ToggleHandler.IsActive("OptionsEntry");
             bool optionsPlayFlag = ToggleHandler.IsActive("OptionsPlay");
@@ -78,8 +74,8 @@ namespace Toggles
             // Only show if any button has been clicked at start.
             if (!ActiveGroup.NullOrEmpty())
             {
-                Rect multiRect = new Rect(middleRect.width - 25f, 0f, 25f, 25f);
-                List<Toggle> groupToggles = ToggleHandler.Toggles.Where(x => x.Group.Equals(ActiveGroup)).ToList();
+                Rect multiRect = new Rect(middleRect.width - 45f, 0f, 25f, 25f);
+
                 bool wasPartial = false;
 
                 if (groupToggles.All(x => x.active))
@@ -103,25 +99,25 @@ namespace Toggles
                 middleView.Gap(24f);
             }
 
-            // Draw toggles in right view depending on what button is active in left view.
-            foreach (Toggle toggle in ToggleHandler.Toggles.Where(x => x.Group.Equals(ActiveGroup)))
-            {
+            // Draw toggles in middle view depending on what button is active in left view.
+            foreach (Toggle toggle in groupToggles)
                 middleView.CheckboxLabeled(toggle.PrettyLabel, ref toggle.active);
-            }
 
             // Opens confirmation window if user has deactivated the Options button.
             CheckOptionsActive("Toggles_Entry_Buttons_Options", optionsEntryFlag);
             CheckOptionsActive("Toggles_Play_Buttons_Options", optionsPlayFlag);
 
-            middleView.EndListing(ref viewRect);
+            middleView.EndListing();
         }
 
         static void DoLeft(Rect leftRect)
         {
+            List<string> rootMembers = ToggleHandler.Toggles.Select(x => x.Root).Distinct().ToList();
+            //List<string> groupMembers = ToggleHandler.Toggles.Select(x => x.Group).Distinct().ToList();
+            float leftY = (rootMembers.Count() + 14) * 30f;
+
             var leftView = new Listing_Toggles();
-            float leftY = (ToggleHandler.Toggles.Select(x => x.Group).Distinct().Count() + 5) * 30f;
-            Rect viewRect = new Rect(0f, 0f, leftRect.width, leftRect.height);
-            leftView.BeginListing(leftRect, ref scrollPositionLeft, ref viewRect, leftY);
+            leftView.BeginListing(leftRect, ref scrollPositionLeft, leftY);
 
             // Sets up category labels in the left view according to each unique toggle root.
             foreach (string root in ToggleHandler.Toggles.Select(x => x.Root).Distinct())
@@ -139,7 +135,7 @@ namespace Toggles
                 leftView.Gap();
             }
 
-            leftView.EndListing(ref viewRect);
+            leftView.EndListing();
         }
 
         // Asks for confirmation of deactiving Options buttons.

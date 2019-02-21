@@ -33,5 +33,10 @@ namespace Toggles
             str = str.Replace("_", ": ");
             return str;
         }
+
+        internal static string RemovePrefix(string input)
+        {
+            return input.Substring(input.IndexOf("_") + 1);
+        }
     }
 }

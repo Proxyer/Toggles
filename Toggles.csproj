@@ -88,6 +88,7 @@
     <Compile Include="Source\ToggleFactory.cs" />
     <Compile Include="Source\ToggleHandler.cs" />
     <Compile Include="Source\Patches\PlaySettings_Patch.cs" />
+    <Compile Include="Source\Unused\Dialog_Settings2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="About\About.xml" />
@@ -95,11 +96,13 @@
     <Content Include="Languages\English\Keyed\ButtonCat.xml" />
     <Content Include="log.txt" />
     <Content Include="Languages\English\Keyed\Toggles.xml" />
+    <Content Include="CustomLetters.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>xcopy /i /s /y "$(SolutionDir)About" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\About\"
-xcopy /i /s /y "$(SolutionDir)Languages" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Languages\"</PreBuildEvent>
+xcopy /i /s /y "$(SolutionDir)Languages" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Languages\"
+xcopy /i /s /y "$(SolutionDir)CustomLetters.xml" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\"</PreBuildEvent>
   </PropertyGroup>
 </Project>
