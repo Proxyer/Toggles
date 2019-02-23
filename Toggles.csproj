@@ -96,13 +96,11 @@
     <Content Include="Languages\English\Keyed\ButtonCat.xml" />
     <Content Include="log.txt" />
     <Content Include="Languages\English\Keyed\Toggles.xml" />
-    <Content Include="CustomLetters.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>xcopy /i /s /y "$(SolutionDir)About" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\About\"
-xcopy /i /s /y "$(SolutionDir)Languages" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Languages\"
-xcopy /i /s /y "$(SolutionDir)CustomLetters.xml" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\"</PreBuildEvent>
+xcopy /i /s /y "$(SolutionDir)Languages" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Languages\"</PreBuildEvent>
   </PropertyGroup>
 </Project>

@@ -22,8 +22,10 @@ namespace Toggles
             Dialog_Settings.DoWindowContents(inRect);
         }
 
-        static ModSettings_Toggles Settings;
-        static Mod_Toggles ModInstance;
+        internal static ModSettings_Toggles Settings;
+        public static Mod_Toggles ModInstance;
+
+        internal static ModContentPack ModContent { get; private set; }
 
         // Checks whether a specific mod is currently active.
         internal static bool ModIsActive(string mod)

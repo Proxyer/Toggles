@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using RimWorld;
+using System.Collections.Generic;
 using System.Linq;
 using Toggles.Patches;
 using Toggles.Source;
@@ -41,7 +42,9 @@ namespace Toggles
         {
             if (ActiveGroup.Equals(ButtonCat.Letters))
             {
-                List<string> loggedLetters = Letter_Patch.LoggedLetters.ListFullCopy();
+                List<string> loggedLetters = Find.Archive.ArchivablesListForReading
+                    .Where(x => x is Letter && !ToggleHandler.Toggles.Exists(y => y.rawLabel.Equals(x.ArchivedLabel)))
+                    .Select(z => z.ArchivedLabel).ToList();
 
                 float rightY = (loggedLetters.Count() + 2) * 25f;
 
@@ -49,6 +52,7 @@ namespace Toggles
                 rightView.BeginListing(rightRect, ref scrollPositionRight, rightY);
 
                 rightView.CustomLabel("      Received letters");
+                //foreach (string letter in loggedLetters.Where(x => !ToggleHandler.Toggles.Exists(z => z.Label.Equals(x))))
                 foreach (string letter in loggedLetters.Where(x => !ToggleHandler.Toggles.Exists(z => z.Label.Equals(x))))
                 {
                     if (rightView.CustomButtonText(letter))
@@ -133,6 +137,17 @@ namespace Toggles
                     GUI.color = DefaultColor;
                 }
                 leftView.Gap();
+            }
+
+            //-------------------------------------
+            if (leftView.ButtonText("DEBUG"))
+            {
+                Log.Message("Archive read:");
+                List<IArchivable> archivablesListForReading = Find.Archive.ArchivablesListForReading;
+                foreach (var v in archivablesListForReading.Where(x => x is Letter))
+                {
+                    Log.Message(v.ArchivedLabel);
+                }
             }
 
             leftView.EndListing();
