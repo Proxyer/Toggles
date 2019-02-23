@@ -11,6 +11,13 @@ namespace Toggles
             ModInstance = this;
         }
 
+        internal void InitSettings()
+        {
+            GetSettings<ModSettings_Toggles>();
+        }
+
+        internal static Mod_Toggles ModInstance;
+
         public override string SettingsCategory()
         {
             return Constants.ModName;
@@ -22,21 +29,10 @@ namespace Toggles
             Dialog_Settings.DoWindowContents(inRect);
         }
 
-        internal static ModSettings_Toggles Settings;
-        public static Mod_Toggles ModInstance;
-
-        internal static ModContentPack ModContent { get; private set; }
-
         // Checks whether a specific mod is currently active.
-        internal static bool ModIsActive(string mod)
-        {
-            return ModLister.HasActiveModWithName(mod);
-        }
-
-        // Delayed initialization of mod settings for all defs to have loaded first.
-        internal static void CustomLoadSettings()
-        {
-            Settings = ModInstance.GetSettings<ModSettings_Toggles>();
-        }
+        //internal static bool ModIsActive(string mod)
+        //{
+        //    return ModLister.HasActiveModWithName(mod);
+        //}
     }
 }

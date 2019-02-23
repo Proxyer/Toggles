@@ -59,14 +59,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\ButtonCat.cs" />
     <Compile Include="Source\Constants.cs" />
+    <Compile Include="Source\LetterManager.cs" />
     <Compile Include="Source\DebugUtility.cs" />
-    <Compile Include="Source\Unused\Dialog_Settings - Copy.cs" />
     <Compile Include="Source\Dialog_Settings.cs" />
     <Compile Include="Source\Listing_Toggles.cs" />
-    <Compile Include="Source\ModBase_Toggles.cs" />
+    <Compile Include="unused\ModBase_Toggles.cs" />
     <Compile Include="Source\ModSettings_Toggles.cs" />
     <Compile Include="Source\Mod_Toggles.cs" />
-    <Compile Include="Source\Patcher.cs" />
+    <Compile Include="unused\Patcher.cs" />
     <Compile Include="Source\Patches\AlertsReadout_Patch.cs" />
     <Compile Include="Source\Patches\ColonistBar_Patch.cs" />
     <Compile Include="Source\Patches\DateReadout_Patch.cs" />
@@ -88,7 +88,7 @@
     <Compile Include="Source\ToggleFactory.cs" />
     <Compile Include="Source\ToggleHandler.cs" />
     <Compile Include="Source\Patches\PlaySettings_Patch.cs" />
-    <Compile Include="Source\Unused\Dialog_Settings2.cs" />
+    <Compile Include="Source\TogglesController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="About\About.xml" />

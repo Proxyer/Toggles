@@ -17,11 +17,9 @@ namespace Toggles
             return tog != null ? tog.active : true;
         }
 
-        // Create fast lookup for checking whether a certain toggle is active.
-        internal static void MakeLookUp()
+        internal static bool Exists(string label)
         {
-            ToggleActive.Clear();
-            Toggles.ForEach(x => ToggleActive.Add(x.Label, x));
+            return ToggleActive.ContainsKey(label);
         }
     }
 }

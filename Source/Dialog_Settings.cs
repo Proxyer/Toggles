@@ -42,9 +42,7 @@ namespace Toggles
         {
             if (ActiveGroup.Equals(ButtonCat.Letters))
             {
-                List<string> loggedLetters = Find.Archive.ArchivablesListForReading
-                    .Where(x => x is Letter && !ToggleHandler.Toggles.Exists(y => y.rawLabel.Equals(x.ArchivedLabel)))
-                    .Select(z => z.ArchivedLabel).ToList();
+                List<string> loggedLetters = Letter_Patch.LoggedLetters;
 
                 float rightY = (loggedLetters.Count() + 2) * 25f;
 
@@ -52,12 +50,10 @@ namespace Toggles
                 rightView.BeginListing(rightRect, ref scrollPositionRight, rightY);
 
                 rightView.CustomLabel("      Received letters");
-                //foreach (string letter in loggedLetters.Where(x => !ToggleHandler.Toggles.Exists(z => z.Label.Equals(x))))
-                foreach (string letter in loggedLetters.Where(x => !ToggleHandler.Toggles.Exists(z => z.Label.Equals(x))))
-                {
+
+                foreach (string letter in loggedLetters)
                     if (rightView.CustomButtonText(letter))
                         Letter_Patch.LogToToggle(letter);
-                }
 
                 rightView.EndListing();
             }

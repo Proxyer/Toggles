@@ -1,18 +1,25 @@
-﻿using System;
-
-namespace Toggles
+﻿namespace Toggles
 {
     // Class for creating instances of Toggles and saving these to memory.
     internal static class ToggleFactory
     {
-        internal static void Add(string label, string root, string group, string rawLabel = "")
+        internal static void Add(string label, string root, string group)
         {
-            ToggleHandler.Toggles.Add(new Toggle(
+            Toggle toggle = new Toggle(
                     label: label,
-                    rawLabel: rawLabel,
                     root: root,
                     group: group
-                    ));
+                    );
+
+            ToggleHandler.Toggles.Add(toggle);
+            ToggleHandler.ToggleActive.Add(label, toggle);
+        }
+
+        internal static void Remove(string label)
+        {
+            ToggleHandler.Toggles.RemoveAll(x => x.Label.Equals(label));
+
+            ToggleHandler.ToggleActive.Remove(label);
         }
     }
 }

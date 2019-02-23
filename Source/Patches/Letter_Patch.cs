@@ -1,5 +1,6 @@
 ﻿using Harmony;
 using System.Collections.Generic;
+using System.Linq;
 using Toggles.Source;
 using Verse;
 
@@ -10,39 +11,48 @@ namespace Toggles.Patches
     [HarmonyPatch("CanShowInLetterStack", MethodType.Getter)]
     class Letter_Patch
     {
-        internal Letter_Patch() => InitToggles();
+        internal Letter_Patch()
+        {
+            InitToggles();
+            //customLetter = new LetterManager();
+        }
+
+        static LetterManager customLetter;
 
         internal static List<string> customLetters = new List<string>();
 
         internal static List<string> CustomLetters { get => customLetters; set => customLetters = value; }
 
-        static string GetLabel(string letter) => ButtonCat.Letters + "_" + letter;
+        static string GetDefLabel(string letter) => ButtonCat.Letters + "_" + letter;
 
-        static string GetRawLabel(string letter) => ButtonCat.Letters + "_" + letter.Replace(" ", "");
+        static string GetCustomLabel(string letter)
+        {
+            return ButtonCat.Letters + "_" + StringUtil.Conform(letter);
+        }
 
         internal static void LogToToggle(string letter)
         {
-            if (!ToggleHandler.Toggles.Exists(x => x.rawLabel.Equals(letter)))
-            {
-                LetterToToggle(GetLabel(letter), letter);
-                CustomLetters.Add(letter);
-                ToggleHandler.MakeLookUp();
-            }
+            CustomLetters.Add(letter);
+            LetterToToggle(GetCustomLabel(letter));
+        }
+
+        internal static void UpdateCustomLetters()
+        {
+            CustomLetters
+                .Where(letter => !ToggleHandler.Exists(GetCustomLabel(letter))).ToList()
+                .ForEach(letter => LetterToToggle(GetCustomLabel(letter)));
         }
 
         static void InitToggles()
         {
             foreach (LetterDef letter in DefDatabase<LetterDef>.AllDefsListForReading)
-                LetterToToggle(GetLabel(letter.defName));
-            foreach (string letter in CustomLetters)
-                LetterToToggle(GetLabel(letter), letter);
+                LetterToToggle(GetDefLabel(letter.defName));
         }
 
-        static void LetterToToggle(string letter, string rawLabel = "")
+        static void LetterToToggle(string letter)
         {
             ToggleFactory.Add(
                     label: letter,
-                    rawLabel: rawLabel,
                     root: ButtonCat.Events,
                     group: ButtonCat.Letters
                     );
@@ -52,16 +62,22 @@ namespace Toggles.Patches
         {
             string label = __instance.label;
             string defLabel = __instance.def.defName;
-            DebugUtil.Log("QWEQWE " + GetLabel(__instance.def.defName));
 
-            if (ToggleHandler.Toggles.Exists(x => x.Label.Equals(GetLabel(label))))
+            if (ToggleHandler.Toggles.Exists(x => x.Label.Equals(GetCustomLabel(label))))
             {
-                __result = ToggleHandler.IsActive(GetLabel(label)) ? __result : false;
+                __result = ToggleHandler.IsActive(GetCustomLabel(label)) ? __result : false;
             }
-            else if (ToggleHandler.Toggles.Exists(x => x.Label.Equals(GetLabel(defLabel))))
+            else if (ToggleHandler.Toggles.Exists(x => x.Label.Equals(GetDefLabel(defLabel))))
             {
-                __result = ToggleHandler.IsActive(GetLabel(__instance.def.defName)) ? __result : false;
+                __result = ToggleHandler.IsActive(GetDefLabel(__instance.def.defName)) ? __result : false;
             }
         }
+
+        internal static List<string> LoggedLetters =>
+            Find.Archive.ArchivablesListForReading
+                    .Where(x => x is Letter)
+                    .Select(z => z.ArchivedLabel)
+                    .Where(x => !ToggleHandler.Toggles.Exists(z => z.Label.Equals(GetCustomLabel(x))))
+                    .ToList().ListFullCopy();
     }
 }

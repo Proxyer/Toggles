@@ -1,17 +1,27 @@
 ﻿using Harmony;
+using System;
+using System.Reflection;
 using Toggles.Patches;
 using Verse;
 
-namespace Toggles
+namespace Toggles.Source
 {
     [StaticConstructorOnStartup]
-    internal static class Patcher
+    class TogglesController
     {
-        static HarmonyInstance Harmony { get; } = HarmonyInstance.Create(Constants.ModName);
+        static TogglesController()
+        {
+            InitPatches();
+            InitToggles();
+            InitSettings();
+        }
 
-        static Patcher() => DoPatches();
+        static void InitSettings()
+        {
+            Mod_Toggles.ModInstance.InitSettings();
+        }
 
-        internal static void DoPatches()
+        static void InitToggles()
         {
             new ListableOption_Patch();
             new ListableOption_WebLink_Patch();
@@ -30,6 +40,11 @@ namespace Toggles
             new Letter_Patch();
             new AlertsReadout_Patch();
             new IncidentWorker_Patch();
+        }
+
+        static void InitPatches()
+        {
+            HarmonyInstance.Create(Constants.ModName).PatchAll(Assembly.GetExecutingAssembly());
         }
     }
 }
