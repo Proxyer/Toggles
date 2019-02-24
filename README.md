@@ -1,8 +1,6 @@
 # Toggles
 
-This is a mod for RimWorld, allowing for toggling various graphical elements and gameplay mechanics.
-
-Makes it possible to hide and suppress various events and graphical elements:
+This is a mod for RimWorld. It makes it possible to hide and suppress various events and graphical elements:
     <br/>- Incidents
     <br/>- Alerts
     <br/>- Letters
