@@ -11,23 +11,16 @@ namespace Toggles.Patches
     [HarmonyPatch(new[] { typeof(Rect) })]
     class DateReadout_Patch
     {
-        internal DateReadout_Patch() => InitToggles();
+        internal DateReadout_Patch() =>
+            ToggleManager.Add(
+                label: Label,
+                root: ButtonCat.PlayScreen,
+                group: ButtonCat.HUD
+                );
 
-        static void InitToggles()
-        {
-            ToggleFactory.Add(
-                    label: GetLabel(),
-                    root: ButtonCat.PlayScreen,
-                    group: ButtonCat.HUD
-                    );
-        }
-
-        static string GetLabel() => ButtonCat.HUD + "_Date";
+        static string Label => $"{ButtonCat.HUD}_Date";
 
         // Stops the date from being drawn if setting is inactive.
-        static bool Prefix()
-        {
-            return ToggleHandler.IsActive(GetLabel());
-        }
+        static bool Prefix() => ToggleManager.IsActive(Label);
     }
 }

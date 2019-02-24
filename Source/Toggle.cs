@@ -14,24 +14,14 @@ namespace Toggles
             Group = group;
         }
 
-        internal string Group { get; set; }
-        internal string Root { get; set; }
+        internal string Group { get; private set; }
+        internal string Root { get; private set; }
 
-        internal string Label { get; set; }
+        internal string Label { get; private set; }
 
-        internal string PrettyLabel
-        {
-            get
-            {
-                if (Label.CanTranslate())
-                    return Label.Translate();
-                return StringUtil.Pretty(Label);
-            }
-        }
+        // String for GUI purposes. Returns translation if available, otherwise beautified attempt.
+        internal string PrettyLabel { get => Label.CanTranslate() ? Label.Translate() : StringUtil.Pretty(Label); }
 
-        internal void ExposeData()
-        {
-            Scribe_Values.Look(ref active, Label, true);
-        }
+        internal void ExposeData() => Scribe_Values.Look(ref active, Label, true);
     }
 }

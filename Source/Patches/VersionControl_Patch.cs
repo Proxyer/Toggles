@@ -5,28 +5,27 @@ using Verse;
 
 namespace Toggles.Patches
 {
+    // Toggles the version control readout on the start screen and pause menu.
     [HarmonyPatch(typeof(VersionControl))]
     [HarmonyPatch("DrawInfoInCorner")]
     class VersionControl_Patch
     {
-        internal VersionControl_Patch() => InitToggles();
-
-        static void InitToggles()
+        internal VersionControl_Patch()
         {
-            ToggleFactory.Add(
-                    label: GetLabel(Label, ProgramState.Entry),
+            ToggleManager.Add(
+                    label: Format(Label, ProgramState.Entry),
                     root: ButtonCat.StartScreen,
                     group: ButtonCat.MiscellaneousEntry
                     );
 
-            ToggleFactory.Add(
-                    label: GetLabel(Label, ProgramState.Playing),
+            ToggleManager.Add(
+                    label: Format(Label, ProgramState.Playing),
                     root: ButtonCat.PauseScreen,
                     group: ButtonCat.MiscellaneousPlay
                     );
         }
 
-        static string GetLabel(string label, ProgramState state)
+        static string Format(string label, ProgramState state)
         {
             string preLabel = string.Empty;
             if (state == ProgramState.Entry)
@@ -39,9 +38,7 @@ namespace Toggles.Patches
 
         static string Label { get; } = "VersionControl";
 
-        static bool Prefix()
-        {
-            return ToggleHandler.IsActive(GetLabel(Label, Current.ProgramState));
-        }
+        // Stops the version control readout from being drawn if setting is inactive.
+        static bool Prefix() => ToggleManager.IsActive(Format(Label, Current.ProgramState));
     }
 }

@@ -6,28 +6,27 @@ using Verse;
 
 namespace Toggles.Patches
 {
+    // Toggles buttons from being shown on the start screen and pause menu.
     [HarmonyPatch(typeof(ListableOption))]
     [HarmonyPatch("DrawOption")]
     [HarmonyPatch(new[] { typeof(Vector2), typeof(float) })]
     class ListableOption_Patch
     {
-        internal ListableOption_Patch() => InitToggles();
-
-        static void InitToggles()
+        internal ListableOption_Patch()
         {
-            foreach (string button in EntryButtons)
-                ToggleFactory.Add(
-                        label: GetLabel(button, ProgramState.Entry),
-                        root: ButtonCat.StartScreen,
-                        group: ButtonCat.ButtonsEntry
-                        );
+            EntryButtons
+                .ForEach(button => ToggleManager.Add(
+                    label: Format(button, ProgramState.Entry),
+                    root: ButtonCat.StartScreen,
+                    group: ButtonCat.ButtonsEntry
+                    ));
 
-            foreach (string button in PlayButtons)
-                ToggleFactory.Add(
-                        label: GetLabel(button, ProgramState.Playing),
-                        root: ButtonCat.PauseScreen,
-                        group: ButtonCat.ButtonsPlay
-                        );
+            PlayButtons
+                .ForEach(button => ToggleManager.Add(
+                    label: Format(button, ProgramState.Playing),
+                    root: ButtonCat.PauseScreen,
+                    group: ButtonCat.ButtonsPlay
+                    ));
         }
 
         static List<string> EntryButtons { get; } = new List<string>
@@ -52,7 +51,7 @@ namespace Toggles.Patches
             { "LoadGame" }
         };
 
-        static string GetLabel(string option, ProgramState state)
+        static string Format(string option, ProgramState state)
         {
             string preLabel = string.Empty;
             if (state == ProgramState.Entry)
@@ -60,12 +59,10 @@ namespace Toggles.Patches
             else if (state == ProgramState.Playing)
                 preLabel = ButtonCat.ButtonsPlay;
 
-            return $"{preLabel}_{StringUtil.Conform(option)}";
+            return $"{preLabel}_{StringUtil.Sanitize(option)}";
         }
 
-        static bool Prefix(ListableOption __instance)
-        {
-            return ToggleHandler.IsActive(GetLabel(__instance.label, Current.ProgramState));
-        }
+        // Stops the button from being drawn if setting is inactive.
+        static bool Prefix(ListableOption __instance) => ToggleManager.IsActive(Format(__instance.label, Current.ProgramState));
     }
 }

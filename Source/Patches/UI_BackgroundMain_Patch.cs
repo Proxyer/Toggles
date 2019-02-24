@@ -4,29 +4,21 @@ using Toggles.Source;
 
 namespace Toggles.Patches
 {
+    // Toggles the background image on the start screen.
     [HarmonyPatch(typeof(UI_BackgroundMain))]
     [HarmonyPatch("BackgroundOnGUI")]
     class UI_BackgroundMain_Patch
     {
-        internal UI_BackgroundMain_Patch() => InitToggles();
+        internal UI_BackgroundMain_Patch() =>
+            ToggleManager.Add(
+                label: Label,
+                root: ButtonCat.StartScreen,
+                group: ButtonCat.MiscellaneousEntry
+                );
 
-        static void InitToggles()
-        {
-            ToggleFactory.Add(
-                    label: GetLabel(),
-                    root: ButtonCat.StartScreen,
-                    group: ButtonCat.MiscellaneousEntry
-                    );
-        }
+        static string Label => $"{ButtonCat.MiscellaneousEntry}_Background";
 
-        static string GetLabel()
-        {
-            return ButtonCat.MiscellaneousEntry + "_Background";
-        }
-
-        static bool Prefix()
-        {
-            return ToggleHandler.IsActive(GetLabel());
-        }
+        // Stops the background image from being drawn if setting is inactive.
+        static bool Prefix() => ToggleManager.IsActive(Label);
     }
 }

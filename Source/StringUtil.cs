@@ -8,7 +8,7 @@ namespace Toggles
         static Regex regex = new Regex("[^a-zA-Z0-9 -]");
 
         // Conforms strings to game/mod limitations, e g XML tags.
-        internal static string Conform(string input)
+        internal static string Sanitize(string input)
         {
             // Remove all characters that are not numbers or letters
             string str = regex.Replace(input, "");
@@ -17,26 +17,15 @@ namespace Toggles
             return str.Replace(" ", string.Empty);
         }
 
-        // Attempts to make auto-generated strings pretty-ish.
-        internal static string Pretty(string input)
+        // Attempts string beautification.
+        internal static string Pretty(string str)
         {
-            string str = input;
-            //if (str.EndsWith("Entry"))
-            //    str.Replace("Entry", "");
-            //if (str.EndsWith("Play"))
-            //    str.Replace("Play", "");
-
             str = str.Substring(str.IndexOf("_") + 1);
 
             // Puts space between letter and capital letter.
             str = Regex.Replace(str, "([a-z])([A-Z])", "$1 $2");
             str = str.Replace("_", ": ");
             return str;
-        }
-
-        internal static string RemovePrefix(string input)
-        {
-            return input.Substring(input.IndexOf("_") + 1);
         }
     }
 }

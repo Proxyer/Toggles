@@ -8,17 +8,11 @@ namespace Toggles
     {
         internal static string ModName { get; } = "Toggles";
 
-        internal static Texture2D TexEmpty
-        {
-            get
-            {
-                if (texEmpty.NullOrBad())
-                    texEmpty = SolidColorMaterials.NewSolidColorTexture(new Color(0, 0, 0, 0));
+        //internal static string ModID { get; } = $"net.krafs.{ModName.ToLower()}";
+        internal static string ModID { get; } = "net.krafs.toggles";
 
-                return texEmpty;
-            }
-        }
+        internal static Texture2D TexEmpty { get; private set; }
 
-        static Texture2D texEmpty;
+        internal static void InitTextures() => TexEmpty = SolidColorMaterials.NewSolidColorTexture(new Color(0, 0, 0, 0));
     }
 }

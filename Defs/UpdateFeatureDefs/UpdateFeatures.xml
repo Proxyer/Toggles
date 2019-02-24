@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <HugsLib.UpdateFeatureDef Abstract="true" Name="UpdateFeatureBase">
+    <defName>UpdateFeature</defName>
+    <modNameReadable>Toggles</modNameReadable>
+    <modIdentifier>net.krafs.toggles</modIdentifier>
+    <linkUrl>https://github.com/krafs/Toggles</linkUrl>
+  </HugsLib.UpdateFeatureDef>
+
+  <!--<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+    <assemblyVersion>1.0.0</assemblyVersion>
+    <content></content>
+  </HugsLib.UpdateFeatureDef>-->
+</Defs>

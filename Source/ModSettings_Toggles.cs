@@ -11,7 +11,7 @@ namespace Toggles
             base.ExposeData();
             Scribe_Collections.Look<string>(ref Letter_Patch.customLetters, "CustomLetters", LookMode.Undefined, new object[0]);
             Letter_Patch.UpdateCustomLetters();
-            ToggleHandler.Toggles.ForEach(x => x.ExposeData());
+            ToggleManager.Toggles.ForEach(x => x.ExposeData());
         }
     }
 }

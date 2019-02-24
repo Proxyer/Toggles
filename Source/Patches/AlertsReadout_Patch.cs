@@ -12,32 +12,32 @@ namespace Toggles.Patches
     [HarmonyPatch("AlertsReadoutUpdate")]
     class AlertsReadout_Patch
     {
-        internal AlertsReadout_Patch() => InitToggles();
-
-        static List<Alert> Alerts { get; } = new List<Alert>();
-
-        static void InitToggles()
+        internal AlertsReadout_Patch()
         {
             foreach (Type type in typeof(Alert).AllLeafSubclasses())
             {
                 Alert alert = (Alert)Activator.CreateInstance(type);
                 Alerts.Add(alert);
-                ToggleFactory.Add(
-                    label: GetLabel(alert),
+                ToggleManager.Add(
+                    label: Format(alert),
                     root: ButtonCat.Events,
                     group: ButtonCat.Alerts
                     );
             }
         }
 
-        static string GetLabel(Alert alert) => alert.GetType().Name;
+        static List<Alert> Alerts { get; } = new List<Alert>();
 
+        static string Format(Alert alert) => alert.GetType().Name;
+
+        // Checks if alert to be read out is active in settings.
+        // If not, the alert is removed from games' available alerts and the list of active alerts. Otherwise readded.
         static void Postfix(ref List<Alert> ___AllAlerts, ref List<Alert> ___activeAlerts)
         {
             foreach (Alert alert in Alerts)
             {
-                string label = GetLabel(alert);
-                if (!ToggleHandler.IsActive(GetLabel(alert)))
+                string label = Format(alert);
+                if (!ToggleManager.IsActive(label))
                 {
                     ___AllAlerts.RemoveAll(x => x.GetType().Name.Equals(label));
                     ___activeAlerts.RemoveAll(x => x.GetType().Name.Equals(label));

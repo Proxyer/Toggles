@@ -16,15 +16,24 @@ namespace Toggles.Patches
     [HarmonyPatch(new[] { typeof(WidgetRow), typeof(bool) })]
     class PlaySettings_Patch
     {
-        internal PlaySettings_Patch() => InitToggles();
+        internal PlaySettings_Patch()
+        {
+            foreach (string label in Dict.Values)
+                ToggleManager.Add(
+                    label: Format(label),
+                    root: ButtonCat.PlayScreen,
+                    group: ButtonCat.ToggleIcons
+                    );
+        }
 
         // Proxy method for filtering out which buttons to display depending on their string labels.
         static void ToggleableIcon_Proxy(WidgetRow instance, ref bool toggleable, Texture2D tex, string label, SoundDef mouseoverSound = null, string tutorTag = null)
         {
-            if (!Dict.ContainsKey(label) || (Dict.ContainsKey(label) && ToggleHandler.IsActive(GetLabel(Dict.TryGetValue(label)))))
+            if (!Dict.ContainsKey(label) || (Dict.ContainsKey(label) && ToggleManager.IsActive(Format(Dict.TryGetValue(label)))))
                 instance.ToggleableIcon(ref toggleable, tex, label.Translate(), SoundDefOf.Mouseover_ButtonToggle, null);
         }
 
+        // Dictionary for applying shorter label names to settings.
         static Dictionary<string, string> Dict { get; } = new Dictionary<string, string>
         {
             {"ShowLearningHelperWhenEmptyToggleButton", "LearningHelperToggle" },
@@ -38,17 +47,7 @@ namespace Toggles.Patches
             {"CategorizedResourceReadoutToggleButton", "CategorizedResourceReadoutToggle" }
         };
 
-        void InitToggles()
-        {
-            foreach (string label in Dict.Values)
-                ToggleFactory.Add(
-                    label: GetLabel(label),
-                    root: ButtonCat.PlayScreen,
-                    group: ButtonCat.ToggleIcons
-                    );
-        }
-
-        static string GetLabel(string label) => ButtonCat.ToggleIcons + "_" + label;
+        static string Format(string label) => $"{ButtonCat.ToggleIcons}_{label}";
 
         static MethodInfo _ToggleableIcon_Method { get; } = AccessTools.Method(typeof(WidgetRow), "ToggleableIcon", new Type[] { typeof(bool).MakeByRefType(), typeof(Texture2D), typeof(string), typeof(SoundDef), typeof(string) });
         static MethodInfo _ToggleableIcon_Proxy { get; } = AccessTools.Method(typeof(PlaySettings_Patch), "ToggleableIcon_Proxy", new Type[] { typeof(WidgetRow), typeof(bool).MakeByRefType(), typeof(Texture2D), typeof(string), typeof(SoundDef), typeof(string) });

@@ -9,22 +9,16 @@ namespace Toggles.Patches
     [HarmonyPatch("TemperatureString")]
     class GlobalControls_Patch
     {
-        internal GlobalControls_Patch() => InitToggles();
+        internal GlobalControls_Patch() =>
+            ToggleManager.Add(
+                label: Label,
+                root: ButtonCat.PlayScreen,
+                group: ButtonCat.HUD
+                );
 
-        static void InitToggles()
-        {
-            ToggleFactory.Add(
-                    label: GetLabel(),
-                    root: ButtonCat.PlayScreen,
-                    group: ButtonCat.HUD
-                    );
-        }
+        static string Label => $"{ButtonCat.HUD}_Temperature";
 
-        static string GetLabel() => ButtonCat.HUD + "_Temperature";
-
-        static string Postfix(string __result)
-        {
-            return ToggleHandler.IsActive(GetLabel()) ? __result : string.Empty;
-        }
+        // Stops the temperature from being drawn if setting is inactive.
+        static string Postfix(string __result) => ToggleManager.IsActive(Label) ? __result : string.Empty;
     }
 }

@@ -9,23 +9,16 @@ namespace Toggles.Patches
     [HarmonyPatch("Visible", MethodType.Getter)]
     class ColonistBar_Patch
     {
-        internal ColonistBar_Patch() => InitToggles();
+        internal ColonistBar_Patch() =>
+            ToggleManager.Add(
+                label: Label,
+                root: ButtonCat.PlayScreen,
+                group: ButtonCat.HUD
+                );
 
-        static void InitToggles()
-        {
-            ToggleFactory.Add(
-                    label: GetLabel(),
-                    root: ButtonCat.PlayScreen,
-                    group: ButtonCat.HUD
-                    );
-        }
-
-        static string GetLabel() => ButtonCat.HUD + "_ColonistBar";
+        static string Label => $"{ButtonCat.HUD}_ColonistBar";
 
         // Adds vanilla toggle for Colonist Bar to the mod.
-        public static void Postfix(ref bool __result)
-        {
-            __result = ToggleHandler.IsActive(GetLabel());
-        }
+        static void Postfix(ref bool __result) => __result = ToggleManager.IsActive(Label);
     }
 }

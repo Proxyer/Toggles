@@ -62,10 +62,9 @@
     <Compile Include="Source\DebugUtility.cs" />
     <Compile Include="Source\Dialog_Settings.cs" />
     <Compile Include="Source\Listing_Toggles.cs" />
-    <Compile Include="unused\ModBase_Toggles.cs" />
     <Compile Include="Source\ModSettings_Toggles.cs" />
     <Compile Include="Source\Mod_Toggles.cs" />
-    <Compile Include="unused\Patcher.cs" />
+    <Compile Include="Source\News\ModBase_Toggles.cs" />
     <Compile Include="Source\Patches\AlertsReadout_Patch.cs" />
     <Compile Include="Source\Patches\ColonistBar_Patch.cs" />
     <Compile Include="Source\Patches\DateReadout_Patch.cs" />
@@ -85,13 +84,14 @@
     <Compile Include="Source\StringUtil.cs" />
     <Compile Include="Source\Toggle.cs" />
     <Compile Include="Source\ToggleFactory.cs" />
-    <Compile Include="Source\ToggleHandler.cs" />
+    <Compile Include="Source\ToggleManager.cs" />
     <Compile Include="Source\Patches\PlaySettings_Patch.cs" />
     <Compile Include="Source\TogglesController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="About\About.xml" />
     <Content Include="Assemblies\0Harmony.dll" />
+    <Content Include="Defs\UpdateFeatureDefs\UpdateFeatures.xml" />
     <Content Include="Languages\English\Keyed\ButtonCat.xml" />
     <Content Include="log.txt" />
     <Content Include="Languages\English\Keyed\Toggles.xml" />
@@ -100,6 +100,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>xcopy /i /s /y "$(SolutionDir)About" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\About\"
-xcopy /i /s /y "$(SolutionDir)Languages" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Languages\"</PreBuildEvent>
+xcopy /i /s /y "$(SolutionDir)Languages" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Languages\"
+xcopy /i /s /y "$(SolutionDir)Defs" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Defs\"</PreBuildEvent>
   </PropertyGroup>
 </Project>

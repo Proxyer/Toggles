@@ -6,28 +6,27 @@ using Verse;
 
 namespace Toggles.Patches
 {
+    // Toggles links from being shown on the start screen and pause menu.
     [HarmonyPatch(typeof(ListableOption_WebLink))]
     [HarmonyPatch("DrawOption")]
     [HarmonyPatch(new[] { typeof(Vector2), typeof(float) })]
     class ListableOption_WebLink_Patch
     {
-        internal ListableOption_WebLink_Patch() => InitToggles();
-
-        static void InitToggles()
+        internal ListableOption_WebLink_Patch()
         {
-            foreach (string link in EntryLinks)
-                ToggleFactory.Add(
-                        label: GetLabel(link, ProgramState.Entry),
-                        root: ButtonCat.StartScreen,
-                        group: ButtonCat.LinksEntry
-                        );
+            EntryLinks
+                .ForEach(link => ToggleManager.Add(
+                    label: Format(link, ProgramState.Entry),
+                    root: ButtonCat.StartScreen,
+                    group: ButtonCat.LinksEntry
+                    ));
 
-            foreach (string link in PlayLinks)
-                ToggleFactory.Add(
-                        label: GetLabel(link, ProgramState.Playing),
-                        root: ButtonCat.PauseScreen,
-                        group: ButtonCat.LinksPlay
-                        );
+            PlayLinks
+                .ForEach(link => ToggleManager.Add(
+                    label: Format(link, ProgramState.Playing),
+                    root: ButtonCat.PauseScreen,
+                    group: ButtonCat.LinksPlay
+                    ));
         }
 
         static List<string> EntryLinks { get; } = new List<string>
@@ -54,7 +53,7 @@ namespace Toggles.Patches
             { "TynansTwitter" }
         };
 
-        static string GetLabel(string option, ProgramState state)
+        static string Format(string option, ProgramState state)
         {
             string preLabel = string.Empty;
             if (state == ProgramState.Entry)
@@ -62,12 +61,10 @@ namespace Toggles.Patches
             else if (state == ProgramState.Playing)
                 preLabel = ButtonCat.LinksPlay;
 
-            return $"{preLabel}_{StringUtil.Conform(option)}";
+            return $"{preLabel}_{StringUtil.Sanitize(option)}";
         }
 
-        static bool Prefix(ListableOption_WebLink __instance)
-        {
-            return ToggleHandler.IsActive(GetLabel(__instance.label, Current.ProgramState));
-        }
+        // Stops the link from being drawn if setting is inactive.
+        static bool Prefix(ListableOption_WebLink __instance) => ToggleManager.IsActive(Format(__instance.label, Current.ProgramState));
     }
 }

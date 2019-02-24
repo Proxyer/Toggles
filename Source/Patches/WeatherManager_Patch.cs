@@ -5,27 +5,22 @@ using UnityEngine;
 
 namespace Toggles.Patches
 {
+    // Toggles the weather readout on the HUD.
     [HarmonyPatch(typeof(WeatherManager))]
     [HarmonyPatch("DoWeatherGUI")]
     [HarmonyPatch(new[] { typeof(Rect) })]
     class WeatherManager_Patch
     {
-        internal WeatherManager_Patch() => InitToggles();
+        internal WeatherManager_Patch() =>
+            ToggleManager.Add(
+                label: Label,
+                root: ButtonCat.PlayScreen,
+                group: ButtonCat.HUD
+                );
 
-        static void InitToggles()
-        {
-            ToggleFactory.Add(
-                    label: GetLabel(),
-                    root: ButtonCat.PlayScreen,
-                    group: ButtonCat.HUD
-                    );
-        }
+        static string Label => $"{ButtonCat.HUD}_Weather";
 
-        static string GetLabel() => ButtonCat.HUD + "_Weather";
-
-        static bool Prefix()
-        {
-            return ToggleHandler.IsActive(GetLabel());
-        }
+        // Stops the weather readout from being drawn if setting is inactive.
+        static bool Prefix() => ToggleManager.IsActive(Label);
     }
 }

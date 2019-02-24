@@ -4,29 +4,21 @@ using Toggles.Source;
 
 namespace Toggles.Patches
 {
+    // Toggles the resource readout on the HUD.
     [HarmonyPatch(typeof(ResourceReadout))]
     [HarmonyPatch("ResourceReadoutOnGUI")]
     class ResourceReadout_Patch
     {
-        internal ResourceReadout_Patch() => InitToggles();
+        internal ResourceReadout_Patch() =>
+            ToggleManager.Add(
+                label: Format(),
+                root: ButtonCat.PlayScreen,
+                group: ButtonCat.HUD
+                );
 
-        static void InitToggles()
-        {
-            ToggleFactory.Add(
-                    label: GetLabel(),
-                    root: ButtonCat.PlayScreen,
-                    group: ButtonCat.HUD
-                    );
-        }
+        static string Format() => $"{ButtonCat.HUD}_ResourceReadout";
 
-        static string GetLabel()
-        {
-            return ButtonCat.HUD + "_ResourceReadout";
-        }
-
-        static bool Prefix()
-        {
-            return ToggleHandler.IsActive(GetLabel());
-        }
+        // Stops the resource readout from being drawn if setting is inactive.
+        static bool Prefix() => ToggleManager.IsActive(Format());
     }
 }

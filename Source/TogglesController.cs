@@ -5,21 +5,27 @@ using Verse;
 
 namespace Toggles.Source
 {
+    // Controls the initialization flow of the mod.
     [StaticConstructorOnStartup]
     class TogglesController
     {
         static TogglesController()
         {
+            InitTextures();
             InitPatches();
             InitToggles();
             InitSettings();
         }
 
+        static void InitTextures() => Constants.InitTextures();
+
         static void InitSettings()
         {
-            Mod_Toggles.ModInstance.InitSettings();
+            Mod_Toggles mod = (Mod_Toggles)LoadedModManager.GetMod(typeof(Mod_Toggles));
+            mod.InitSettings();
         }
 
+        // Constructs all patch instances, which initializes all respective toggles.
         static void InitToggles()
         {
             new ListableOption_Patch();
