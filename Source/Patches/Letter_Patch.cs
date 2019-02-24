@@ -14,14 +14,15 @@ namespace Toggles.Patches
         internal Letter_Patch()
         {
             InitToggles();
-            //customLetter = new LetterManager();
         }
 
-        static LetterManager customLetter;
+        internal static List<string> customLetters;
 
-        internal static List<string> customLetters = new List<string>();
-
-        internal static List<string> CustomLetters { get => customLetters; set => customLetters = value; }
+        internal static List<string> CustomLetters
+        {
+            get => customLetters ?? new List<string>();
+            set => customLetters = value;
+        }
 
         static string GetDefLabel(string letter) => ButtonCat.Letters + "_" + letter;
 
@@ -74,10 +75,10 @@ namespace Toggles.Patches
         }
 
         internal static List<string> LoggedLetters =>
-            Find.Archive.ArchivablesListForReading
+
+        Find.Archive.ArchivablesListForReading
                     .Where(x => x is Letter)
                     .Select(z => z.ArchivedLabel)
-                    .Where(x => !ToggleHandler.Toggles.Exists(z => z.Label.Equals(GetCustomLabel(x))))
-                    .ToList().ListFullCopy();
+                    .Where(x => !ToggleHandler.Exists(GetCustomLabel(x))).ToList();
     }
 }
