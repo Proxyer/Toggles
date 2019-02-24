@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Toggles.Patches;
 using Verse;
 
 namespace Toggles
@@ -34,6 +35,12 @@ namespace Toggles
         {
             Toggles.RemoveAll(x => x.Label.Equals(label));
             ToggleActive.Remove(label);
+        }
+
+        internal static void Reset()
+        {
+            Letter_Patch.RemoveCustomLetters();
+            Toggles.ForEach(x => x.active = true);
         }
     }
 }

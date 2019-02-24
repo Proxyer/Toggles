@@ -103,4 +103,7 @@
 xcopy /i /s /y "$(SolutionDir)Languages" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Languages\"
 xcopy /i /s /y "$(SolutionDir)Defs" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Defs\"</PreBuildEvent>
   </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /i /s /y "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Assemblies" "$(SolutionDir)Assemblies\"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

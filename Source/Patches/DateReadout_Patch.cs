@@ -15,10 +15,10 @@ namespace Toggles.Patches
             ToggleManager.Add(
                 label: Label,
                 root: ButtonCat.PlayScreen,
-                group: ButtonCat.HUD
+                group: ButtonCat.Readouts
                 );
 
-        static string Label => $"{ButtonCat.HUD}_Date";
+        static string Label => $"{ButtonCat.Readouts}_Date";
 
         // Stops the date from being drawn if setting is inactive.
         static bool Prefix() => ToggleManager.IsActive(Label);

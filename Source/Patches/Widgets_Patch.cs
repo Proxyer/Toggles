@@ -15,10 +15,10 @@ namespace Toggles.Patches
             ToggleManager.Add(
                 label: Label,
                 root: ButtonCat.StartScreen,
-                group: ButtonCat.MiscellaneousEntry
+                group: ButtonCat.MiscEntry
                 );
 
-        static string Label => $"{ButtonCat.MiscellaneousEntry}_MainPageCredit";
+        static string Label => $"{ButtonCat.MiscEntry}_MainPageCredit";
 
         // Stops the credits label from being drawn if setting is inactive.
         static bool Prefix(string label) => label.Equals("MainPageCredit".Translate()) ? ToggleManager.IsActive(Label) : true;

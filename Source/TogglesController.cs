@@ -1,4 +1,5 @@
 ﻿using Harmony;
+using RimWorld;
 using System.Reflection;
 using Toggles.Patches;
 using Verse;
@@ -19,11 +20,10 @@ namespace Toggles
 
         static void InitTextures() => Constants.InitTextures();
 
-        static void InitSettings()
-        {
-            Mod_Toggles mod = (Mod_Toggles)LoadedModManager.GetMod(typeof(Mod_Toggles));
-            mod.InitSettings();
-        }
+        static void InitSettings() =>
+            ((Mod_Toggles)LoadedModManager
+                .GetMod(typeof(Mod_Toggles)))
+                .InitSettings();
 
         // Constructs all patch instances, which initializes all respective toggles.
         static void InitToggles()
@@ -47,9 +47,8 @@ namespace Toggles
             new IncidentWorker_Patch();
         }
 
-        static void InitPatches()
-        {
-            HarmonyInstance.Create(Constants.ModName).PatchAll(Assembly.GetExecutingAssembly());
-        }
+        static void InitPatches() =>
+            HarmonyInstance.Create(Constants.ModName)
+                .PatchAll(Assembly.GetExecutingAssembly());
     }
 }

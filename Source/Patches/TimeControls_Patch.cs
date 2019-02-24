@@ -19,10 +19,10 @@ namespace Toggles.Patches
             ToggleManager.Add(
                 label: Format(),
                 root: ButtonCat.PlayScreen,
-                group: ButtonCat.HUD
+                group: ButtonCat.Misc
                 );
 
-        static string Format() => $"{ButtonCat.HUD}_TimeControls";
+        static string Format() => $"{ButtonCat.Misc}_TimeControls";
 
         // Proxy method for showing the time control buttons.
         static bool ButtonImage_Proxy(Rect rect, Texture2D tex) =>

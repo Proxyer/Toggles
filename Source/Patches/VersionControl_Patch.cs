@@ -15,13 +15,13 @@ namespace Toggles.Patches
             ToggleManager.Add(
                     label: Format(Label, ProgramState.Entry),
                     root: ButtonCat.StartScreen,
-                    group: ButtonCat.MiscellaneousEntry
+                    group: ButtonCat.MiscEntry
                     );
 
             ToggleManager.Add(
                     label: Format(Label, ProgramState.Playing),
                     root: ButtonCat.PauseScreen,
-                    group: ButtonCat.MiscellaneousPlay
+                    group: ButtonCat.MiscPlay
                     );
         }
 
@@ -29,9 +29,9 @@ namespace Toggles.Patches
         {
             string preLabel = string.Empty;
             if (state == ProgramState.Entry)
-                preLabel = ButtonCat.MiscellaneousEntry;
+                preLabel = ButtonCat.MiscEntry;
             else if (state == ProgramState.Playing)
-                preLabel = ButtonCat.MiscellaneousPlay;
+                preLabel = ButtonCat.MiscPlay;
 
             return $"{preLabel}_{label}";
         }

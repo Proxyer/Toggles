@@ -1,5 +1,4 @@
-﻿using RimWorld;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Toggles.Patches;
 using Toggles.Source;
@@ -35,7 +34,7 @@ namespace Toggles
             // Button for reset.
             Rect resetRect = new Rect(0f, mainRect.height + 40f, 120f, 40f);
             if (Widgets.ButtonText(resetRect, "ResetButton".Translate(), true, false, true))
-                ToggleManager.Toggles.ForEach(x => x.active = true);
+                ToggleManager.Reset();
         }
 
         static void DoRight(Rect rightRect)
@@ -49,7 +48,7 @@ namespace Toggles
                 var rightView = new Listing_Toggles();
                 rightView.BeginListing(rightRect, ref scrollPositionRight, rightY);
 
-                rightView.CustomLabel("      Received letters");
+                rightView.CustomLabel("LoggedLetters".Translate());
 
                 foreach (string letter in loggedLetters)
                     if (rightView.CustomButtonText(letter))
@@ -67,8 +66,11 @@ namespace Toggles
             var middleView = new Listing_Toggles();
             middleView.BeginListing(middleRect, ref scrollPositionMiddle, middleY);
 
-            bool optionsEntryFlag = ToggleManager.IsActive("EntryOptions");
-            bool optionsPlayFlag = ToggleManager.IsActive("PlayOptions");
+            // Establishes references for checking if Option buttons are disabled further down.
+            string optionsEntryButton = "ButtonsEntry_Options";
+            string optionsPlayButton = "ButtonsPlay_Options";
+            bool optionsEntryFlag = ToggleManager.IsActive(optionsEntryButton);
+            bool optionsPlayFlag = ToggleManager.IsActive(optionsPlayButton);
 
             // Draw multi picker.
             // Only show if any button has been clicked at start.
@@ -104,8 +106,8 @@ namespace Toggles
                 middleView.CheckboxLabeled(toggle.PrettyLabel, ref toggle.active);
 
             // Opens confirmation window if user has deactivated the Options button.
-            CheckOptionsActive("Toggles_Entry_Buttons_Options", optionsEntryFlag);
-            CheckOptionsActive("Toggles_Play_Buttons_Options", optionsPlayFlag);
+            CheckOptionsActive(optionsEntryButton, optionsEntryFlag);
+            CheckOptionsActive(optionsPlayButton, optionsPlayFlag);
 
             middleView.EndListing();
         }
@@ -113,7 +115,6 @@ namespace Toggles
         static void DoLeft(Rect leftRect)
         {
             List<string> rootMembers = ToggleManager.Toggles.Select(x => x.Root).Distinct().ToList();
-            //List<string> groupMembers = ToggleHandler.Toggles.Select(x => x.Group).Distinct().ToList();
             float leftY = (rootMembers.Count() + 14) * 30f;
 
             var leftView = new Listing_Toggles();
@@ -133,17 +134,6 @@ namespace Toggles
                     GUI.color = DefaultColor;
                 }
                 leftView.Gap();
-            }
-
-            //-------------------------------------
-            if (leftView.ButtonText("DEBUG"))
-            {
-                Log.Message("Archive read:");
-                List<IArchivable> archivablesListForReading = Find.Archive.ArchivablesListForReading;
-                foreach (var v in archivablesListForReading.Where(x => x is Letter))
-                {
-                    Log.Message(v.ArchivedLabel);
-                }
             }
 
             leftView.EndListing();

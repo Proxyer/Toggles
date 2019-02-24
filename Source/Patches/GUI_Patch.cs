@@ -18,7 +18,7 @@ namespace Toggles.Patches
                     ToggleManager.Add(
                         label: Format(element),
                         root: ButtonCat.StartScreen,
-                        group: ButtonCat.MiscellaneousEntry
+                        group: ButtonCat.MiscEntry
                         ));
 
         static List<string> Elements { get; } = new List<string>
@@ -28,7 +28,7 @@ namespace Toggles.Patches
             "LangIcon"
         };
 
-        static string Format(string input) => $"{ButtonCat.MiscellaneousEntry}_{input}";
+        static string Format(string input) => $"{ButtonCat.MiscEntry}_{input}";
 
         // Replaces the texture of images with empty if the corresponding setting is inactive.
         static bool Prefix(Rect position, ref Texture image)

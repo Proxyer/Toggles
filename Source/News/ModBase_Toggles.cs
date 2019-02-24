@@ -4,7 +4,7 @@ namespace Toggles.News
 {
     class ModBase_Toggles : ModBase
     {
-        public override string ModIdentifier => Constants.ModID;
+        public override string ModIdentifier => Constants.ModName;
 
         protected override bool HarmonyAutoPatch => false;
     }

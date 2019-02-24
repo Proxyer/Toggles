@@ -2,87 +2,89 @@
 <LanguageData>
 
   <!--Windows-->
-  <DeactivateOptions>You are about to deactive the 'Options'-button.
-  \n\nIf you do, you won't be able to reenter these mod settings and reactivate it. You will need to deactive the mod or change the config file.
-  \n\nAre you sure you want to deactivate it?</DeactivateOptions>
+  <DeactivateOptions>
+    \nYou are about to deactive the 'Options'-button.
+    \n\nIf you do, you won't be able to reenter these mod settings and reactivate it. You will need to deactive the mod or change the config file.
+    \n\nAre you sure you want to deactivate it?
+  </DeactivateOptions>
+
+  <LoggedLetters>Logged Letters</LoggedLetters>
 
   <!--StartScreen Buttons-->
-  <Toggles_Entry_Buttons_Tutorial>Tutorial</Toggles_Entry_Buttons_Tutorial>
-  <Toggles_Entry_Buttons_NewColony>New Colony</Toggles_Entry_Buttons_NewColony>
-  <Toggles_Entry_Buttons_LoadGame>Load Game</Toggles_Entry_Buttons_LoadGame>
-  <Toggles_Entry_Buttons_Options>Options</Toggles_Entry_Buttons_Options>
-  <Toggles_Entry_Buttons_SaveTranslationReport>Save Translation Report</Toggles_Entry_Buttons_SaveTranslationReport>
-  <Toggles_Entry_Buttons_Mods>Mods</Toggles_Entry_Buttons_Mods>
-  <Toggles_Entry_Buttons_Credits>Credits</Toggles_Entry_Buttons_Credits>
-  <Toggles_Entry_Buttons_QuitToOS>Quit To OS</Toggles_Entry_Buttons_QuitToOS>
+  <ButtonsEntry_Tutorial>Tutorial</ButtonsEntry_Tutorial>
+  <ButtonsEntry_NewColony>New Colony</ButtonsEntry_NewColony>
+  <ButtonsEntry_LoadGame>Load Game</ButtonsEntry_LoadGame>
+  <ButtonsEntry_Options>Options</ButtonsEntry_Options>
+  <ButtonsEntry_SaveTranslationReport>Save Translation Report</ButtonsEntry_SaveTranslationReport>
+  <ButtonsEntry_Mods>Mods</ButtonsEntry_Mods>
+  <ButtonsEntry_Credits>Credits</ButtonsEntry_Credits>
+  <ButtonsEntry_QuitToOS>Quit To OS</ButtonsEntry_QuitToOS>
 
   <!--StartScreen Links-->
-  <Toggles_Entry_Links_BuySoundtrack>Soundtrack</Toggles_Entry_Links_BuySoundtrack>
-  <Toggles_Entry_Links_TynansDesignBook>Design Book</Toggles_Entry_Links_TynansDesignBook>
-  <Toggles_Entry_Links_FictionPrimer>Fiction Primer</Toggles_Entry_Links_FictionPrimer>
-  <Toggles_Entry_Links_Forums>Forums</Toggles_Entry_Links_Forums>
-  <Toggles_Entry_Links_LudeonBlog>Ludeon Blog</Toggles_Entry_Links_LudeonBlog>
-  <Toggles_Entry_Links_OfficialWiki>Official Wiki</Toggles_Entry_Links_OfficialWiki>
-  <Toggles_Entry_Links_HelpTranslateRimWorld>Help Translate RimWorld</Toggles_Entry_Links_HelpTranslateRimWorld>
-  <Toggles_Entry_Links_TynansTwitter>Tynan's Twitter</Toggles_Entry_Links_TynansTwitter>
+  <LinksEntry_BuySoundtrack>Soundtrack</LinksEntry_BuySoundtrack>
+  <LinksEntry_TynansDesignBook>Design Book</LinksEntry_TynansDesignBook>
+  <LinksEntry_FictionPrimer>Fiction Primer</LinksEntry_FictionPrimer>
+  <LinksEntry_Forums>Forums</LinksEntry_Forums>
+  <LinksEntry_LudeonBlog>Ludeon Blog</LinksEntry_LudeonBlog>
+  <LinksEntry_OfficialWiki>Official Wiki</LinksEntry_OfficialWiki>
+  <LinksEntry_HelpTranslateRimWorld>Help Translate RimWorld</LinksEntry_HelpTranslateRimWorld>
+  <LinksEntry_TynansTwitter>Tynan's Twitter</LinksEntry_TynansTwitter>
 
   <!--StartScreen Misc-->
-  <Toggles_Entry_Miscellaneous_GameTitle>Game Title</Toggles_Entry_Miscellaneous_GameTitle>
-  <Toggles_Entry_Miscellaneous_LudeonLogoSmall>Ludeon Logo</Toggles_Entry_Miscellaneous_LudeonLogoSmall>
-  <Toggles_Entry_Miscellaneous_LangIcon>Language Icon</Toggles_Entry_Miscellaneous_LangIcon>
-  <Toggles_Entry_Miscellaneous_Background>Background</Toggles_Entry_Miscellaneous_Background>
-  <Toggles_Entry_Miscellaneous_VersionControl>Version Control</Toggles_Entry_Miscellaneous_VersionControl>
-  <Toggles_Entry_Miscellaneous_MainPageCredit>Credit Text</Toggles_Entry_Miscellaneous_MainPageCredit>
+  <MiscEntry_GameTitle>Game Title</MiscEntry_GameTitle>
+  <MiscEntry_LudeonLogoSmall>Ludeon Logo</MiscEntry_LudeonLogoSmall>
+  <MiscEntry_LangIcon>Language Icon</MiscEntry_LangIcon>
+  <MiscEntry_Background>Background</MiscEntry_Background>
+  <MiscEntry_VersionControl>Version Control</MiscEntry_VersionControl>
+  <MiscEntry_MainPageCredit>Credit Text</MiscEntry_MainPageCredit>
 
   <!--PauseScreen Buttons-->
-  <Toggles_Play_Buttons_Options>Options</Toggles_Play_Buttons_Options>
-  <Toggles_Play_Buttons_QuitToMainMenu>Quit To Main Menu</Toggles_Play_Buttons_QuitToMainMenu>
-  <Toggles_Play_Buttons_QuitToOS>Quit To OS</Toggles_Play_Buttons_QuitToOS>
-  <Toggles_Play_Buttons_ReviewScenario>Review Scenario</Toggles_Play_Buttons_ReviewScenario>
-  <Toggles_Play_Buttons_Save>Save</Toggles_Play_Buttons_Save>
-  <Toggles_Play_Buttons_LoadGame>Load Game</Toggles_Play_Buttons_LoadGame>
+  <ButtonsPlay_Options>Options</ButtonsPlay_Options>
+  <ButtonsPlay_QuitToMainMenu>Quit To Main Menu</ButtonsPlay_QuitToMainMenu>
+  <ButtonsPlay_QuitToOS>Quit To OS</ButtonsPlay_QuitToOS>
+  <ButtonsPlay_ReviewScenario>Review Scenario</ButtonsPlay_ReviewScenario>
+  <ButtonsPlay_Save>Save</ButtonsPlay_Save>
+  <ButtonsPlay_LoadGame>Load Game</ButtonsPlay_LoadGame>
 
   <!--PauseScreen Links-->
-  <Toggles_Play_Links_BuySoundtrack>Soundtrack</Toggles_Play_Links_BuySoundtrack>
-  <Toggles_Play_Links_TynansDesignBook>Design Book</Toggles_Play_Links_TynansDesignBook>
-  <Toggles_Play_Links_FictionPrimer>Fiction Primer</Toggles_Play_Links_FictionPrimer>
-  <Toggles_Play_Links_Forums>Forums</Toggles_Play_Links_Forums>
-  <Toggles_Play_Links_LudeonBlog>Ludeon Blog</Toggles_Play_Links_LudeonBlog>
-  <Toggles_Play_Links_OfficialWiki>Official Wiki</Toggles_Play_Links_OfficialWiki>
-  <Toggles_Play_Links_HelpTranslateRimWorld>Help Translate RimWorld</Toggles_Play_Links_HelpTranslateRimWorld>
-  <Toggles_Play_Links_TynansTwitter>Tynan's Twitter</Toggles_Play_Links_TynansTwitter>
+  <LinksPlay_BuySoundtrack>Soundtrack</LinksPlay_BuySoundtrack>
+  <LinksPlay_TynansDesignBook>Design Book</LinksPlay_TynansDesignBook>
+  <LinksPlay_FictionPrimer>Fiction Primer</LinksPlay_FictionPrimer>
+  <LinksPlay_Forums>Forums</LinksPlay_Forums>
+  <LinksPlay_LudeonBlog>Ludeon Blog</LinksPlay_LudeonBlog>
+  <LinksPlay_OfficialWiki>Official Wiki</LinksPlay_OfficialWiki>
+  <LinksPlay_HelpTranslateRimWorld>Help Translate RimWorld</LinksPlay_HelpTranslateRimWorld>
+  <LinksPlay_TynansTwitter>Tynan's Twitter</LinksPlay_TynansTwitter>
 
   <!--PauseScreen Misc-->
-  <Toggles_Play_Miscellaneous_VersionControl>Version Control</Toggles_Play_Miscellaneous_VersionControl>
+  <MiscEntry_VersionControl>Version Control</MiscEntry_VersionControl>
 
-  <!--PlayScreen HUD-->
-  <Toggles_HUD_ColonistBar>Colonist Bar</Toggles_HUD_ColonistBar>
-  <Toggles_HUD_Date>Date</Toggles_HUD_Date>
-  <Toggles_HUD_Temperature>Temperature</Toggles_HUD_Temperature>
-  <Toggles_HUD_MouseoverReadout>Mouseover Readout</Toggles_HUD_MouseoverReadout>
-  <Toggles_HUD_ResourceReadout>Resources</Toggles_HUD_ResourceReadout>
-  <Toggles_HUD_TimeControls>Time Controls</Toggles_HUD_TimeControls>
-  <Toggles_HUD_Weather>Weather</Toggles_HUD_Weather>
+  <!--PlayScreen Buttons-->
+  <ToggleButtons_ColonistBar>Colonist Bar</ToggleButtons_ColonistBar>
+  <ToggleButtons_TimeControls>Time Controls</ToggleButtons_TimeControls>
+  <ToggleButtons_LearningHelperToggle>Learning Helper</ToggleButtons_LearningHelperToggle>
+  <ToggleButtons_ZoneVisibilityToggle>Zone Visibility</ToggleButtons_ZoneVisibilityToggle>
+  <ToggleButtons_ShowBeautyToggle>Beauty</ToggleButtons_ShowBeautyToggle>
+  <ToggleButtons_ShowRoomStatsToggle>Room Stats</ToggleButtons_ShowRoomStatsToggle>
+  <ToggleButtons_ShowColonistBarToggle>Colonist Bar</ToggleButtons_ShowColonistBarToggle>
+  <ToggleButtons_ShowRoofOverlayToggle>Roof Overlay</ToggleButtons_ShowRoofOverlayToggle>
+  <ToggleButtons_AutoHomeAreaToggle>Auto-Home Area</ToggleButtons_AutoHomeAreaToggle>
+  <ToggleButtons_AutoRebuildToggle>Auto-Rebuild</ToggleButtons_AutoRebuildToggle>
+  <ToggleButtons_CategorizedResourceReadoutToggle>Categorized Resources</ToggleButtons_CategorizedResourceReadoutToggle>
 
-  <!--Letters-->
-  <Toggles_Letters_ThreatBig>Big Threat</Toggles_Letters_ThreatBig>
-  <Toggles_Letters_ThreatSmall>Small Threat</Toggles_Letters_ThreatSmall>
-  <Toggles_Letters_NegativeEvent>Negative Event</Toggles_Letters_NegativeEvent>
-  <Toggles_Letters_PositiveEvent>Positive Event</Toggles_Letters_PositiveEvent>
-  <Toggles_Letters_NeutralEvent>Neutral Event</Toggles_Letters_NeutralEvent>
-  <Toggles_Letters_Death>Death</Toggles_Letters_Death>
-  <Toggles_Letters_RansomDemand>Ransom</Toggles_Letters_RansomDemand>
+  <!--PlayScreen Readouts-->
+  <Readouts_Date>Date</Readouts_Date>
+  <Readouts_Temperature>Temperature</Readouts_Temperature>
+  <Readouts_MouseoverReadout>Mouseover Readout</Readouts_MouseoverReadout>
+  <Readouts_Weather>Weather</Readouts_Weather>
+  <Readouts_ResourceReadout>Resources</Readouts_ResourceReadout>
 
-  <!--Visibility Toggles-->
-  <Toggles_VisibilityToggles_LearningHelperToggle>Learning Helper</Toggles_VisibilityToggles_LearningHelperToggle>
-  <Toggles_VisibilityToggles_ZoneVisibilityToggle>Zone Visibility</Toggles_VisibilityToggles_ZoneVisibilityToggle>
-  <Toggles_VisibilityToggles_ShowBeautyToggle>Beauty</Toggles_VisibilityToggles_ShowBeautyToggle>
-  <Toggles_VisibilityToggles_ShowRoomStatsToggle>Room Stats</Toggles_VisibilityToggles_ShowRoomStatsToggle>
-  <Toggles_VisibilityToggles_ShowColonistBarToggle>Colonist Bar</Toggles_VisibilityToggles_ShowColonistBarToggle>
-  <Toggles_VisibilityToggles_ShowRoofOverlayToggle>Roof Overlay</Toggles_VisibilityToggles_ShowRoofOverlayToggle>
-  <Toggles_VisibilityToggles_AutoHomeAreaToggle>Auto-Home Area</Toggles_VisibilityToggles_AutoHomeAreaToggle>
-  <Toggles_VisibilityToggles_AutoRebuildToggle>Auto-Rebuild</Toggles_VisibilityToggles_AutoRebuildToggle>
-  <Toggles_VisibilityToggles_CategorizedResourceReadoutToggle>Categorized Resources</Toggles_VisibilityToggles_CategorizedResourceReadoutToggle>
-
-  <!--<Toggles_HUD_Weather>Weather</Toggles_HUD_Weather>-->
+  <!--Events Letters-->
+  <Letters_ThreatBig>Big Threat</Letters_ThreatBig>
+  <Letters_ThreatSmall>Small Threat</Letters_ThreatSmall>
+  <Letters_NegativeEvent>Negative Event</Letters_NegativeEvent>
+  <Letters_PositiveEvent>Positive Event</Letters_PositiveEvent>
+  <Letters_NeutralEvent>Neutral Event</Letters_NeutralEvent>
+  <Letters_Death>Death</Letters_Death>
+  <Letters_RansomDemand>Ransom</Letters_RansomDemand>
 </LanguageData>

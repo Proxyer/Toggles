@@ -13,10 +13,10 @@ namespace Toggles.Patches
             ToggleManager.Add(
                 label: Format(),
                 root: ButtonCat.PlayScreen,
-                group: ButtonCat.HUD
+                group: ButtonCat.Readouts
                 );
 
-        static string Format() => $"{ButtonCat.HUD}_ResourceReadout";
+        static string Format() => $"{ButtonCat.Readouts}_ResourceReadout";
 
         // Stops the resource readout from being drawn if setting is inactive.
         static bool Prefix() => ToggleManager.IsActive(Format());

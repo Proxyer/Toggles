@@ -13,10 +13,10 @@ namespace Toggles.Patches
             ToggleManager.Add(
                 label: Label,
                 root: ButtonCat.PlayScreen,
-                group: ButtonCat.HUD
+                group: ButtonCat.Misc
                 );
 
-        static string Label => $"{ButtonCat.HUD}_ColonistBar";
+        static string Label => $"{ButtonCat.Misc}_ColonistBar";
 
         // Adds vanilla toggle for Colonist Bar to the mod.
         static void Postfix(ref bool __result) => __result = ToggleManager.IsActive(Label);

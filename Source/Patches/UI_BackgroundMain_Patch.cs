@@ -13,10 +13,10 @@ namespace Toggles.Patches
             ToggleManager.Add(
                 label: Label,
                 root: ButtonCat.StartScreen,
-                group: ButtonCat.MiscellaneousEntry
+                group: ButtonCat.MiscEntry
                 );
 
-        static string Label => $"{ButtonCat.MiscellaneousEntry}_Background";
+        static string Label => $"{ButtonCat.MiscEntry}_Background";
 
         // Stops the background image from being drawn if setting is inactive.
         static bool Prefix() => ToggleManager.IsActive(Label);

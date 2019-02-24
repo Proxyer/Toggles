@@ -11,8 +11,9 @@
   <MiscPlay>Miscellaneous</MiscPlay>
   <PauseScreen>Pause Screen</PauseScreen>
   <PlayScreen>Play Screen</PlayScreen>
-  <VisibilityToggles>Visibility Toggles</VisibilityToggles>
-  <HUD>HUD</HUD>
+  <ToggleButtons>Toggle Buttons</ToggleButtons>
+  <Readouts>Readouts</Readouts>
+  <Misc>Miscellaneous</Misc>
   <Events>Events</Events>
   <Alerts>Alerts</Alerts>
   <Incidents>Incidents</Incidents>

@@ -5,5 +5,17 @@
   <supportedVersions>
     <li>1.0</li>
   </supportedVersions>
-  <description>Toggle Everything.</description>
+  <description>
+&lt;b&gt;Toggles Everything!&lt;/b&gt;
+Makes it possible to hide and suppress various events and graphical elements:
+ - &lt;i&gt;Incidents&lt;/i&gt;
+ - &lt;i&gt;Alerts&lt;/i&gt;
+ - &lt;i&gt;Letters&lt;/i&gt;
+ - &lt;i&gt;Buttons&lt;/i&gt;
+ - &lt;i&gt;Links&lt;/i&gt;
+ - &lt;i&gt;Etc&lt;/i&gt;
+
+&lt;b&gt;Dependencies&lt;/b&gt;
+ - HugsLib
+  </description>
 </ModMetaData>

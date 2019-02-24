@@ -22,7 +22,7 @@ namespace Toggles.Patches
                 ToggleManager.Add(
                     label: Format(label),
                     root: ButtonCat.PlayScreen,
-                    group: ButtonCat.ToggleIcons
+                    group: ButtonCat.ToggleButtons
                     );
         }
 
@@ -47,7 +47,7 @@ namespace Toggles.Patches
             {"CategorizedResourceReadoutToggleButton", "CategorizedResourceReadoutToggle" }
         };
 
-        static string Format(string label) => $"{ButtonCat.ToggleIcons}_{label}";
+        static string Format(string label) => $"{ButtonCat.ToggleButtons}_{label}";
 
         static MethodInfo _ToggleableIcon_Method { get; } = AccessTools.Method(typeof(WidgetRow), "ToggleableIcon", new Type[] { typeof(bool).MakeByRefType(), typeof(Texture2D), typeof(string), typeof(SoundDef), typeof(string) });
         static MethodInfo _ToggleableIcon_Proxy { get; } = AccessTools.Method(typeof(PlaySettings_Patch), "ToggleableIcon_Proxy", new Type[] { typeof(WidgetRow), typeof(bool).MakeByRefType(), typeof(Texture2D), typeof(string), typeof(SoundDef), typeof(string) });

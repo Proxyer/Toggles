@@ -25,6 +25,11 @@ namespace Toggles.Patches
             set => customLetters = value;
         }
 
+        // Remove all toggles based on custom letters.
+        internal static void RemoveCustomLetters() =>
+            CustomLetters
+                .ForEach(x => ToggleManager.Remove(FormatLabel(x)));
+
         // Adjusts strings to mod formats.
         static string Format(string letter) => $"{ButtonCat.Letters}_{letter}";
         static string FormatLabel(string letter) => Format(StringUtil.Sanitize(letter));

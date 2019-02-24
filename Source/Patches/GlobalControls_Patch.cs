@@ -13,10 +13,10 @@ namespace Toggles.Patches
             ToggleManager.Add(
                 label: Label,
                 root: ButtonCat.PlayScreen,
-                group: ButtonCat.HUD
+                group: ButtonCat.Readouts
                 );
 
-        static string Label => $"{ButtonCat.HUD}_Temperature";
+        static string Label => $"{ButtonCat.Readouts}_Temperature";
 
         // Stops the temperature from being drawn if setting is inactive.
         static string Postfix(string __result) => ToggleManager.IsActive(Label) ? __result : string.Empty;
