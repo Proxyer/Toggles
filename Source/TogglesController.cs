@@ -3,7 +3,7 @@ using System.Reflection;
 using Toggles.Patches;
 using Verse;
 
-namespace Toggles.Source
+namespace Toggles
 {
     // Controls the initialization flow of the mod.
     [StaticConstructorOnStartup]

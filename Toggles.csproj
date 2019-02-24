@@ -83,17 +83,17 @@
     <Compile Include="Source\Patches\Widgets_Patch.cs" />
     <Compile Include="Source\StringUtil.cs" />
     <Compile Include="Source\Toggle.cs" />
-    <Compile Include="Source\ToggleFactory.cs" />
     <Compile Include="Source\ToggleManager.cs" />
     <Compile Include="Source\Patches\PlaySettings_Patch.cs" />
     <Compile Include="Source\TogglesController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="About\About.xml" />
+    <Content Include="About\Preview.png" />
     <Content Include="Assemblies\0Harmony.dll" />
     <Content Include="Defs\UpdateFeatureDefs\UpdateFeatures.xml" />
     <Content Include="Languages\English\Keyed\ButtonCat.xml" />
-    <Content Include="log.txt" />
+    <Content Include="backlog.txt" />
     <Content Include="Languages\English\Keyed\Toggles.xml" />
   </ItemGroup>
   <ItemGroup />

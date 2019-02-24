@@ -1,6 +1,6 @@
 ﻿using HugsLib;
 
-namespace Toggles.Source.News
+namespace Toggles.News
 {
     class ModBase_Toggles : ModBase
     {
