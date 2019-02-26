@@ -13,7 +13,7 @@ namespace Toggles
         static TogglesController()
         {
             InitTextures();
-            InitPatches();
+            //InitPatches();
             InitToggles();
             InitSettings();
         }

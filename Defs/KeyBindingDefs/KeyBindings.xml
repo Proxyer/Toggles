@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<KeyBindingDef>
+		<category>TogglesHotkeys</category>
+		<defName>OpenTogglesSettings</defName>
+		<label>Toggle1Label</label>
+		<defaultKeyCodeA>F12</defaultKeyCodeA>
+	</KeyBindingDef>
+
+	<KeyBindingDef>
+		<category>TogglesHotkeys</category>
+		<defName>Toggle2</defName>
+		<label>Toggle2Label</label>
+	</KeyBindingDef>
+
+	<KeyBindingDef>
+		<category>TogglesHotkeys</category>
+		<defName>Toggle3</defName>
+		<label>Toggle3Label</label>
+	</KeyBindingDef>
+
+</Defs>
