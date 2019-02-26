@@ -1,4 +1,4 @@
-﻿namespace Toggles.Source
+﻿namespace Toggles
 {
     internal class ButtonCat
     {

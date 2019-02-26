@@ -5,14 +5,14 @@
 	<KeyBindingDef>
 		<category>TogglesHotkeys</category>
 		<defName>OpenTogglesSettings</defName>
-		<label>Toggle1Label</label>
+		<label>Open Settings</label>
 		<defaultKeyCodeA>F12</defaultKeyCodeA>
 	</KeyBindingDef>
 
 	<KeyBindingDef>
 		<category>TogglesHotkeys</category>
-		<defName>Toggle2</defName>
-		<label>Toggle2Label</label>
+		<defName>ToggleAlerts</defName>
+		<label>Toggle Alerts</label>
 	</KeyBindingDef>
 
 	<KeyBindingDef>

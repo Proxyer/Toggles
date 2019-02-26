@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Toggles.Patches;
+using Toggles.Source;
 using Verse;
 
 namespace Toggles
@@ -28,6 +31,11 @@ namespace Toggles
 
             Toggles.Add(toggle);
             ToggleActive.Add(label, toggle);
+        }
+
+        internal static void ToggleMany()
+        {
+            Toggles.Where(toggle => toggle.Group.Equals(ButtonCat.Alerts)).ToList().ForEach(x => x.active = !x.active);
         }
 
         // Removes toggle from settings.

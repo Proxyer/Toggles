@@ -1,15 +1,15 @@
-﻿using RimWorld;
-using Verse;
+﻿using System.Collections.Generic;
 
 namespace Toggles.Hotkeys
 {
-    [DefOf]
-    public static class KeyBindings
+    internal static class KeyBindings
     {
-        public static KeyBindingDef OpenTogglesSettings;
-
-        //public static KeyBindingDef OpenLogFile;
-
-        //public static KeyBindingDef RestartRimworld;
+        internal static List<string> KeyBindingGroups { get; } = new List<string>
+        {
+            "",
+            "Incident",
+            "Alert",
+            "Letter"
+        };
     }
 }

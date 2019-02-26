@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Toggles.Hotkeys;
 using Toggles.Patches;
 using Toggles.Source;
 using UnityEngine;
@@ -90,26 +92,45 @@ namespace Toggles
                     wasPartial = true;
                 }
 
-                state = Widgets.CheckboxMulti(multiRect, state);
+                state = middleView.MultiCheckBoxLabel(state, GetHotkeyFloatOptions(groupToggles), groupToggles.RandomElement().KeyGroup);
 
                 // If partial is clicked, it defaults to off. This workaround turns all on instead, by checking if it was partial before clicking.
                 if (state == MultiCheckboxState.On || (wasPartial && state == MultiCheckboxState.Off))
                     groupToggles.ForEach(x => x.active = true);
                 else if (state == MultiCheckboxState.Off)
                     groupToggles.ForEach(x => x.active = false);
-
-                middleView.Gap(24f);
             }
 
             // Draw toggles in middle view depending on what button is active in left view.
             foreach (Toggle toggle in groupToggles)
-                middleView.CheckboxLabeled(toggle.PrettyLabel, ref toggle.active);
+                middleView.CheckboxLabeled(toggle.PrettyLabel, toggle.KeyGroup, ref toggle.active, GetHotkeyFloatOptions(toggle));
 
             // Opens confirmation window if user has deactivated the Options button.
             CheckOptionsActive(optionsEntryButton, optionsEntryFlag);
             CheckOptionsActive(optionsPlayButton, optionsPlayFlag);
 
             middleView.EndListing();
+        }
+
+        static List<FloatMenuOption> GetHotkeyFloatOptions(Toggle toggle)
+        {
+            List<FloatMenuOption> list = new List<FloatMenuOption>();
+            foreach (string keyGroup in KeyBindings.KeyBindingGroups)
+                list.Add(new FloatMenuOption(keyGroup.Equals(string.Empty) ? "None" : keyGroup, delegate () { toggle.KeyGroup = keyGroup; }));
+
+            return list;
+        }
+
+        static List<FloatMenuOption> GetHotkeyFloatOptions(List<Toggle> toggles)
+        {
+            List<FloatMenuOption> list = new List<FloatMenuOption>();
+            foreach (string keyGroup in KeyBindings.KeyBindingGroups)
+                list.Add(new FloatMenuOption(keyGroup.Equals(string.Empty) ? "None" : keyGroup, delegate ()
+                {
+                    toggles.ForEach(toggle => toggle.KeyGroup = keyGroup);
+                }));
+
+            return list;
         }
 
         static void DoLeft(Rect leftRect)

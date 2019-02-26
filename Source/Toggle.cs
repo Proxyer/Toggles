@@ -17,6 +17,9 @@ namespace Toggles
         internal string Group { get; private set; }
         internal string Root { get; private set; }
 
+        internal string KeyGroup { get; set; } = string.Empty;
+        //internal string keyGroup = "None";
+
         internal string Label { get; private set; }
 
         // String for GUI purposes. Returns translation if available, otherwise beautified attempt.
