@@ -31,9 +31,9 @@ namespace Toggles
             ToggleActive.Add(label, toggle);
         }
 
-        internal static void ToggleMany()
+        internal static void ToggleMany(string hotkeyLabel)
         {
-            Toggles.Where(toggle => toggle.Group.Equals(ButtonCat.Alerts)).ToList().ForEach(x => x.active = !x.active);
+            Toggles.Where(toggle => toggle.KeyGroup.Equals(hotkeyLabel)).ToList().ForEach(x => x.active = !x.active);
         }
 
         // Removes toggle from settings.

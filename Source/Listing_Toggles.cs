@@ -6,24 +6,14 @@ using Verse.Sound;
 
 namespace Toggles
 {
-    // Set color, font, size, style, etc.
-
-    public class Listing_Toggles : Listing
+    internal class Listing_Toggles : Listing
     {
-        public Listing_Toggles()
+        internal Listing_Toggles()
         {
-            this.font = GameFont.Small;
+            font = GameFont.Small;
         }
 
-        //public void BeginScrollView(Rect rect, ref Vector2 scrollPosition, ref Rect viewRect)
-        //{
-        //Widgets.BeginScrollView(rect, ref scrollPosition, viewRect, true);
-        //    rect.height = 100000f;
-        //    rect.width -= 20f;
-        //    this.Begin(rect.AtZero());
-        //}
-
-        public void BeginListing(Rect rect, ref Vector2 scrollPosition, float height)
+        internal void BeginListing(Rect rect, ref Vector2 scrollPosition, float height)
         {
             Rect viewRect = new Rect(0f, 0f, rect.width - 16f, height);
             Widgets.BeginScrollView(rect, ref scrollPosition, viewRect, true);
@@ -33,13 +23,13 @@ namespace Toggles
             Text.Font = font;
         }
 
-        public void EndListing()
+        internal void EndListing()
         {
             Widgets.EndScrollView();
-            this.End();
+            End();
         }
 
-        public void CustomLabel(string label, float maxHeight = -1f, string tooltip = null)
+        internal void CustomLabel(string label, float maxHeight = -1f, string tooltip = null)
         {
             float num = Text.CalcHeight(label, base.ColumnWidth);
             bool flag = false;
@@ -66,7 +56,7 @@ namespace Toggles
             base.Gap(this.verticalSpacing);
         }
 
-        public void Label(string label, float maxHeight = -1f, string tooltip = null)
+        internal void Label(string label, float maxHeight = -1f, string tooltip = null)
         {
             float num = Text.CalcHeight(label, base.ColumnWidth);
             bool flag = false;
@@ -93,24 +83,17 @@ namespace Toggles
             base.Gap(this.verticalSpacing);
         }
 
-        // First entry from GUI.
-        public void CheckboxLabeled(string label, string keyGroup, ref bool checkOn, List<FloatMenuOption> floatMenuList = null)
+        internal void CheckboxLabeled(string label, string keyGroup, ref bool checkOn, List<FloatMenuOption> floatMenuList = null)
         {
             float lineHeight = Text.LineHeight;
-            Rect rect = base.GetRect(lineHeight);
+            Rect rect = GetRect(lineHeight);
 
-            ToggleCheckbox(rect, label, keyGroup, ref checkOn, floatMenuList);
-            base.Gap(this.verticalSpacing);
-        }
+            Gap(verticalSpacing);
 
-        // From widgets, painting checkboxlabeled.
-        public static void ToggleCheckbox(Rect rect, string label, string keyGroup, ref bool checkOn, List<FloatMenuOption> floatMenuList)
-        {
             TextAnchor anchor = Text.Anchor;
             Text.Anchor = TextAnchor.MiddleLeft;
 
             Widgets.Label(rect, label);
-            //Rect leftRectClickable = new Rect(rect.x, rect.y, rect.width - 48f, rect.height);
             Rect rightRectClickable = new Rect(rect.x + rect.width - 24f, rect.y, 24f, rect.height);
             if (Widgets.ButtonInvisible(rightRectClickable, false))
             {
@@ -125,22 +108,24 @@ namespace Toggles
                 }
             }
 
-            Color color = Widgets.NormalOptionColor;
-            Rect buttonRect = new Rect((rect.x + rect.width) - 96f, rect.y, 72f, 24f);
+            MakeFloatMenu(rect, keyGroup, floatMenuList);
 
-            bool flag = AnyPressed(ButtonText2(buttonRect, keyGroup, false, false, color, true, true));
-            if (flag)
-            {
-                if (!floatMenuList.NullOrEmpty())
-                    MakeFloatMenu(floatMenuList);
-            }
             CheckboxDraw(rect.x + rect.width - 24f, rect.y, checkOn, false, 24f, null, null);
             Text.Anchor = anchor;
         }
 
-        static void MakeFloatMenu(List<FloatMenuOption> list)
+        // FLOAT MENU
+        static void MakeFloatMenu(Rect rect, string keyGroup, List<FloatMenuOption> floatMenuList)
         {
-            Find.WindowStack.Add(new FloatMenu(list));
+            Color color = Widgets.NormalOptionColor;
+            Rect keyGroupRect = new Rect(rect.width * 2 / 3, rect.y, (rect.width / 3) - texSize.x, texSize.y);
+
+            bool pressed = KeyGroupButton(keyGroupRect, keyGroup, floatMenuList, color);
+            if (pressed)
+            {
+                if (!floatMenuList.NullOrEmpty())
+                    Find.WindowStack.Add(new FloatMenu(floatMenuList));
+            }
         }
 
         public static bool AnyPressed(Widgets.DraggableResult result)
@@ -148,10 +133,9 @@ namespace Toggles
             return result == Widgets.DraggableResult.Pressed || result == Widgets.DraggableResult.DraggedThenPressed;
         }
 
-        private static readonly Color InactiveColor = new Color(0.37f, 0.37f, 0.37f, 0.8f);
+        static readonly Color InactiveColor = new Color(0.37f, 0.37f, 0.37f, 0.8f);
 
-        // From widgets. draw.
-        private static void CheckboxDraw(float x, float y, bool active, bool disabled, float size = 24f, Texture2D texChecked = null, Texture2D texUnchecked = null)
+        static void CheckboxDraw(float x, float y, bool active, bool disabled, float size = 24f, Texture2D texChecked = null, Texture2D texUnchecked = null)
         {
             Color color = GUI.color;
             if (disabled)
@@ -175,122 +159,66 @@ namespace Toggles
             }
         }
 
-        // From Widgets. Actually ButtonTextWorker.
-        private static Widgets.DraggableResult ButtonText2(Rect rect, string label, bool drawBackground, bool doMouseoverSound, Color textColor, bool active, bool draggable)
+        static Vector2 texSize = new Vector2(24f, 24f);
+
+        internal MultiCheckboxState MultiCheckBoxLabel(MultiCheckboxState state, List<FloatMenuOption> floatMenuList, string keyGroup, bool paintable = false)
         {
-            if (doMouseoverSound)
+            float lineHeight = Text.LineHeight;
+            Rect rect = base.GetRect(lineHeight);
+            base.Gap(this.verticalSpacing);
+
+            Texture2D tex;
+            if (state == MultiCheckboxState.On)
+                tex = Widgets.CheckboxOnTex;
+            else if (state == MultiCheckboxState.Off)
+                tex = Widgets.CheckboxOffTex;
+            else
+                tex = Widgets.CheckboxPartialTex;
+
+            Color color = Widgets.NormalOptionColor;
+
+            // Checkbox
+            Rect texRect = new Rect(rect.width - texSize.x, rect.y, texSize.x, texSize.y);
+            MouseoverSounds.DoRegion(texRect);
+
+            // KeyGroup Button
+            MakeFloatMenu(rect, keyGroup, floatMenuList);
+
+            MultiCheckboxState stateCheck = (state != MultiCheckboxState.Off) ? MultiCheckboxState.Off : MultiCheckboxState.On;
+
+            if (AnyPressed(Widgets.ButtonImageDraggable(texRect, tex)))
             {
-                MouseoverSounds.DoRegion(rect);
+                if (stateCheck == MultiCheckboxState.On)
+                    SoundDefOf.Checkbox_TurnedOn.PlayOneShotOnCamera(null);
+                else
+                    SoundDefOf.Checkbox_TurnedOff.PlayOneShotOnCamera(null);
+                return stateCheck;
             }
+            return state;
+        }
+
+        static bool KeyGroupButton(Rect rect, string keyGroup, List<FloatMenuOption> floatMenuList, Color textColor)
+        {
+            MouseoverSounds.DoRegion(rect);
+
             Texture2D atlas = Widgets.ButtonSubtleAtlas;
-            //Widgets.DrawAtlas(rect, atlas);
 
             Color color = GUI.color;
             GUI.color = textColor;
+
             if (Mouse.IsOver(rect))
-            {
-                //GUI.color = Widgets.MouseoverOptionColor;
                 Widgets.DrawAtlas(rect, atlas);
-            }
 
             TextAnchor anchor = Text.Anchor;
             Text.Anchor = TextAnchor.MiddleRight;
 
-            bool wordWrap = Text.WordWrap;
-            if (rect.height < Text.LineHeight * 2f)
-            {
-                Text.WordWrap = false;
-            }
-            Widgets.Label(rect, label);
+            Widgets.Label(rect, keyGroup);
             Text.Anchor = anchor;
             GUI.color = color;
-            Text.WordWrap = wordWrap;
-            if (active && draggable)
-            {
-                return Widgets.ButtonInvisibleDraggable(rect, false);
-            }
-            if (active)
-            {
-                return (!Widgets.ButtonInvisible(rect, false)) ? Widgets.DraggableResult.Idle : Widgets.DraggableResult.Pressed;
-            }
-            return Widgets.DraggableResult.Idle;
-        }
 
-        public MultiCheckboxState MultiCheckBoxLabel(MultiCheckboxState state, List<FloatMenuOption> floatMenuList, string keyGroup = "")
-        {
-            float lineHeight = Text.LineHeight;
-            Rect rect = base.GetRect(lineHeight);
+            Widgets.DraggableResult result = (!Widgets.ButtonInvisible(rect, false)) ? Widgets.DraggableResult.Idle : Widgets.DraggableResult.Pressed;
 
-            base.Gap(this.verticalSpacing);
-            return CheckboxMulti(rect, state, floatMenuList, keyGroup);
-        }
-
-        public static MultiCheckboxState CheckboxMulti(Rect rect, MultiCheckboxState state, List<FloatMenuOption> floatMenuList, string keyGroup, bool paintable = false)
-        {
-            bool checkboxPainting = false;
-            bool checkboxPaintingState = false;
-
-            Texture2D tex;
-            if (state == MultiCheckboxState.On)
-            {
-                tex = Widgets.CheckboxOnTex;
-            }
-            else if (state == MultiCheckboxState.Off)
-            {
-                tex = Widgets.CheckboxOffTex;
-            }
-            else
-            {
-                tex = Widgets.CheckboxPartialTex;
-            }
-
-            // Test Rect for the tex itself, instead of entire label elements.
-            Rect texRect = new Rect(rect.x + rect.width - 24f, rect.y, 24f, 24f);
-            Color color = Widgets.NormalOptionColor;
-            Rect buttonRect = new Rect((rect.x + rect.width) - 96f, rect.y, 72f, 24f);
-
-            bool pressed = AnyPressed(ButtonText2(buttonRect, keyGroup, false, false, color, true, true));
-            if (pressed)
-            {
-                if (!floatMenuList.NullOrEmpty())
-                    MakeFloatMenu(floatMenuList);
-            }
-
-            MouseoverSounds.DoRegion(texRect);
-            MultiCheckboxState multiCheckboxState = (state != MultiCheckboxState.Off) ? MultiCheckboxState.Off : MultiCheckboxState.On;
-            bool flag = false;
-            Widgets.DraggableResult draggableResult = Widgets.ButtonImageDraggable(texRect, tex);
-            if (paintable && draggableResult == Widgets.DraggableResult.Dragged)
-            {
-                checkboxPainting = true;
-                checkboxPaintingState = (multiCheckboxState == MultiCheckboxState.On);
-                flag = true;
-            }
-            else if (AnyPressed(draggableResult))
-            {
-                flag = true;
-            }
-            else if (paintable && checkboxPainting && Mouse.IsOver(texRect))
-            {
-                multiCheckboxState = ((!checkboxPaintingState) ? MultiCheckboxState.Off : MultiCheckboxState.On);
-                if (state != multiCheckboxState)
-                {
-                    flag = true;
-                }
-            }
-            if (flag)
-            {
-                if (multiCheckboxState == MultiCheckboxState.On)
-                {
-                    SoundDefOf.Checkbox_TurnedOn.PlayOneShotOnCamera(null);
-                }
-                else
-                {
-                    SoundDefOf.Checkbox_TurnedOff.PlayOneShotOnCamera(null);
-                }
-                return multiCheckboxState;
-            }
-            return state;
+            return result == Widgets.DraggableResult.Pressed || result == Widgets.DraggableResult.DraggedThenPressed;
         }
 
         public bool ButtonText(string label, string highlightTag = null)

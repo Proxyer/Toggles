@@ -2,23 +2,40 @@
 
 <Defs>
 
+  <KeyBindingCategoryDef>
+    <defName>TogglesHotkeys</defName>
+    <label>Toggles</label>
+    <description>Hotkeys for Toggles</description>
+  </KeyBindingCategoryDef>
+
 	<KeyBindingDef>
 		<category>TogglesHotkeys</category>
-		<defName>OpenTogglesSettings</defName>
-		<label>Open Settings</label>
-		<defaultKeyCodeA>F12</defaultKeyCodeA>
+		<defName>ToggleOneDef</defName>
+		<label>Toggle One</label>
 	</KeyBindingDef>
 
 	<KeyBindingDef>
 		<category>TogglesHotkeys</category>
-		<defName>ToggleAlerts</defName>
-		<label>Toggle Alerts</label>
+		<defName>ToggleTwoDef</defName>
+		<label>Toggle Two</label>
 	</KeyBindingDef>
 
 	<KeyBindingDef>
 		<category>TogglesHotkeys</category>
-		<defName>Toggle3</defName>
-		<label>Toggle3Label</label>
+		<defName>ToggleThreeDef</defName>
+		<label>Toggle Three</label>
+	</KeyBindingDef>
+	
+	<KeyBindingDef>
+		<category>TogglesHotkeys</category>
+		<defName>ToggleFourDef</defName>
+		<label>Toggle Four</label>
+	</KeyBindingDef>
+
+	<KeyBindingDef>
+		<category>TogglesHotkeys</category>
+		<defName>ToggleFiveDef</defName>
+		<label>Toggle Five</label>
 	</KeyBindingDef>
 
 </Defs>

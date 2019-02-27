@@ -63,11 +63,10 @@
     <Compile Include="Source\DebugUtility.cs" />
     <Compile Include="Source\Dialog_Settings.cs" />
     <Compile Include="Source\Hotkeys\KeyBindingHandler.cs" />
-    <Compile Include="Source\Hotkeys\KeyBindings.cs" />
     <Compile Include="Source\Listing_Toggles.cs" />
     <Compile Include="Source\ModSettings_Toggles.cs" />
     <Compile Include="Source\Mod_Toggles.cs" />
-    <Compile Include="Source\News\ModBase_Toggles.cs" />
+    <Compile Include="Source\ModBase_Toggles.cs" />
     <Compile Include="Source\Patches\AlertsReadout_Patch.cs" />
     <Compile Include="Source\Patches\ColonistBar_Patch.cs" />
     <Compile Include="Source\Patches\DateReadout_Patch.cs" />
@@ -96,7 +95,6 @@
     </Content>
     <Content Include="About\Preview.png" />
     <Content Include="Assemblies\0Harmony.dll" />
-    <Content Include="Defs\KeyBindingCategoryDefs\KeyBindingCategories.xml" />
     <Content Include="Defs\KeyBindingDefs\KeyBindings.xml" />
     <Content Include="Defs\UpdateFeatureDefs\UpdateFeatures.xml" />
     <Content Include="Languages\English\Keyed\ButtonCat.xml" />

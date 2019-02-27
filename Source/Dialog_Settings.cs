@@ -11,7 +11,7 @@ namespace Toggles
     internal static class Dialog_Settings
     {
         static string ActiveGroup { get; set; } = string.Empty;
-        static Dictionary<string, bool> RefChanged { get; set; }
+
         static Color ClickedColor { get; } = new Color(0.55f, 1f, 0.55f);
         static Color DefaultColor { get; } = GUI.color;
 
@@ -94,6 +94,8 @@ namespace Toggles
                 string keyGroup = string.Empty;
                 if (groupToggles.Distinct().Skip(1).All(x => x.KeyGroup.Equals(groupToggles.First().KeyGroup)))
                     keyGroup = groupToggles.First().KeyGroup;
+                //else if (!groupToggles.All(x => groupToggles.First().KeyGroup.Equals(x.KeyGroup)))
+                //    keyGroup = "______";
 
                 state = middleView.MultiCheckBoxLabel(state, GetHotkeyFloatOptions(groupToggles), keyGroup);
 
@@ -118,8 +120,9 @@ namespace Toggles
         static List<FloatMenuOption> GetHotkeyFloatOptions(Toggle toggle)
         {
             List<FloatMenuOption> list = new List<FloatMenuOption>();
-            foreach (string keyGroup in KeyBindings.KeyBindingGroups)
-                list.Add(new FloatMenuOption(keyGroup.Equals(string.Empty) ? "None" : keyGroup, delegate () { toggle.KeyGroup = keyGroup; }));
+            list.Add(new FloatMenuOption("None", delegate () { toggle.KeyGroup = ""; }));
+            foreach (string keyGroup in KeyBindingHandler.Hotkeys.Select(x => x.label))
+                list.Add(new FloatMenuOption(keyGroup, delegate () { toggle.KeyGroup = keyGroup; }));
 
             return list;
         }
@@ -127,8 +130,12 @@ namespace Toggles
         static List<FloatMenuOption> GetHotkeyFloatOptions(List<Toggle> toggles)
         {
             List<FloatMenuOption> list = new List<FloatMenuOption>();
-            foreach (string keyGroup in KeyBindings.KeyBindingGroups)
-                list.Add(new FloatMenuOption(keyGroup.Equals(string.Empty) ? "None" : keyGroup, delegate ()
+            list.Add(new FloatMenuOption("None", delegate ()
+            {
+                toggles.ForEach(toggle => toggle.KeyGroup = "");
+            }));
+            foreach (string keyGroup in KeyBindingHandler.Hotkeys.Select(x => x.label))
+                list.Add(new FloatMenuOption(keyGroup, delegate ()
                 {
                     toggles.ForEach(toggle => toggle.KeyGroup = keyGroup);
                 }));
@@ -161,7 +168,13 @@ namespace Toggles
             }
 
             leftView.EndListing();
+
+            //testString = Widgets.TextField(new Rect(leftRect.x, leftRect.yMax - 25f, 50f, 24f), testString);
+            //if (Widgets.ButtonText(new Rect(leftRect.x + 51f, leftRect.yMax - 25f, 50f, 24f), "Click"))
+            //    ModBase_Toggles.ChangeBindingLabel(testString);
         }
+
+        //static string testString = "Test";
 
         // Asks for confirmation of deactiving Options buttons.
         static void CheckOptionsActive(string optionsString, bool optionsFlag)
