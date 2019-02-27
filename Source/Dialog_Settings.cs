@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Toggles.Hotkeys;
 using Toggles.Patches;
-using Toggles.Source;
 using UnityEngine;
 using Verse;
 
@@ -92,7 +90,12 @@ namespace Toggles
                     wasPartial = true;
                 }
 
-                state = middleView.MultiCheckBoxLabel(state, GetHotkeyFloatOptions(groupToggles), groupToggles.RandomElement().KeyGroup);
+                // Checks if keygroup is the same for all toggles in activegroup. If not, remain empty, otherwise, set to that value.
+                string keyGroup = string.Empty;
+                if (groupToggles.Distinct().Skip(1).All(x => x.KeyGroup.Equals(groupToggles.First().KeyGroup)))
+                    keyGroup = groupToggles.First().KeyGroup;
+
+                state = middleView.MultiCheckBoxLabel(state, GetHotkeyFloatOptions(groupToggles), keyGroup);
 
                 // If partial is clicked, it defaults to off. This workaround turns all on instead, by checking if it was partial before clicking.
                 if (state == MultiCheckboxState.On || (wasPartial && state == MultiCheckboxState.Off))

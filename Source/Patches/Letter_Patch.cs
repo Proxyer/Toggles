@@ -1,7 +1,6 @@
 ﻿using Harmony;
 using System.Collections.Generic;
 using System.Linq;
-using Toggles.Source;
 using Verse;
 
 namespace Toggles.Patches

@@ -1,8 +1,5 @@
-﻿using Harmony;
-using RimWorld;
-using System;
+﻿using RimWorld;
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 using Verse;
 using Verse.Sound;

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Toggles.Patches;
-using Toggles.Source;
 using Verse;
 
 namespace Toggles
