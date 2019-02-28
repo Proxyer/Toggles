@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using RimWorld;
+using System.Collections.Generic;
 using System.Linq;
 using Toggles.Hotkeys;
 using Toggles.Patches;
@@ -61,11 +62,26 @@ namespace Toggles
         static void DoMiddle(Rect middleRect)
         {
             List<Toggle> groupToggles = ToggleManager.Toggles.Where(x => x.Group.Equals(ActiveGroup)).ToList();
-            float middleY = (groupToggles.Count() + 2) * 25f;
+            //float middleY = (groupToggles.Count() + 2) * 25f;
+            float middleY = 10 * 25f;
 
             var middleView = new Listing_Toggles();
             middleView.BeginListing(middleRect, ref scrollPositionMiddle, middleY);
 
+            if (!ActiveGroup.NullOrEmpty())
+            {
+                if (ActiveGroup.Equals(ButtonCat.Hotkeys))
+                    DoHotkeysView(middleView);
+                else
+                    DoToggleView(middleView, groupToggles);
+            }
+
+            middleView.EndListing();
+        }
+
+        // View of standard toggles, with multipicker.
+        static void DoToggleView(Listing_Toggles middleView, List<Toggle> groupToggles)
+        {
             // Establishes references for checking if Option buttons are disabled further down.
             string optionsEntryButton = "ButtonsEntry_Options";
             string optionsPlayButton = "ButtonsPlay_Options";
@@ -76,8 +92,6 @@ namespace Toggles
             // Only show if any button has been clicked at start.
             if (!ActiveGroup.NullOrEmpty())
             {
-                Rect multiRect = new Rect(middleRect.width - 45f, 0f, 25f, 25f);
-
                 bool wasPartial = false;
 
                 if (groupToggles.All(x => x.active))
@@ -113,8 +127,6 @@ namespace Toggles
             // Opens confirmation window if user has deactivated the Options button.
             CheckOptionsActive(optionsEntryButton, optionsEntryFlag);
             CheckOptionsActive(optionsPlayButton, optionsPlayFlag);
-
-            middleView.EndListing();
         }
 
         static List<FloatMenuOption> GetHotkeyFloatOptions(Toggle toggle)
@@ -146,7 +158,7 @@ namespace Toggles
         static void DoLeft(Rect leftRect)
         {
             List<string> rootMembers = ToggleManager.Toggles.Select(x => x.Root).Distinct().ToList();
-            float leftY = (rootMembers.Count() + 14) * 30f;
+            float leftY = (rootMembers.Count() + 20) * 30f;
 
             var leftView = new Listing_Toggles();
             leftView.BeginListing(leftRect, ref scrollPositionLeft, leftY);
@@ -157,24 +169,34 @@ namespace Toggles
                 leftView.Label(root.Translate());
                 // Populates each root label with each respective toggles according to their group.
                 foreach (string group in ToggleManager.Toggles.Where(x => x.Root.Equals(root)).Select(x => x.Group).Distinct())
-                {
-                    if (ActiveGroup.Equals(group))
-                        GUI.color = ClickedColor;
-                    if (leftView.ButtonText(group.Translate()))
-                        ActiveGroup = group;
-                    GUI.color = DefaultColor;
-                }
+                    MarkButton(leftView, group);
+
                 leftView.Gap();
             }
+            // Hotkey button
+            MarkButton(leftView, ButtonCat.Hotkeys);
 
             leftView.EndListing();
-
-            //testString = Widgets.TextField(new Rect(leftRect.x, leftRect.yMax - 25f, 50f, 24f), testString);
-            //if (Widgets.ButtonText(new Rect(leftRect.x + 51f, leftRect.yMax - 25f, 50f, 24f), "Click"))
-            //    ModBase_Toggles.ChangeBindingLabel(testString);
         }
 
-        //static string testString = "Test";
+        static void MarkButton(Listing_Toggles view, string group)
+        {
+            if (ActiveGroup.Equals(group))
+                GUI.color = ClickedColor;
+            if (view.ButtonText(group.Translate()))
+                ActiveGroup = group;
+            GUI.color = DefaultColor;
+        }
+
+        static void DoHotkeysView(Listing_Toggles view)
+        {
+            Find.WindowStack.TryRemove(typeof(Dialog_KeyBindings), false);
+            foreach (KeyBindingDef hotkey in KeyBindingHandler.Hotkeys)
+            {
+                hotkey.label = view.TextEntry(hotkey.label);
+                view.Label(hotkey.label);
+            }
+        }
 
         // Asks for confirmation of deactiving Options buttons.
         static void CheckOptionsActive(string optionsString, bool optionsFlag)

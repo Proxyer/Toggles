@@ -25,7 +25,7 @@ namespace Toggles.Hotkeys
             KeyBindingDef.Named("ToggleThreeDef"),
             KeyBindingDef.Named("ToggleFourDef"),
             KeyBindingDef.Named("ToggleFiveDef")
-    };
+        };
 
         internal static void KeyListener()
         {

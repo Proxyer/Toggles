@@ -83,6 +83,18 @@ namespace Toggles
             base.Gap(this.verticalSpacing);
         }
 
+        internal string TextEntry(string label)
+        {
+            float lineHeight = Text.LineHeight;
+            Rect rect = GetRect(lineHeight);
+
+            Gap(verticalSpacing);
+
+            //TextAnchor anchor = Text.Anchor;
+            //Text.Anchor = TextAnchor.MiddleLeft;
+            return Widgets.TextField(rect, label);
+        }
+
         internal void CheckboxLabeled(string label, string keyGroup, ref bool checkOn, List<FloatMenuOption> floatMenuList = null)
         {
             float lineHeight = Text.LineHeight;

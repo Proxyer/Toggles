@@ -27,5 +27,7 @@
         internal static string Alerts { get; } = "Alerts";
         internal static string Incidents { get; } = "Incidents";
         internal static string Letters { get; } = "Letters";
+
+        internal static string Hotkeys { get; } = "Hotkeys";
     }
 }
