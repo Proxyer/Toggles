@@ -21,6 +21,7 @@
 
         internal static string Readouts { get; } = "Readouts";
         internal static string ToggleButtons { get; } = "ToggleButtons";
+        internal static string Overlay { get; } = "Overlay";
         internal static string Misc { get; } = "Misc";
 
         internal static string Alerts { get; } = "Alerts";

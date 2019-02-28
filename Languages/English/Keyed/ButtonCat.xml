@@ -14,6 +14,7 @@
   <ToggleButtons>Toggle Buttons</ToggleButtons>
   <Readouts>Readouts</Readouts>
   <Misc>Miscellaneous</Misc>
+  <Overlay>Overlay</Overlay>
   <Events>Events</Events>
   <Alerts>Alerts</Alerts>
   <Incidents>Incidents</Incidents>

@@ -69,6 +69,7 @@
     <Compile Include="Source\ModBase_Toggles.cs" />
     <Compile Include="Source\Patches\AlertsReadout_Patch.cs" />
     <Compile Include="Source\Patches\ColonistBar_Patch.cs" />
+    <Compile Include="Source\Patches\SkyOverlay_Patch.cs" />
     <Compile Include="Source\Patches\DateReadout_Patch.cs" />
     <Compile Include="Source\Patches\GlobalControls_Patch.cs" />
     <Compile Include="Source\Patches\GUI_Patch.cs" />

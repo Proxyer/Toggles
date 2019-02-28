@@ -44,6 +44,7 @@ namespace Toggles
             new Letter_Patch();
             new AlertsReadout_Patch();
             new IncidentWorker_Patch();
+            new SkyOverlay_Patch();
         }
 
         static void InitPatches() =>
