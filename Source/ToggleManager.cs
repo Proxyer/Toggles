@@ -33,7 +33,7 @@ namespace Toggles
 
         internal static void ToggleMany(string hotkeyLabel)
         {
-            Toggles.Where(toggle => toggle.KeyGroup.Equals(hotkeyLabel)).ToList().ForEach(x => x.active = !x.active);
+            Toggles.Where(toggle => toggle.Hotkey.Equals(hotkeyLabel)).ToList().ForEach(x => x.active = !x.active);
         }
 
         // Removes toggle from settings.

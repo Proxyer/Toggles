@@ -104,14 +104,7 @@ namespace Toggles
                     wasPartial = true;
                 }
 
-                // Checks if keygroup is the same for all toggles in activegroup. If not, remain empty, otherwise, set to that value.
-                string keyGroup = string.Empty;
-                if (groupToggles.Distinct().Skip(1).All(x => x.KeyGroup.Equals(groupToggles.First().KeyGroup)))
-                    keyGroup = groupToggles.First().KeyGroup;
-                //else if (!groupToggles.All(x => groupToggles.First().KeyGroup.Equals(x.KeyGroup)))
-                //    keyGroup = "______";
-
-                state = middleView.MultiCheckBoxLabel(state, GetHotkeyFloatOptions(groupToggles), keyGroup);
+                state = middleView.MultiCheckBoxLabel(state, GetHotkeyFloatOptions(groupToggles), "Hotkey");
 
                 // If partial is clicked, it defaults to off. This workaround turns all on instead, by checking if it was partial before clicking.
                 if (state == MultiCheckboxState.On || (wasPartial && state == MultiCheckboxState.Off))
@@ -122,7 +115,7 @@ namespace Toggles
 
             // Draw toggles in middle view depending on what button is active in left view.
             foreach (Toggle toggle in groupToggles)
-                middleView.CheckboxLabeled(toggle.PrettyLabel, toggle.KeyGroup, ref toggle.active, GetHotkeyFloatOptions(toggle));
+                middleView.CheckboxLabeled(toggle.PrettyLabel, toggle.PrettyHotkey, ref toggle.active, GetHotkeyFloatOptions(toggle));
 
             // Opens confirmation window if user has deactivated the Options button.
             CheckOptionsActive(optionsEntryButton, optionsEntryFlag);
@@ -132,9 +125,9 @@ namespace Toggles
         static List<FloatMenuOption> GetHotkeyFloatOptions(Toggle toggle)
         {
             List<FloatMenuOption> list = new List<FloatMenuOption>();
-            list.Add(new FloatMenuOption("None", delegate () { toggle.KeyGroup = ""; }));
-            foreach (string keyGroup in KeyBindingHandler.Hotkeys.Select(x => x.label))
-                list.Add(new FloatMenuOption(keyGroup, delegate () { toggle.KeyGroup = keyGroup; }));
+            list.Add(new FloatMenuOption("None", delegate () { toggle.Hotkey = ""; }));
+            foreach (Hotkey hotkey in HotkeyHandler.hotkeyDict.Values)
+                list.Add(new FloatMenuOption(hotkey.CustomLabel, delegate () { toggle.Hotkey = hotkey.Def.defName; }));
 
             return list;
         }
@@ -144,12 +137,12 @@ namespace Toggles
             List<FloatMenuOption> list = new List<FloatMenuOption>();
             list.Add(new FloatMenuOption("None", delegate ()
             {
-                toggles.ForEach(toggle => toggle.KeyGroup = "");
+                toggles.ForEach(toggle => toggle.Hotkey = "");
             }));
-            foreach (string keyGroup in KeyBindingHandler.Hotkeys.Select(x => x.label))
-                list.Add(new FloatMenuOption(keyGroup, delegate ()
+            foreach (Hotkey hotkey in HotkeyHandler.hotkeyDict.Values)
+                list.Add(new FloatMenuOption(hotkey.CustomLabel, delegate ()
                 {
-                    toggles.ForEach(toggle => toggle.KeyGroup = keyGroup);
+                    toggles.ForEach(toggle => toggle.Hotkey = hotkey.Def.defName);
                 }));
 
             return list;
@@ -190,12 +183,15 @@ namespace Toggles
 
         static void DoHotkeysView(Listing_Toggles view)
         {
-            Find.WindowStack.TryRemove(typeof(Dialog_KeyBindings), false);
-            foreach (KeyBindingDef hotkey in KeyBindingHandler.Hotkeys)
+            view.Label("Rename keybindings");
+            foreach (string defName in HotkeyHandler.hotkeyDict.Keys)
             {
-                hotkey.label = view.TextEntry(hotkey.label);
-                view.Label(hotkey.label);
+                Hotkey hotkey = HotkeyHandler.hotkeyDict.TryGetValue(defName);
+                hotkey.CustomLabel = view.TextEntry(hotkey.CustomLabel);
             }
+            view.Gap();
+            if (view.ButtonText("KeyBindings", width: 100f))
+                Find.WindowStack.Add(new Dialog_KeyBindings());
         }
 
         // Asks for confirmation of deactiving Options buttons.

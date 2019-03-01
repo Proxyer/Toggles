@@ -12,7 +12,7 @@ namespace Toggles
         public override void OnGUI()
         {
             base.OnGUI();
-            KeyBindingHandler.KeyListener();
+            HotkeyHandler.KeyListener();
         }
     }
 }

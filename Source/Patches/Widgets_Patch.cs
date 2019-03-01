@@ -20,6 +20,16 @@ namespace Toggles.Patches
         static string Label => $"{ButtonCat.MiscEntry}_MainPageCredit";
 
         // Stops the credits label from being drawn if setting is inactive.
-        static bool Prefix(string label) => label.Equals("MainPageCredit".Translate()) ? ToggleManager.IsActive(Label) : true;
+        static bool Prefix(ref string label)
+        {
+            if (Current.ProgramState == ProgramState.Entry)
+                if (label.Equals("MainPageCredit".Translate()))
+                    if (!ToggleManager.IsActive(Label))
+                        label = string.Empty;
+
+            return true;
+
+            //return label.Equals("MainPageCredit".Translate()) ? ToggleManager.IsActive(Label) : true;
+        }
     }
 }

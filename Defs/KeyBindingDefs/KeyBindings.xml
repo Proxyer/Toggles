@@ -10,32 +10,27 @@
 
 	<KeyBindingDef>
 		<category>TogglesHotkeys</category>
-		<defName>ToggleOneDef</defName>
-		<label>Toggle One</label>
+		<defName>Hotkey1</defName>
 	</KeyBindingDef>
 
 	<KeyBindingDef>
 		<category>TogglesHotkeys</category>
-		<defName>ToggleTwoDef</defName>
-		<label>Toggle Two</label>
+		<defName>Hotkey2</defName>
 	</KeyBindingDef>
 
 	<KeyBindingDef>
 		<category>TogglesHotkeys</category>
-		<defName>ToggleThreeDef</defName>
-		<label>Toggle Three</label>
+		<defName>Hotkey3</defName>
 	</KeyBindingDef>
 	
 	<KeyBindingDef>
 		<category>TogglesHotkeys</category>
-		<defName>ToggleFourDef</defName>
-		<label>Toggle Four</label>
+		<defName>Hotkey4</defName>
 	</KeyBindingDef>
 
 	<KeyBindingDef>
 		<category>TogglesHotkeys</category>
-		<defName>ToggleFiveDef</defName>
-		<label>Toggle Five</label>
+		<defName>Hotkey5</defName>
 	</KeyBindingDef>
 
 </Defs>

@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -87,12 +88,15 @@ namespace Toggles
         {
             float lineHeight = Text.LineHeight;
             Rect rect = GetRect(lineHeight);
-
+            rect.width = rect.width / 3;
             Gap(verticalSpacing);
 
             //TextAnchor anchor = Text.Anchor;
             //Text.Anchor = TextAnchor.MiddleLeft;
-            return Widgets.TextField(rect, label);
+            //string newLabel = Widgets.TextField(rect, label);
+            if (label.Length < 11)
+                return Widgets.TextField(rect, label);
+            return Widgets.TextField(rect, label.Substring(0, 10));
         }
 
         internal void CheckboxLabeled(string label, string keyGroup, ref bool checkOn, List<FloatMenuOption> floatMenuList = null)
@@ -218,8 +222,8 @@ namespace Toggles
             Color color = GUI.color;
             GUI.color = textColor;
 
-            if (Mouse.IsOver(rect))
-                Widgets.DrawAtlas(rect, atlas);
+            //if (Mouse.IsOver(rect))
+            //    Widgets.DrawAtlas(rect, atlas);
 
             TextAnchor anchor = Text.Anchor;
             Text.Anchor = TextAnchor.MiddleRight;
@@ -233,9 +237,12 @@ namespace Toggles
             return result == Widgets.DraggableResult.Pressed || result == Widgets.DraggableResult.DraggedThenPressed;
         }
 
-        public bool ButtonText(string label, string highlightTag = null)
+        public bool ButtonText(string label, string highlightTag = null, float width = -1)
         {
             Rect rect = base.GetRect(30f);
+
+            if (width >= 0)
+                rect.width = width;
             bool result = Widgets.ButtonText(rect, label, true, false, true);
             if (highlightTag != null)
             {

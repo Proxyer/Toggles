@@ -62,7 +62,8 @@
     <Compile Include="Source\Constants.cs" />
     <Compile Include="Source\DebugUtility.cs" />
     <Compile Include="Source\Dialog_Settings.cs" />
-    <Compile Include="Source\Hotkeys\KeyBindingHandler.cs" />
+    <Compile Include="Source\Hotkeys\HotkeyHandler.cs" />
+    <Compile Include="Source\Hotkeys\Hotkey.cs" />
     <Compile Include="Source\Listing_Toggles.cs" />
     <Compile Include="Source\ModSettings_Toggles.cs" />
     <Compile Include="Source\Mod_Toggles.cs" />
@@ -99,6 +100,10 @@
     <Content Include="Assemblies\0Harmony.dll" />
     <Content Include="Defs\KeyBindingDefs\KeyBindings.xml" />
     <Content Include="Defs\UpdateFeatureDefs\UpdateFeatures.xml" />
+    <Content Include="Docs\Git.txt" />
+    <Content Include="Docs\Ludeon.txt" />
+    <Content Include="Docs\Nexus.txt" />
+    <Content Include="Docs\Steam.txt" />
     <Content Include="Languages\English\Keyed\ButtonCat.xml" />
     <Content Include="backlog.txt" />
     <Content Include="Languages\English\Keyed\Toggles.xml" />

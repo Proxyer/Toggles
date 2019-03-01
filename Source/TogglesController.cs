@@ -1,11 +1,8 @@
 ﻿using Harmony;
-using RimWorld;
 using System.Reflection;
+using Toggles.Hotkeys;
 using Toggles.Patches;
 using Verse;
-using System.Linq;
-using System.Collections.Generic;
-using System;
 
 namespace Toggles
 {
@@ -15,27 +12,16 @@ namespace Toggles
     {
         static TogglesController()
         {
-            //MethodInfo me;
-            ////var method = AccessTools.Method(typeof(Dialog_KeyBindings), "DrawKeyEntry");
-            //List<MethodInfo> methods = AccessTools.GetDeclaredMethods(typeof(Dialog_KeyBindings));
-            //foreach (MethodInfo method in methods)
-            //{
-            //    if (method.Name.Equals("DrawKeyEntry"))
-            //    {
-            //        foreach (ParameterInfo para in method.GetParameters())
-            //            DebugUtil.Log(para.Name);
-            //    }
-            //    me = method;
-            //}
-
-            //var v = me.GetParameters();
-
-            //DebugUtil.Log("METHOD  " + method.Name);
-
             InitTextures();
             //InitPatches();
             InitToggles();
+            InitHotkeys();
             InitSettings();
+        }
+
+        static void InitHotkeys()
+        {
+            HotkeyHandler.InitHotkeys();
         }
 
         static void InitTextures() => Constants.InitTextures();
@@ -66,8 +52,6 @@ namespace Toggles
             new AlertsReadout_Patch();
             new IncidentWorker_Patch();
             new SkyOverlay_Patch();
-
-            //new Dialog_KeyBindings_Patch();
         }
 
         static void InitPatches() =>
