@@ -25,6 +25,11 @@ namespace Toggles.Patches
             }
         }
 
+        internal static void ExposeData()
+        {
+            Scribe_Values.Look<int>(ref hourMultiplier, $"{ButtonCat.Alerts}SleepTimer", 2, true);
+        }
+
         static List<Alert> Alerts { get; } = new List<Alert>();
         static Dictionary<string, int> SleepingAlerts { get; } = new Dictionary<string, int>();
         internal static void AddSleepingAlert(Alert alert)
@@ -35,7 +40,7 @@ namespace Toggles.Patches
 
         static string Format(Alert alert) => alert.GetType().Name;
 
-        static int hourMultiplier = 1;
+        internal static int hourMultiplier = 2;
 
         // Checks if alert to be read out is active in settings.
         // If not, the alert is removed from games' available alerts and the list of active alerts. Otherwise readded.

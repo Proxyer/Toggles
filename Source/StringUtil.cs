@@ -25,6 +25,11 @@ namespace Toggles
             // Puts space between letter and capital letter.
             str = Regex.Replace(str, "([a-z])([A-Z])", "$1 $2");
             str = str.Replace("_", ": ");
+            if (str.Length >= 28)
+            {
+                str = str.Substring(0, 27);
+                str += "...";
+            }
             return str;
         }
     }

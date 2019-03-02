@@ -4,5 +4,11 @@
   <Hotkey>Hotkey</Hotkey>
   <HotkeysHeader>Hotkeys</HotkeysHeader>
   <KeyBindingsButton>Keybindings</KeyBindingsButton>
+  
+  <AlertMeLater>Notify Me Later</AlertMeLater>
+  <AlertMeLaterTooltip>Click on an alert on the screen to hide it for {0} in-game hours. Adjust the timer here.</AlertMeLaterTooltip>
+  <AlertSleepCount>Hours to hide alert: {0}</AlertSleepCount>
+  
+
 
 </LanguageData>

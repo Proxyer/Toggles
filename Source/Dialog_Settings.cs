@@ -62,6 +62,22 @@ namespace Toggles
 
                 rightView.EndListing();
             }
+
+            // Alert me later
+            if (ActiveGroup.Equals(ButtonCat.Alerts))
+            {
+                float rightY = 10 * 25f;
+                var rightView = new Listing_Toggles();
+                rightView.BeginListing(rightRect, ref scrollPositionRight, rightY);
+
+                rightView.CustomLabel("AlertMeLater".Translate());
+                rightView.GapLine();
+
+                int alertSleepHours = AlertsReadout_Patch.hourMultiplier;
+                rightView.CustomLabel("AlertSleepCount".Translate(alertSleepHours), -1, "AlertMeLaterTooltip".Translate(alertSleepHours));
+                AlertsReadout_Patch.hourMultiplier = Mathf.RoundToInt(rightView.Slider((float)alertSleepHours, 1f, 24f)); ;
+                rightView.EndListing();
+            }
         }
 
         // Middle view
@@ -114,6 +130,8 @@ namespace Toggles
                 else if (state == MultiCheckboxState.Off)
                     groupToggles.ForEach(x => x.active = false);
             }
+
+            middleView.GapLine();
 
             // Draw toggles in middle view depending on what button is active in left view.
             foreach (Toggle toggle in groupToggles)
