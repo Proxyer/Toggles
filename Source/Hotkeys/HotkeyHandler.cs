@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Verse;
 
@@ -6,33 +7,31 @@ namespace Toggles.Hotkeys
 {
     internal static class HotkeyHandler
     {
-        internal static void InitHotkeys()
-        {
-            foreach (KeyBindingDef keyDef in KeyDefs)
-            {
-                Hotkey hotkey = new Hotkey(keyDef);
+        internal static void InitHotkeys() =>
+            DefDatabase<KeyBindingDef>.AllDefsListForReading
+            .Where(def =>
+                def.category.defName.Equals("TogglesHotkeys")).ToList()
+            .ForEach(def =>
+                HotKeyDict.Add(def.defName, new Hotkey(def)));
 
-                hotkeyDict.Add(hotkey.Def.defName, hotkey);
-            }
-        }
+        internal static List<Hotkey> AllHotkeys { get => HotKeyDict.Values.ToList(); }
 
-        internal static List<KeyBindingDef> KeyDefs { get; set; } = new List<KeyBindingDef>
-        {
-            KeyBindingDef.Named("Hotkey1"),
-            KeyBindingDef.Named("Hotkey2"),
-            KeyBindingDef.Named("Hotkey3"),
-            KeyBindingDef.Named("Hotkey4"),
-            KeyBindingDef.Named("Hotkey5")
-        };
+        internal static Dictionary<string, Hotkey> HotKeyDict = new Dictionary<string, Hotkey>();
 
-        internal static Dictionary<string, Hotkey> hotkeyDict = new Dictionary<string, Hotkey>();
+        static string ActiveHotkey { get; set; } = string.Empty;
 
         internal static void KeyListener()
         {
             if (!(Event.current.type != EventType.KeyDown))
-                foreach (Hotkey hotkey in hotkeyDict.Values)
+            {
+                foreach (Hotkey hotkey in AllHotkeys)
+                {
                     if (hotkey.Def.KeyDownEvent)
-                        ToggleManager.ToggleMany(hotkey.Def.defName);
+                    {
+                        ToggleManager.ToggleMany(ActiveHotkey);
+                    }
+                }
+            }
         }
     }
 }

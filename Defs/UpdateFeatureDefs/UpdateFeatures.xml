@@ -8,13 +8,12 @@
   </HugsLib.UpdateFeatureDef>
 
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-    <defName>Toggles_1_0_1</defName>
+    <defName>Toggles_1_0_1_Test_Test</defName>
     <assemblyVersion>1.0.1</assemblyVersion>
-    <content>
-      
-      - Hotkeys! Players can now assign individual or groups of toggles to key bindings, and toggle them instantly while playing.
-      - Added toggles for hiding weather overlays.
-      - Fixed bug where Caravan Trading Window would be blank or yield errors.
+    <content>- &lt;i&gt;&lt;b&gt;Hotkeys!&lt;/b&gt;&lt;/i&gt; Players can now assign individual or groups of toggles to key bindings, 
+    and toggle them instantly while playing.
+- Added toggles for hiding &lt;i&gt;&lt;b&gt;Weather Overlays&lt;/b&gt;&lt;/i&gt;.
+- Fixed bug where Caravan Trading Window would be blank or yield errors.
       
     </content>
   </HugsLib.UpdateFeatureDef>

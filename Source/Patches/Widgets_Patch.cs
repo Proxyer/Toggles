@@ -28,8 +28,6 @@ namespace Toggles.Patches
                         label = string.Empty;
 
             return true;
-
-            //return label.Equals("MainPageCredit".Translate()) ? ToggleManager.IsActive(Label) : true;
         }
     }
 }

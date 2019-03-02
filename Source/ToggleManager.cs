@@ -46,7 +46,7 @@ namespace Toggles
         internal static void Reset()
         {
             Letter_Patch.RemoveCustomLetters();
-            Toggles.ForEach(x => x.active = true);
+            Toggles.ForEach(x => { x.active = true; x.Hotkey = string.Empty; });
         }
     }
 }

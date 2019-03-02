@@ -7,6 +7,9 @@
   </supportedVersions>
   <description>
     &lt;b&gt;Toggles Everything!&lt;/b&gt;
+
+    Now features assigning toggles to hotkeys, and toggling at will.
+    
     Hide and disable things:
     - &lt;i&gt;Incidents&lt;/i&gt;
     - &lt;i&gt;Alerts&lt;/i&gt;
@@ -14,8 +17,6 @@
     - &lt;i&gt;Buttons&lt;/i&gt;
     - &lt;i&gt;Weather Overlays&lt;/i&gt;
     - &lt;i&gt;Etc&lt;/i&gt;
-
-    *Assign individual and groups of toggles to hotkeys and toggle at will.
 
     &lt;b&gt;Dependencies&lt;/b&gt;
     - HugsLib

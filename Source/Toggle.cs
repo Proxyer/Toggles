@@ -22,8 +22,8 @@ namespace Toggles
         {
             get
             {
-                if (HotkeyHandler.hotkeyDict.ContainsKey(hotkey))
-                    return HotkeyHandler.hotkeyDict.TryGetValue(hotkey).CustomLabel;
+                if (HotkeyHandler.HotKeyDict.ContainsKey(hotkey))
+                    return HotkeyHandler.HotKeyDict.TryGetValue(hotkey).CustomLabel;
                 return hotkey;
             }
         }

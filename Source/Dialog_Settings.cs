@@ -29,26 +29,31 @@ namespace Toggles
 
             Rect middleRect = new Rect(leftRect.width, mainRect.y, (mainRect.width - leftRect.width) / 2, mainRect.height);
             DoMiddle(middleRect);
+
             Rect rightRect = new Rect(middleRect.xMax, mainRect.y, (mainRect.width - leftRect.width) / 2, mainRect.height);
             DoRight(rightRect);
 
-            // Button for reset.
+            DoResetButton(mainRect);
+        }
+
+        // Button for reset.
+        static void DoResetButton(Rect mainRect)
+        {
             Rect resetRect = new Rect(0f, mainRect.height + 40f, 120f, 40f);
             if (Widgets.ButtonText(resetRect, "ResetButton".Translate(), true, false, true))
                 ToggleManager.Reset();
         }
 
+        // Right view
         static void DoRight(Rect rightRect)
         {
+            // Logged letters
             if (ActiveGroup.Equals(ButtonCat.Letters))
             {
                 List<string> loggedLetters = Letter_Patch.LoggedLetters;
-
                 float rightY = (loggedLetters.Count() + 2) * 25f;
-
                 var rightView = new Listing_Toggles();
                 rightView.BeginListing(rightRect, ref scrollPositionRight, rightY);
-
                 rightView.CustomLabel("LoggedLetters".Translate());
 
                 foreach (string letter in loggedLetters)
@@ -59,32 +64,29 @@ namespace Toggles
             }
         }
 
+        // Middle view
         static void DoMiddle(Rect middleRect)
         {
-            List<Toggle> groupToggles = ToggleManager.Toggles.Where(x => x.Group.Equals(ActiveGroup)).ToList();
-            //float middleY = (groupToggles.Count() + 2) * 25f;
-            float middleY = 10 * 25f;
-
-            var middleView = new Listing_Toggles();
-            middleView.BeginListing(middleRect, ref scrollPositionMiddle, middleY);
-
             if (!ActiveGroup.NullOrEmpty())
             {
-                if (ActiveGroup.Equals(ButtonCat.Hotkeys))
-                    DoHotkeysView(middleView);
+                if (ActiveGroup.Equals(ButtonCat.MetaModSettings))
+                    DoMetaSettingsView(middleRect);
                 else
-                    DoToggleView(middleView, groupToggles);
+                    DoToggleView(middleRect);
             }
-
-            middleView.EndListing();
         }
 
         // View of standard toggles, with multipicker.
-        static void DoToggleView(Listing_Toggles middleView, List<Toggle> groupToggles)
+        static void DoToggleView(Rect middleRect)
         {
+            List<Toggle> groupToggles = ToggleManager.Toggles.Where(x => x.Group.Equals(ActiveGroup)).ToList();
+            float middleY = (groupToggles.Count() + 5) * 25f;
+            var middleView = new Listing_Toggles();
+            middleView.BeginListing(middleRect, ref scrollPositionMiddle, middleY);
+
             // Establishes references for checking if Option buttons are disabled further down.
-            string optionsEntryButton = "ButtonsEntry_Options";
-            string optionsPlayButton = "ButtonsPlay_Options";
+            string optionsEntryButton = $"{ButtonCat.ButtonsEntry}_Options";
+            string optionsPlayButton = $"{ButtonCat.ButtonsPlay}_Options";
             bool optionsEntryFlag = ToggleManager.IsActive(optionsEntryButton);
             bool optionsPlayFlag = ToggleManager.IsActive(optionsPlayButton);
 
@@ -104,7 +106,7 @@ namespace Toggles
                     wasPartial = true;
                 }
 
-                state = middleView.MultiCheckBoxLabel(state, GetHotkeyFloatOptions(groupToggles), "Hotkey");
+                state = middleView.MultiCheckBoxLabel(state, GetHotkeyFloatOptions(groupToggles), "Hotkey".Translate());
 
                 // If partial is clicked, it defaults to off. This workaround turns all on instead, by checking if it was partial before clicking.
                 if (state == MultiCheckboxState.On || (wasPartial && state == MultiCheckboxState.Off))
@@ -120,13 +122,16 @@ namespace Toggles
             // Opens confirmation window if user has deactivated the Options button.
             CheckOptionsActive(optionsEntryButton, optionsEntryFlag);
             CheckOptionsActive(optionsPlayButton, optionsPlayFlag);
+
+            middleView.EndListing();
         }
 
         static List<FloatMenuOption> GetHotkeyFloatOptions(Toggle toggle)
         {
             List<FloatMenuOption> list = new List<FloatMenuOption>();
-            list.Add(new FloatMenuOption("None", delegate () { toggle.Hotkey = ""; }));
-            foreach (Hotkey hotkey in HotkeyHandler.hotkeyDict.Values)
+            list.Add(new FloatMenuOption("None", delegate () { toggle.Hotkey = string.Empty; }));
+
+            foreach (Hotkey hotkey in HotkeyHandler.HotKeyDict.Values)
                 list.Add(new FloatMenuOption(hotkey.CustomLabel, delegate () { toggle.Hotkey = hotkey.Def.defName; }));
 
             return list;
@@ -135,11 +140,12 @@ namespace Toggles
         static List<FloatMenuOption> GetHotkeyFloatOptions(List<Toggle> toggles)
         {
             List<FloatMenuOption> list = new List<FloatMenuOption>();
+
             list.Add(new FloatMenuOption("None", delegate ()
             {
-                toggles.ForEach(toggle => toggle.Hotkey = "");
+                toggles.ForEach(toggle => toggle.Hotkey = string.Empty);
             }));
-            foreach (Hotkey hotkey in HotkeyHandler.hotkeyDict.Values)
+            foreach (Hotkey hotkey in HotkeyHandler.HotKeyDict.Values)
                 list.Add(new FloatMenuOption(hotkey.CustomLabel, delegate ()
                 {
                     toggles.ForEach(toggle => toggle.Hotkey = hotkey.Def.defName);
@@ -150,24 +156,28 @@ namespace Toggles
 
         static void DoLeft(Rect leftRect)
         {
-            List<string> rootMembers = ToggleManager.Toggles.Select(x => x.Root).Distinct().ToList();
-            float leftY = (rootMembers.Count() + 20) * 30f;
+            //List<string> rootMembers = ToggleManager.Toggles.Select(x => x.Root).Distinct().ToList();
+            //float leftY = (rootMembers.Count() + 20) * 30f;
+            float leftY = 25 * 30f;
 
             var leftView = new Listing_Toggles();
             leftView.BeginListing(leftRect, ref scrollPositionLeft, leftY);
 
+            // Hotkey button
+            MarkButton(leftView, ButtonCat.MetaModSettings);
+
+            leftView.GapLine(24);
+
             // Sets up category labels in the left view according to each unique toggle root.
-            foreach (string root in ToggleManager.Toggles.Select(x => x.Root).Distinct())
+            foreach (string root in ToggleManager.Toggles.Select(x => x.Root).Distinct().OrderBy(x => x))
             {
                 leftView.Label(root.Translate());
                 // Populates each root label with each respective toggles according to their group.
-                foreach (string group in ToggleManager.Toggles.Where(x => x.Root.Equals(root)).Select(x => x.Group).Distinct())
+                foreach (string group in ToggleManager.Toggles.Where(x => x.Root.Equals(root)).Select(x => x.Group).Distinct().OrderBy(x => x))
                     MarkButton(leftView, group);
 
                 leftView.Gap();
             }
-            // Hotkey button
-            MarkButton(leftView, ButtonCat.Hotkeys);
 
             leftView.EndListing();
         }
@@ -181,17 +191,23 @@ namespace Toggles
             GUI.color = DefaultColor;
         }
 
-        static void DoHotkeysView(Listing_Toggles view)
+        static void DoMetaSettingsView(Rect middleRect)
         {
-            view.Label("Rename keybindings");
-            foreach (string defName in HotkeyHandler.hotkeyDict.Keys)
+            float middleY = 10 * 25f;
+
+            var view = new Listing_Toggles();
+            view.BeginListing(middleRect, ref scrollPositionMiddle, middleY);
+
+            view.Label("HotkeysHeader".Translate());
+            foreach (string defName in HotkeyHandler.HotKeyDict.Keys)
             {
-                Hotkey hotkey = HotkeyHandler.hotkeyDict.TryGetValue(defName);
+                Hotkey hotkey = HotkeyHandler.HotKeyDict.TryGetValue(defName);
                 hotkey.CustomLabel = view.TextEntry(hotkey.CustomLabel);
             }
             view.Gap();
-            if (view.ButtonText("KeyBindings", width: 100f))
+            if (view.ButtonText("KeyBindingsButton".Translate(), width: 100f))
                 Find.WindowStack.Add(new Dialog_KeyBindings());
+            view.EndListing();
         }
 
         // Asks for confirmation of deactiving Options buttons.

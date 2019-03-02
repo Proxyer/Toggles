@@ -28,6 +28,6 @@
         internal static string Incidents { get; } = "Incidents";
         internal static string Letters { get; } = "Letters";
 
-        internal static string Hotkeys { get; } = "Hotkeys";
+        internal static string MetaModSettings { get; } = "MetaModSettings";
     }
 }

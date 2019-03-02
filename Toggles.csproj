@@ -106,6 +106,7 @@
     <Content Include="Docs\Steam.txt" />
     <Content Include="Languages\English\Keyed\ButtonCat.xml" />
     <Content Include="backlog.txt" />
+    <Content Include="Languages\English\Keyed\Misc.xml" />
     <Content Include="Languages\English\Keyed\Toggles.xml" />
   </ItemGroup>
   <ItemGroup />

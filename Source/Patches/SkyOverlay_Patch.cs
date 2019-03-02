@@ -19,8 +19,7 @@ namespace Toggles.Patches
                     group: ButtonCat.Overlay
                     ));
 
-        static string Format(Type overlay) =>
-            overlay.Name;
+        static string Format(Type overlay) => overlay.Name;
 
         // Stops the different overlays, like fallout and fog, from being drawn if setting is inactive.
         static bool Prefix(ref SkyOverlay __instance) =>

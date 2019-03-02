@@ -57,7 +57,7 @@
   <LinksPlay_TynansTwitter>Tynan's Twitter</LinksPlay_TynansTwitter>
 
   <!--PauseScreen Misc-->
-  <MiscEntry_VersionControl>Version Control</MiscEntry_VersionControl>
+  <MiscPlay_VersionControl>Version Control</MiscPlay_VersionControl>
 
   <!--PlayScreen Buttons-->
   <ToggleButtons_ColonistBar>Colonist Bar</ToggleButtons_ColonistBar>

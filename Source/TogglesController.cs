@@ -19,10 +19,7 @@ namespace Toggles
             InitSettings();
         }
 
-        static void InitHotkeys()
-        {
-            HotkeyHandler.InitHotkeys();
-        }
+        static void InitHotkeys() => HotkeyHandler.InitHotkeys();
 
         static void InitTextures() => Constants.InitTextures();
 
