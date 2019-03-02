@@ -13,10 +13,10 @@ namespace Toggles.Patches
     [HarmonyPatch("DrawAt")]
     class Alert_Patch
     {
-        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-        {
-            return instructions.MethodReplacer(GetLabel_Method, GetLabel_Proxy_Method).MethodReplacer(ButtonInvisible_Method, ButtonInvisible_Proxy_Method);
-        }
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) =>
+            instructions
+                .MethodReplacer(GetLabel_Method, GetLabel_Proxy_Method)
+                .MethodReplacer(ButtonInvisible_Method, ButtonInvisible_Proxy_Method);
 
         static Alert alert;
 
@@ -28,19 +28,15 @@ namespace Toggles.Patches
 
         static string GetLabel_Proxy(Alert instance)
         {
-            DebugUtil.Log("Alert GetLabel: " + instance.GetType().Name);
             alert = instance;
-            return instance.GetLabel();
+            return alert.GetLabel();
         }
 
         static bool ButtonInvisible_Proxy(Rect rect, bool doMouseoverSound = false)
         {
-            DebugUtil.Log("ButtonInvisible: " + alert.GetType().Name);
-
             if (Event.current.type == EventType.MouseDown && Event.current.button == 1 && Mouse.IsOver(rect))
             {
                 SoundDefOf.Click.PlayOneShotOnCamera(null);
-                DebugUtil.Log("Clicked!: " + alert.GetType().Name);
                 AlertsReadout_Patch.AddSleepingAlert(alert);
             }
 

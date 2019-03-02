@@ -197,7 +197,7 @@ namespace Toggles
 
         static Vector2 texSize = new Vector2(24f, 24f);
 
-        internal MultiCheckboxState MultiCheckBoxLabel(MultiCheckboxState state, List<FloatMenuOption> floatMenuList, string keyGroup, bool paintable = false)
+        internal MultiCheckboxState MultiCheckBoxLabel(MultiCheckboxState state, List<FloatMenuOption> floatMenuList, string keyGroup, string label = null, string infoText = null)
         {
             float lineHeight = Text.LineHeight;
             Rect rect = base.GetRect(lineHeight);
@@ -218,6 +218,22 @@ namespace Toggles
             // Checkbox
             Rect texRect = new Rect(rect.width - texSize.x, rect.y, texSize.x, texSize.y);
             MouseoverSounds.DoRegion(texRect);
+
+            // Info Icon
+            Rect infoRect = new Rect(rect.x, rect.y, 22f, 22f);
+            Texture2D infoTex = ContentFinder<Texture2D>.Get("UI/Buttons/InfoButton", true);
+            GUI.DrawTexture(infoRect, infoTex);
+
+            // Text label
+            Rect labelRect = new Rect(rect);
+            labelRect.x = infoRect.width;
+            Widgets.Label(labelRect, label);
+
+            // InfoText, tooltip
+            if (infoText != null)
+            {
+                TooltipHandler.TipRegion(rect, infoText);
+            }
 
             // KeyGroup Button
             MakeFloatMenu(rect, keyGroup, floatMenuList);

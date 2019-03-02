@@ -122,7 +122,7 @@ namespace Toggles
                     wasPartial = true;
                 }
 
-                state = middleView.MultiCheckBoxLabel(state, GetHotkeyFloatOptions(groupToggles), "Hotkey".Translate());
+                state = middleView.MultiCheckBoxLabel(state, GetHotkeyFloatOptions(groupToggles), "Hotkey".Translate(), ActiveGroup.Translate(), "Test".Translate());
 
                 // If partial is clicked, it defaults to off. This workaround turns all on instead, by checking if it was partial before clicking.
                 if (state == MultiCheckboxState.On || (wasPartial && state == MultiCheckboxState.Off))
@@ -134,7 +134,7 @@ namespace Toggles
             middleView.GapLine();
 
             // Draw toggles in middle view depending on what button is active in left view.
-            foreach (Toggle toggle in groupToggles)
+            foreach (Toggle toggle in groupToggles.OrderBy(x => x.PrettyLabel))
                 middleView.CheckboxLabeled(toggle.PrettyLabel, toggle.PrettyHotkey, ref toggle.active, GetHotkeyFloatOptions(toggle));
 
             // Opens confirmation window if user has deactivated the Options button.

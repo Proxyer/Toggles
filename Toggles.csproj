@@ -98,6 +98,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="About\Preview.png" />
+    <Content Include="About\PublishedFileId.txt" />
     <Content Include="Assemblies\0Harmony.dll" />
     <Content Include="Defs\KeyBindingDefs\KeyBindings.xml" />
     <Content Include="Defs\UpdateFeatureDefs\UpdateFeatures.xml" />
@@ -118,6 +119,7 @@ xcopy /i /s /y "$(SolutionDir)Languages" "C:\Program Files (x86)\Steam\steamapps
 xcopy /i /s /y "$(SolutionDir)Defs" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Defs\"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /i /s /y "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Assemblies" "$(SolutionDir)Assemblies\"</PostBuildEvent>
+    <PostBuildEvent>xcopy /i /s /y "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Assemblies" "$(SolutionDir)Assemblies\"
+xcopy /i /s /y "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\About" "$(SolutionDir)About\"</PostBuildEvent>
   </PropertyGroup>
 </Project>
