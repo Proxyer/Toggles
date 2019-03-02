@@ -68,6 +68,7 @@
     <Compile Include="Source\ModSettings_Toggles.cs" />
     <Compile Include="Source\Mod_Toggles.cs" />
     <Compile Include="Source\ModBase_Toggles.cs" />
+    <Compile Include="Source\Patches\Alert_Patch.cs" />
     <Compile Include="Source\Patches\AlertsReadout_Patch.cs" />
     <Compile Include="Source\Patches\ColonistBar_Patch.cs" />
     <Compile Include="Source\Patches\Dialog_KeyBindings_Patch.cs" />
