@@ -28,6 +28,7 @@ namespace Toggles.Hotkeys
                 {
                     if (hotkey.Def.KeyDownEvent)
                     {
+                        ActiveHotkey = hotkey.Def.defName;
                         ToggleManager.ToggleMany(ActiveHotkey);
                     }
                 }
