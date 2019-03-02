@@ -3,12 +3,18 @@
   <HugsLib.UpdateFeatureDef Abstract="true" Name="UpdateFeatureBase">
     <defName>UpdateFeature</defName>
     <modNameReadable>Toggles</modNameReadable>
-    <modIdentifier>net.krafs.toggles</modIdentifier>
+    <modIdentifier>Toggles</modIdentifier>
     <linkUrl>https://github.com/krafs/Toggles</linkUrl>
   </HugsLib.UpdateFeatureDef>
 
-  <!--<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-    <assemblyVersion>1.0.0</assemblyVersion>
-    <content></content>
-  </HugsLib.UpdateFeatureDef>-->
+  <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+    <defName>Toggles_1_0_1</defName>
+    <assemblyVersion>1.0.1</assemblyVersion>
+    <content>- &lt;i&gt;&lt;b&gt;Hotkeys!&lt;/b&gt;&lt;/i&gt; Players can now assign individual or groups of toggles to key bindings, 
+    and toggle them instantly while playing.
+- Added toggles for hiding &lt;i&gt;&lt;b&gt;Weather Overlays&lt;/b&gt;&lt;/i&gt;.
+- Fixed bug where Caravan Trading Window would be blank or yield errors.
+      
+    </content>
+  </HugsLib.UpdateFeatureDef>
 </Defs>

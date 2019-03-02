@@ -1,4 +1,4 @@
-﻿namespace Toggles.Source
+﻿namespace Toggles
 {
     internal class ButtonCat
     {
@@ -21,10 +21,13 @@
 
         internal static string Readouts { get; } = "Readouts";
         internal static string ToggleButtons { get; } = "ToggleButtons";
+        internal static string Overlay { get; } = "Overlay";
         internal static string Misc { get; } = "Misc";
 
         internal static string Alerts { get; } = "Alerts";
         internal static string Incidents { get; } = "Incidents";
         internal static string Letters { get; } = "Letters";
+
+        internal static string MetaModSettings { get; } = "MetaModSettings";
     }
 }

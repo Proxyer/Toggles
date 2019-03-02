@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Toggles.Patches;
 using Verse;
 
@@ -30,6 +31,11 @@ namespace Toggles
             ToggleActive.Add(label, toggle);
         }
 
+        internal static void ToggleMany(string hotkeyLabel)
+        {
+            Toggles.Where(toggle => toggle.Hotkey.Equals(hotkeyLabel)).ToList().ForEach(x => x.active = !x.active);
+        }
+
         // Removes toggle from settings.
         internal static void Remove(string label)
         {
@@ -40,7 +46,7 @@ namespace Toggles
         internal static void Reset()
         {
             Letter_Patch.RemoveCustomLetters();
-            Toggles.ForEach(x => x.active = true);
+            Toggles.ForEach(x => { x.active = true; x.Hotkey = string.Empty; });
         }
     }
 }

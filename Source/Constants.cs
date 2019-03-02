@@ -10,6 +10,7 @@ namespace Toggles
 
         internal static Texture2D TexEmpty { get; private set; }
 
-        internal static void InitTextures() => TexEmpty = SolidColorMaterials.NewSolidColorTexture(new Color(0, 0, 0, 0));
+        internal static void InitTextures() =>
+            TexEmpty = SolidColorMaterials.NewSolidColorTexture(new Color(0, 0, 0, 0));
     }
 }

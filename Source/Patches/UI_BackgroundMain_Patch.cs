@@ -1,6 +1,5 @@
 ﻿using Harmony;
 using RimWorld;
-using Toggles.Source;
 
 namespace Toggles.Patches
 {

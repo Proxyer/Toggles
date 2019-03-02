@@ -1,4 +1,5 @@
-﻿using Verse;
+﻿using Toggles.Hotkeys;
+using Verse;
 
 namespace Toggles
 {
@@ -17,11 +18,28 @@ namespace Toggles
         internal string Group { get; private set; }
         internal string Root { get; private set; }
 
+        internal string PrettyHotkey
+        {
+            get
+            {
+                if (HotkeyHandler.HotKeyDict.ContainsKey(hotkey))
+                    return HotkeyHandler.HotKeyDict.TryGetValue(hotkey).CustomLabel;
+                return hotkey;
+            }
+        }
+
+        internal string Hotkey { get => hotkey; set => hotkey = value; }
+        internal string hotkey = string.Empty;
+
         internal string Label { get; private set; }
 
         // String for GUI purposes. Returns translation if available, otherwise beautified attempt.
         internal string PrettyLabel { get => Label.CanTranslate() ? Label.Translate() : StringUtil.Pretty(Label); }
 
-        internal void ExposeData() => Scribe_Values.Look(ref active, Label, true);
+        internal void ExposeData()
+        {
+            Scribe_Values.Look(ref active, Label, true);
+            Scribe_Values.Look(ref hotkey, Label + "Hotkey", string.Empty);
+        }
     }
 }

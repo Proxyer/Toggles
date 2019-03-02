@@ -1,6 +1,6 @@
 ﻿using Harmony;
-using RimWorld;
 using System.Reflection;
+using Toggles.Hotkeys;
 using Toggles.Patches;
 using Verse;
 
@@ -13,10 +13,13 @@ namespace Toggles
         static TogglesController()
         {
             InitTextures();
-            InitPatches();
+            //InitPatches();
             InitToggles();
+            InitHotkeys();
             InitSettings();
         }
+
+        static void InitHotkeys() => HotkeyHandler.InitHotkeys();
 
         static void InitTextures() => Constants.InitTextures();
 
@@ -45,6 +48,7 @@ namespace Toggles
             new Letter_Patch();
             new AlertsReadout_Patch();
             new IncidentWorker_Patch();
+            new SkyOverlay_Patch();
         }
 
         static void InitPatches() =>

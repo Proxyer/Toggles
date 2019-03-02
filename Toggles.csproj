@@ -35,6 +35,7 @@
     <Reference Include="0Harmony, Version=1.2.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\0Harmony.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
@@ -61,12 +62,16 @@
     <Compile Include="Source\Constants.cs" />
     <Compile Include="Source\DebugUtility.cs" />
     <Compile Include="Source\Dialog_Settings.cs" />
+    <Compile Include="Source\Hotkeys\HotkeyHandler.cs" />
+    <Compile Include="Source\Hotkeys\Hotkey.cs" />
     <Compile Include="Source\Listing_Toggles.cs" />
     <Compile Include="Source\ModSettings_Toggles.cs" />
     <Compile Include="Source\Mod_Toggles.cs" />
-    <Compile Include="Source\News\ModBase_Toggles.cs" />
+    <Compile Include="Source\ModBase_Toggles.cs" />
     <Compile Include="Source\Patches\AlertsReadout_Patch.cs" />
     <Compile Include="Source\Patches\ColonistBar_Patch.cs" />
+    <Compile Include="Source\Patches\Dialog_KeyBindings_Patch.cs" />
+    <Compile Include="Source\Patches\SkyOverlay_Patch.cs" />
     <Compile Include="Source\Patches\DateReadout_Patch.cs" />
     <Compile Include="Source\Patches\GlobalControls_Patch.cs" />
     <Compile Include="Source\Patches\GUI_Patch.cs" />
@@ -88,12 +93,20 @@
     <Compile Include="Source\TogglesController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About\About.xml" />
+    <Content Include="About\About.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="About\Preview.png" />
     <Content Include="Assemblies\0Harmony.dll" />
+    <Content Include="Defs\KeyBindingDefs\KeyBindings.xml" />
     <Content Include="Defs\UpdateFeatureDefs\UpdateFeatures.xml" />
+    <Content Include="Docs\Git.txt" />
+    <Content Include="Docs\Ludeon.txt" />
+    <Content Include="Docs\Nexus.txt" />
+    <Content Include="Docs\Steam.txt" />
     <Content Include="Languages\English\Keyed\ButtonCat.xml" />
     <Content Include="backlog.txt" />
+    <Content Include="Languages\English\Keyed\Misc.xml" />
     <Content Include="Languages\English\Keyed\Toggles.xml" />
   </ItemGroup>
   <ItemGroup />

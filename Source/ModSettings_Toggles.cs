@@ -1,4 +1,5 @@
-﻿using Toggles.Patches;
+﻿using Toggles.Hotkeys;
+using Toggles.Patches;
 using Verse;
 
 namespace Toggles
@@ -12,6 +13,7 @@ namespace Toggles
             Scribe_Collections.Look<string>(ref Letter_Patch.customLetters, "CustomLetters", LookMode.Undefined, new object[0]);
             Letter_Patch.UpdateCustomLetters();
             ToggleManager.Toggles.ForEach(x => x.ExposeData());
+            HotkeyHandler.AllHotkeys.ForEach(hotkey => hotkey.ExposeData());
         }
     }
 }

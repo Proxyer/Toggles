@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+  <KeyBindingCategoryDef>
+    <defName>TogglesHotkeys</defName>
+    <label>Toggles</label>
+    <description>Hotkeys for Toggles</description>
+  </KeyBindingCategoryDef>
+
+	<KeyBindingDef>
+		<category>TogglesHotkeys</category>
+		<defName>Hotkey1</defName>
+	</KeyBindingDef>
+
+	<KeyBindingDef>
+		<category>TogglesHotkeys</category>
+		<defName>Hotkey2</defName>
+	</KeyBindingDef>
+
+	<KeyBindingDef>
+		<category>TogglesHotkeys</category>
+		<defName>Hotkey3</defName>
+	</KeyBindingDef>
+	
+	<KeyBindingDef>
+		<category>TogglesHotkeys</category>
+		<defName>Hotkey4</defName>
+	</KeyBindingDef>
+
+	<KeyBindingDef>
+		<category>TogglesHotkeys</category>
+		<defName>Hotkey5</defName>
+	</KeyBindingDef>
+
+</Defs>
