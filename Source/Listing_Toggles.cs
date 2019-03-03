@@ -1,6 +1,5 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -37,29 +36,26 @@ namespace Toggles
         internal void CustomLabel(string label, float maxHeight = -1f, string tooltip = null)
         {
             float num = Text.CalcHeight(label, base.ColumnWidth);
-            bool flag = false;
-            if (maxHeight >= 0f && num > maxHeight)
-            {
-                num = maxHeight;
-                flag = true;
-            }
+
             Rect rect = base.GetRect(num);
             rect.x += 10f;
             rect.width -= 20f;
-            if (flag)
-            {
-                Vector2 labelScrollbarPosition = this.GetLabelScrollbarPosition(this.curX, this.curY);
-                Widgets.LabelScrollable(rect, label, ref labelScrollbarPosition, false, true);
-                this.SetLabelScrollbarPosition(this.curX, this.curY, labelScrollbarPosition);
-            }
-            else
-            {
-                Widgets.Label(rect, label);
-            }
+
             if (tooltip != null)
             {
                 TooltipHandler.TipRegion(rect, tooltip);
             }
+
+            // Info Icon
+            Rect infoRect = new Rect(rect.x, rect.y, 22f, 22f);
+            Texture2D infoTex = ContentFinder<Texture2D>.Get("UI/Buttons/InfoButton", true);
+            GUI.DrawTexture(infoRect, infoTex);
+
+            // Text label
+            Rect labelRect = new Rect(rect);
+            labelRect.x = infoRect.width + 15f;
+            Widgets.Label(labelRect, label);
+
             base.Gap(this.verticalSpacing);
         }
 
@@ -226,7 +222,7 @@ namespace Toggles
 
             // Text label
             Rect labelRect = new Rect(rect);
-            labelRect.x = infoRect.width;
+            labelRect.x = infoRect.width + 15f;
             Widgets.Label(labelRect, label);
 
             // InfoText, tooltip

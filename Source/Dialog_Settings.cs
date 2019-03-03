@@ -54,7 +54,7 @@ namespace Toggles
                 float rightY = (loggedLetters.Count() + 2) * 25f;
                 var rightView = new Listing_Toggles();
                 rightView.BeginListing(rightRect, ref scrollPositionRight, rightY);
-                rightView.CustomLabel("LoggedLetters".Translate());
+                rightView.CustomLabel("LoggedLetters".Translate(), -1, "LoggedLettersDesc".Translate());
 
                 foreach (string letter in loggedLetters)
                     if (rightView.CustomButtonText(letter))
@@ -70,11 +70,11 @@ namespace Toggles
                 var rightView = new Listing_Toggles();
                 rightView.BeginListing(rightRect, ref scrollPositionRight, rightY);
 
-                rightView.CustomLabel("AlertMeLater".Translate());
+                int alertSleepHours = AlertsReadout_Patch.hourMultiplier;
+                rightView.CustomLabel("AlertMeLater".Translate(), -1, "AlertMeLaterDesc".Translate(alertSleepHours));
                 rightView.GapLine();
 
-                int alertSleepHours = AlertsReadout_Patch.hourMultiplier;
-                rightView.CustomLabel("AlertSleepCount".Translate(alertSleepHours), -1, "AlertMeLaterTooltip".Translate(alertSleepHours));
+                rightView.CustomLabel("AlertSleepCount".Translate(alertSleepHours));
                 AlertsReadout_Patch.hourMultiplier = Mathf.RoundToInt(rightView.Slider((float)alertSleepHours, 1f, 24f)); ;
                 rightView.EndListing();
             }
@@ -122,7 +122,7 @@ namespace Toggles
                     wasPartial = true;
                 }
 
-                state = middleView.MultiCheckBoxLabel(state, GetHotkeyFloatOptions(groupToggles), "Hotkey".Translate(), ActiveGroup.Translate(), "Test".Translate());
+                state = middleView.MultiCheckBoxLabel(state, GetHotkeyFloatOptions(groupToggles), "Hotkey".Translate(), ActiveGroup.Translate(), $"{ActiveGroup}Desc".Translate());
 
                 // If partial is clicked, it defaults to off. This workaround turns all on instead, by checking if it was partial before clicking.
                 if (state == MultiCheckboxState.On || (wasPartial && state == MultiCheckboxState.Off))
@@ -216,7 +216,8 @@ namespace Toggles
             var view = new Listing_Toggles();
             view.BeginListing(middleRect, ref scrollPositionMiddle, middleY);
 
-            view.Label("HotkeysHeader".Translate());
+            view.CustomLabel("HotkeysHeader".Translate(), -1, "HotkeysDesc".Translate());
+
             foreach (string defName in HotkeyHandler.HotKeyDict.Keys)
             {
                 Hotkey hotkey = HotkeyHandler.HotKeyDict.TryGetValue(defName);
