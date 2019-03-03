@@ -1,0 +1,40 @@
+[b]Hide and disable things in RimWorld:[/b]
+- [i]Incidents[/i]
+- [i]Alerts[/i]
+- [i]Letters[/i]
+- [i]Readouts[/i]
+- [i]Weather Overlays[/i]
+- [i]Buttons[/i]
+- [i]Links[/i]
+
+[h1][b]Use Cases[/b][/h1]
+- Prevent notifications that you don't need.
+- Completely block all kinds of events from occurring:
+--- Make the game harder by blocking positive ones, e.g. [i]Psychic soothe[/i] or [i]Wanderer Join[/i],
+--- or make it easier by blocking negative ones, e.g. [i]Disease: Malaria[/i] or [i]Toxic Fallout[/i].
+- Toggle the HUD with customizable hotkeys.
+- Increase game performance by disabling textures.
+
+[h1][b]Mod Compatibility[/b][/h1]
+- Should play nice with all mods
+- Events and notification added by other mods should also be toggleable by [i]Toggles[/i]
+- Save game safe
+
+[h1][b]News[/b][/h1]
+ - [b]Hotkeys![/b] Players can now assign individual or groups of toggles to key bindings, and toggle them instantly while playing.
+ - Added toggles for hiding [b]Weather Overlays[/b].
+ - Fixed bug where Caravan Trading window would be blank or yield errors.
+
+[h1][b]Instructions[/b][/h1]
+Most of the settings are straightforward: Toggle things on or off in the mod settings, or assign them to hotkeys and toggle during gameplay.
+
+For those curious minds out there interested in knowing more about how this mod works, read more [url=https://github.com/krafs/Toggles/blob/master/README.md]here[/url].
+
+[h1][b]Knows Issues[/b][/h1]
+- Some players experience the Incidents-button not showing in mod settings. Read more [url=https://steamcommunity.com/workshop/filedetails/discussion/1666097824/1843566500525314301/]here.[/url]
+
+[h1][b]Usage[/b][/h1]
+You can use this mod in any modpack, or fork it on [url=https://github.com/krafs/Toggles]GitHub[/url]. Please message me first if you do. I'd love to know where the mod is being used. However, please don't re-upload a translated version of the mod. If you wish to translate the mod into another language, contact me. Also feel free to message me about any suggestions or improvements you think of. I'd love to hear it.
+
+[h1][b]License[/b][/h1]
+MIT

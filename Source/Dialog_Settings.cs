@@ -54,12 +54,28 @@ namespace Toggles
                 float rightY = (loggedLetters.Count() + 2) * 25f;
                 var rightView = new Listing_Toggles();
                 rightView.BeginListing(rightRect, ref scrollPositionRight, rightY);
-                rightView.CustomLabel("LoggedLetters".Translate());
+                rightView.CustomLabel("LoggedLetters".Translate(), -1, "LoggedLettersDesc".Translate());
 
                 foreach (string letter in loggedLetters)
                     if (rightView.CustomButtonText(letter))
                         Letter_Patch.AddRawLetter(letter);
 
+                rightView.EndListing();
+            }
+
+            // Alert me later
+            if (ActiveGroup.Equals(ButtonCat.Alerts))
+            {
+                float rightY = 10 * 25f;
+                var rightView = new Listing_Toggles();
+                rightView.BeginListing(rightRect, ref scrollPositionRight, rightY);
+
+                int alertSleepHours = AlertsReadout_Patch.hourMultiplier;
+                rightView.CustomLabel("AlertMeLater".Translate(), -1, "AlertMeLaterDesc".Translate(alertSleepHours));
+                rightView.GapLine();
+
+                rightView.CustomLabel("AlertSleepCount".Translate(alertSleepHours));
+                AlertsReadout_Patch.hourMultiplier = Mathf.RoundToInt(rightView.Slider((float)alertSleepHours, 1f, 24f)); ;
                 rightView.EndListing();
             }
         }
@@ -106,7 +122,7 @@ namespace Toggles
                     wasPartial = true;
                 }
 
-                state = middleView.MultiCheckBoxLabel(state, GetHotkeyFloatOptions(groupToggles), "Hotkey".Translate());
+                state = middleView.MultiCheckBoxLabel(state, GetHotkeyFloatOptions(groupToggles), "Hotkey".Translate(), ActiveGroup.Translate(), $"{ActiveGroup}Desc".Translate());
 
                 // If partial is clicked, it defaults to off. This workaround turns all on instead, by checking if it was partial before clicking.
                 if (state == MultiCheckboxState.On || (wasPartial && state == MultiCheckboxState.Off))
@@ -115,8 +131,10 @@ namespace Toggles
                     groupToggles.ForEach(x => x.active = false);
             }
 
+            middleView.GapLine();
+
             // Draw toggles in middle view depending on what button is active in left view.
-            foreach (Toggle toggle in groupToggles)
+            foreach (Toggle toggle in groupToggles.OrderBy(x => x.PrettyLabel))
                 middleView.CheckboxLabeled(toggle.PrettyLabel, toggle.PrettyHotkey, ref toggle.active, GetHotkeyFloatOptions(toggle));
 
             // Opens confirmation window if user has deactivated the Options button.
@@ -198,7 +216,8 @@ namespace Toggles
             var view = new Listing_Toggles();
             view.BeginListing(middleRect, ref scrollPositionMiddle, middleY);
 
-            view.Label("HotkeysHeader".Translate());
+            view.CustomLabel("HotkeysHeader".Translate(), -1, "HotkeysDesc".Translate());
+
             foreach (string defName in HotkeyHandler.HotKeyDict.Keys)
             {
                 Hotkey hotkey = HotkeyHandler.HotKeyDict.TryGetValue(defName);

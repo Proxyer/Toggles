@@ -47,6 +47,7 @@ namespace Toggles
         {
             Letter_Patch.RemoveCustomLetters();
             Toggles.ForEach(x => { x.active = true; x.Hotkey = string.Empty; });
+            AlertsReadout_Patch.hourMultiplier = 2;
         }
     }
 }

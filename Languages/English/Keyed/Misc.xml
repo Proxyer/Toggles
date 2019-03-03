@@ -3,6 +3,29 @@
   
   <Hotkey>Hotkey</Hotkey>
   <HotkeysHeader>Hotkeys</HotkeysHeader>
-  <KeyBindingsButton>Keybindings</KeyBindingsButton>
+  <HotkeysDesc>Hotkeys are actions assigned to be performed on key input. Assign actions to them via the hotkey button next to each toggle; individually or in batches.\n\nHotkeys can be renamed here, for organizational purposes.\nAssign them keys in the Keybinding menu.</HotkeysDesc>
 
+  <KeyBindingsButton>Keybindings</KeyBindingsButton>
+  
+  <AlertMeLater>Notify Me Later</AlertMeLater>
+  <AlertMeLaterDesc>Click on an alert on the screen while playing to hide it for {0} in-game hours.\n\nAdjust the timer here.</AlertMeLaterDesc>
+  <AlertSleepCount>Hours to hide alert: {0}</AlertSleepCount>
+
+  <AlertsDesc>Alerts are notifications that stay on screen until fixed.\n\nToggle these to prevent them from appearing.\n\nNote: Only blocks the notification, not the underlying cause of it.</AlertsDesc>
+  <IncidentsDesc>Incidents are events triggered by the game.\n\nToggle these to suppress the triggers, preventing them from occuring.\n\nNote: Does not stop incidents that have already started. Only blocks future ones.</IncidentsDesc>
+  <LettersDesc>Letters are notifications that appear on screen when incidents are triggered.\nThey can be blocked in two ways:\n1) Block entire letter categories\n2) Block specific letters\n\nBlocking specific letters always get priority over letters by category.\n\n*Specific letters become available as toggles as soon as they have been received at least once.\n\nNote: Only blocks the notification, not the underlying cause of it.</LettersDesc>
+  <MetaModSettingsDesc>These are settings about the settings of this mod. It is mostly everything that isn't a standard toggle.</MetaModSettingsDesc>
+  <LinksEntryDesc>Links are graphical elements on the start screen that refer to different web sites of interest to RimWorld players.\n\nToggle these to hide them.</LinksEntryDesc>
+  <LinksPlayDesc>Links are graphical elements on the pause screen that refer to different web sites of interest to RimWorld players.\n\nToggle these to hide them.</LinksPlayDesc>
+  <MiscEntryDesc>These are toggles for various graphical elements on the start screen.\n\nToggle these to hide them.</MiscEntryDesc>
+  <MiscPlayDesc>These are toggles for various graphical elements on the pause screen.\n\nToggle these to hide them.</MiscPlayDesc>
+  <ToggleButtonsDesc>These are buttons on the play screen that themselves allow for toggling various graphical elements and interfaces.\n\nToggle these to hide them.</ToggleButtonsDesc>
+  <MiscDesc>These are toggles for various graphical elements on the play screen.\n\nToggle these to hide them.</MiscDesc>
+  <ButtonsPlayDesc>These are buttons on the pause screen, leading to various functions of the game.\n\nToggle these to hide them.\n\nBe careful not to disable the 'Options'-button unless you know what you're doing. Without it, you won't be able to reenter the mod settings and re-enable it.</ButtonsPlayDesc>
+  <ButtonsEntryDesc>These are buttons on the start screen, leading to various functions of the game.\n\nToggle these to hide them.\n\nBe careful not to disable the 'Options'-button unless you know what you're doing. Without it, you won't be able to reenter the mod settings and re-enable it.</ButtonsEntryDesc>
+  <OverlayDesc>Weather overlays are textures that cover the entire screen during certain weather conditions.\n\nToggle these to hide them.\n\nNote: Does not suppress the weather condition itself, only the graphical overlay effect.</OverlayDesc>
+  <ReadoutsDesc>Readouts are elements on the play screen meant to give players information on various conditions and data in the game.\n\nToggle these to hide them.</ReadoutsDesc>
+  <LoggedLetters>Logged Letters</LoggedLetters>
+  <LoggedLettersDesc>Specific letters that have been received at least once in the game appear here. Click the ones you want to claim as toggles.</LoggedLettersDesc>
+  
 </LanguageData>

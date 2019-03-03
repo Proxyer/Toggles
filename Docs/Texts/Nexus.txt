@@ -1,0 +1,55 @@
+[img]https://steamuserimages-a.akamaihd.net/ugc/974371471304934104/36382066FC15830DEF9C7A8560674B37F48AB5F5/[/img]
+
+[size=4]Hide and disable things in RimWorld:[/size]
+[size=3]
+- [i]Incidents[/i]
+- [i]Alerts[/i]
+- [i]Letters[/i]
+- [i]Readouts[/i]
+- [i]Weather Overlays[/i]
+- [i]Buttons[/i]
+- [i]Links[/i]
+[/size]
+
+[i]Toxic Fallout[/i] bumming you out? Game too easy with all the wanderers joining the colony? Or maybe you're just tired of constantly getting notified about it? 
+This mod allows you to do that. Just go into the mod settings and choose your toggles. 
+
+[size=4][color=orange][b]News[/b][/color][/size]
+ - [b]Hotkeys![/b] Players can now assign individual or groups of toggles to key bindings, and toggle them instantly while playing.
+ - Added toggles for hiding [b]Weather Overlays[/b].
+ - Fixed bug where Caravan Trading window would be blank or yield errors.
+
+[size=4][color=orange][b]Instructions[/b][/color][/size]
+Most of the settings are straightforward: Toggle things on or off in the mod settings, or assign them to hotkeys and toggle during gameplay. That's all you need to know.
+For those curious minds out there interested in knowing more about how this mod works, read more [url=https://github.com/krafs/Toggles/blob/master/README.md]here[/url].
+
+[size=4][color=orange][b]Features[/b][/color][/size]
+This mod currently has the following features:
+[size=3]
+- [i]Incidents[/i]
+- [i]Alerts[/i]
+- [i]Letters[/i]
+- [i]Readouts[/i]
+- [i]Weather Overlays[/i]
+- [i]Buttons[/i]
+- [i]Links[/i]
+- [i]5 customizable hotkeys[/i]
+[/size]
+
+[size=4][color=orange][b]Compatibility[/b][/color][/size]
+-Developed and tested mainly for vanilla RimWorld. However, should play nice with most mods.
+-Should be completely safe to add and remove from save games.
+
+[size=4][color=orange][b]How to install:[/b][/color][/size]
+- Subscribe at the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1666097824] Steam Workshop[/url]
+
+- Download the latest zip-file from [url=https://github.com/krafs/Toggles/releases] GitHub[/url]
+- Unzip the contents and place them in your RimWorld/Mods folder.
+- Activate the mod in the mod menu in the game.
+
+[size=4][color=orange][b]Usage[/b][/color][/size]
+You can use this mod in any modpack, or fork it on [url=https://github.com/krafs/Toggles]GitHub[/url]. Please message me first if you do. I'd love to know where the mod is being used. However, please don't re-upload a translated version of the mod. If you wish to translate the mod into another language, contact me. Also feel free to message me about any suggestions or improvements you think of. I'd love to hear it.
+
+
+[size=4][color=orange][b]License[/b][/color][/size]
+MIT

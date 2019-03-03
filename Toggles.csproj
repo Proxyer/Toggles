@@ -68,6 +68,7 @@
     <Compile Include="Source\ModSettings_Toggles.cs" />
     <Compile Include="Source\Mod_Toggles.cs" />
     <Compile Include="Source\ModBase_Toggles.cs" />
+    <Compile Include="Source\Patches\Alert_Patch.cs" />
     <Compile Include="Source\Patches\AlertsReadout_Patch.cs" />
     <Compile Include="Source\Patches\ColonistBar_Patch.cs" />
     <Compile Include="Source\Patches\Dialog_KeyBindings_Patch.cs" />
@@ -97,13 +98,30 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="About\Preview.png" />
+    <Content Include="About\PublishedFileId.txt" />
     <Content Include="Assemblies\0Harmony.dll" />
     <Content Include="Defs\KeyBindingDefs\KeyBindings.xml" />
     <Content Include="Defs\UpdateFeatureDefs\UpdateFeatures.xml" />
-    <Content Include="Docs\Git.txt" />
-    <Content Include="Docs\Ludeon.txt" />
-    <Content Include="Docs\Nexus.txt" />
-    <Content Include="Docs\Steam.txt" />
+    <Content Include="Docs\Images\Decorated\FullScreenHUD.PNG" />
+    <Content Include="Docs\Images\Decorated\SettingsAlert.PNG" />
+    <Content Include="Docs\Images\Decorated\SettingsDefault.PNG" />
+    <Content Include="Docs\Images\Decorated\SettingsHotkeys.PNG" />
+    <Content Include="Docs\Images\Decorated\SettingsHUDExample.PNG" />
+    <Content Include="Docs\Images\Decorated\SettingsIncidents.PNG" />
+    <Content Include="Docs\Images\Decorated\StartscreenMinimal.PNG" />
+    <Content Include="Docs\Images\Decorated\StartscrenFull.PNG" />
+    <Content Include="Docs\Images\Original\FullScreenHUD.PNG" />
+    <Content Include="Docs\Images\Original\SettingsAlert.PNG" />
+    <Content Include="Docs\Images\Original\SettingsDefault.PNG" />
+    <Content Include="Docs\Images\Original\SettingsHotkeys.PNG" />
+    <Content Include="Docs\Images\Original\SettingsHUDExample.PNG" />
+    <Content Include="Docs\Images\Original\SettingsIncidents.PNG" />
+    <Content Include="Docs\Images\Original\StartscreenMinimal.PNG" />
+    <Content Include="Docs\Images\Original\StartscrenFull.PNG" />
+    <Content Include="Docs\Texts\Git.txt" />
+    <Content Include="Docs\Texts\Ludeon.txt" />
+    <Content Include="Docs\Texts\Nexus.txt" />
+    <Content Include="Docs\Texts\Steam.txt" />
     <Content Include="Languages\English\Keyed\ButtonCat.xml" />
     <Content Include="backlog.txt" />
     <Content Include="Languages\English\Keyed\Misc.xml" />
@@ -117,6 +135,7 @@ xcopy /i /s /y "$(SolutionDir)Languages" "C:\Program Files (x86)\Steam\steamapps
 xcopy /i /s /y "$(SolutionDir)Defs" "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Defs\"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /i /s /y "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Assemblies" "$(SolutionDir)Assemblies\"</PostBuildEvent>
+    <PostBuildEvent>xcopy /i /s /y "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\Assemblies" "$(SolutionDir)Assemblies\"
+xcopy /i /s /y "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Toggles\About" "$(SolutionDir)About\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

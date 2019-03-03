@@ -1,6 +1,5 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -20,6 +19,10 @@ namespace Toggles
             Widgets.BeginScrollView(rect, ref scrollPosition, viewRect, true);
             rect.height = height;
             rect.width -= 20f;
+            Rect newRect = new Rect(rect);
+            //newRect.x = 10f;
+            //newRect.width = rect.width - 20f;
+            //newRect.xMax = newRect.width - 20f;
             base.Begin(rect.AtZero());
             Text.Font = font;
         }
@@ -33,27 +36,26 @@ namespace Toggles
         internal void CustomLabel(string label, float maxHeight = -1f, string tooltip = null)
         {
             float num = Text.CalcHeight(label, base.ColumnWidth);
-            bool flag = false;
-            if (maxHeight >= 0f && num > maxHeight)
-            {
-                num = maxHeight;
-                flag = true;
-            }
+
             Rect rect = base.GetRect(num);
-            if (flag)
-            {
-                Vector2 labelScrollbarPosition = this.GetLabelScrollbarPosition(this.curX, this.curY);
-                Widgets.LabelScrollable(rect, label, ref labelScrollbarPosition, false, true);
-                this.SetLabelScrollbarPosition(this.curX, this.curY, labelScrollbarPosition);
-            }
-            else
-            {
-                Widgets.Label(rect, label);
-            }
+            rect.x += 10f;
+            rect.width -= 20f;
+
             if (tooltip != null)
             {
                 TooltipHandler.TipRegion(rect, tooltip);
             }
+
+            // Info Icon
+            Rect infoRect = new Rect(rect.x, rect.y, 22f, 22f);
+            Texture2D infoTex = ContentFinder<Texture2D>.Get("UI/Buttons/InfoButton", true);
+            GUI.DrawTexture(infoRect, infoTex);
+
+            // Text label
+            Rect labelRect = new Rect(rect);
+            labelRect.x = infoRect.width + 15f;
+            Widgets.Label(labelRect, label);
+
             base.Gap(this.verticalSpacing);
         }
 
@@ -89,6 +91,8 @@ namespace Toggles
             float lineHeight = Text.LineHeight;
             Rect rect = GetRect(lineHeight);
             rect.width = rect.width / 3;
+            rect.x += 10f;
+
             Gap(verticalSpacing);
 
             //TextAnchor anchor = Text.Anchor;
@@ -99,10 +103,22 @@ namespace Toggles
             return Widgets.TextField(rect, label.Substring(0, 10));
         }
 
+        internal float Slider(float val, float min, float max)
+        {
+            Rect rect = base.GetRect(22f);
+            rect.x += 10f;
+            rect.width -= 20f;
+            float result = Widgets.HorizontalSlider(rect, val, min, max, false, null, null, null, -1f);
+            base.Gap(this.verticalSpacing);
+            return result;
+        }
+
         internal void CheckboxLabeled(string label, string keyGroup, ref bool checkOn, List<FloatMenuOption> floatMenuList = null)
         {
             float lineHeight = Text.LineHeight;
             Rect rect = GetRect(lineHeight);
+            rect.x += 10f;
+            rect.width -= 10f;
 
             Gap(verticalSpacing);
 
@@ -123,7 +139,7 @@ namespace Toggles
                     SoundDefOf.Checkbox_TurnedOff.PlayOneShotOnCamera(null);
                 }
             }
-
+            rect.x -= 10f;
             MakeFloatMenu(rect, keyGroup, floatMenuList);
 
             CheckboxDraw(rect.x + rect.width - 24f, rect.y, checkOn, false, 24f, null, null);
@@ -177,11 +193,13 @@ namespace Toggles
 
         static Vector2 texSize = new Vector2(24f, 24f);
 
-        internal MultiCheckboxState MultiCheckBoxLabel(MultiCheckboxState state, List<FloatMenuOption> floatMenuList, string keyGroup, bool paintable = false)
+        internal MultiCheckboxState MultiCheckBoxLabel(MultiCheckboxState state, List<FloatMenuOption> floatMenuList, string keyGroup, string label = null, string infoText = null)
         {
             float lineHeight = Text.LineHeight;
             Rect rect = base.GetRect(lineHeight);
             base.Gap(this.verticalSpacing);
+            rect.x += 10f;
+            rect.width -= 10f;
 
             Texture2D tex;
             if (state == MultiCheckboxState.On)
@@ -196,6 +214,22 @@ namespace Toggles
             // Checkbox
             Rect texRect = new Rect(rect.width - texSize.x, rect.y, texSize.x, texSize.y);
             MouseoverSounds.DoRegion(texRect);
+
+            // Info Icon
+            Rect infoRect = new Rect(rect.x, rect.y, 22f, 22f);
+            Texture2D infoTex = ContentFinder<Texture2D>.Get("UI/Buttons/InfoButton", true);
+            GUI.DrawTexture(infoRect, infoTex);
+
+            // Text label
+            Rect labelRect = new Rect(rect);
+            labelRect.x = infoRect.width + 15f;
+            Widgets.Label(labelRect, label);
+
+            // InfoText, tooltip
+            if (infoText != null)
+            {
+                TooltipHandler.TipRegion(rect, infoText);
+            }
 
             // KeyGroup Button
             MakeFloatMenu(rect, keyGroup, floatMenuList);
@@ -217,13 +251,14 @@ namespace Toggles
         {
             MouseoverSounds.DoRegion(rect);
 
-            Texture2D atlas = Widgets.ButtonSubtleAtlas;
+            //Texture2D atlas = Widgets.ButtonSubtleAtlas;
+            Texture2D atlas = TexUI.HighlightTex;
 
             Color color = GUI.color;
             GUI.color = textColor;
 
-            //if (Mouse.IsOver(rect))
-            //    Widgets.DrawAtlas(rect, atlas);
+            if (Mouse.IsOver(rect))
+                Widgets.DrawAtlas(rect, atlas);
 
             TextAnchor anchor = Text.Anchor;
             Text.Anchor = TextAnchor.MiddleRight;
