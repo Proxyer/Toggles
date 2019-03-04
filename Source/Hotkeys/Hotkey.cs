@@ -20,7 +20,7 @@ namespace Toggles
             set => customLabel = value;
         }
 
-        string customLabel;
+        string customLabel = "Hotkey";
 
         internal void ExposeData() => Scribe_Values.Look(ref customLabel, Def.defName, Def.defName);
     }

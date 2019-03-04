@@ -108,6 +108,7 @@
     <Content Include="Docs\Images\Decorated\SettingsHotkeys.PNG" />
     <Content Include="Docs\Images\Decorated\SettingsHUDExample.PNG" />
     <Content Include="Docs\Images\Decorated\SettingsIncidents.PNG" />
+    <Content Include="Docs\Images\Decorated\SettingsLetters.PNG" />
     <Content Include="Docs\Images\Decorated\StartscreenMinimal.PNG" />
     <Content Include="Docs\Images\Decorated\StartscrenFull.PNG" />
     <Content Include="Docs\Images\Original\FullScreenHUD.PNG" />
@@ -116,6 +117,7 @@
     <Content Include="Docs\Images\Original\SettingsHotkeys.PNG" />
     <Content Include="Docs\Images\Original\SettingsHUDExample.PNG" />
     <Content Include="Docs\Images\Original\SettingsIncidents.PNG" />
+    <Content Include="Docs\Images\Original\SettingsLetters.PNG" />
     <Content Include="Docs\Images\Original\StartscreenMinimal.PNG" />
     <Content Include="Docs\Images\Original\StartscrenFull.PNG" />
     <Content Include="Docs\Texts\Git.txt" />

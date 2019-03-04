@@ -41,15 +41,15 @@ namespace Toggles
             rect.x += 10f;
             rect.width -= 20f;
 
-            if (tooltip != null)
-            {
-                TooltipHandler.TipRegion(rect, tooltip);
-            }
-
             // Info Icon
             Rect infoRect = new Rect(rect.x, rect.y, 22f, 22f);
-            Texture2D infoTex = ContentFinder<Texture2D>.Get("UI/Buttons/InfoButton", true);
-            GUI.DrawTexture(infoRect, infoTex);
+
+            if (tooltip != null)
+            {
+                Texture2D infoTex = ContentFinder<Texture2D>.Get("UI/Buttons/InfoButton", true);
+                TooltipHandler.TipRegion(infoRect, tooltip);
+                GUI.DrawTexture(infoRect, infoTex);
+            }
 
             // Text label
             Rect labelRect = new Rect(rect);
@@ -228,7 +228,7 @@ namespace Toggles
             // InfoText, tooltip
             if (infoText != null)
             {
-                TooltipHandler.TipRegion(rect, infoText);
+                TooltipHandler.TipRegion(infoRect, infoText);
             }
 
             // KeyGroup Button

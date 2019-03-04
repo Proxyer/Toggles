@@ -7,7 +7,11 @@ namespace Toggles
     internal class Mod_Toggles : Mod
     {
         public Mod_Toggles(ModContentPack content) : base(content)
-        { }
+        {
+            thisMod = this;
+        }
+
+        internal static Mod_Toggles thisMod;
 
         internal void InitSettings() => GetSettings<ModSettings_Toggles>();
 

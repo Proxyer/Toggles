@@ -16,6 +16,9 @@ namespace Toggles.Patches
             foreach (Type type in typeof(Alert).AllLeafSubclasses())
             {
                 Alert alert = (Alert)Activator.CreateInstance(type);
+                DebugUtil.Log("Attempting to create Alert: " + Format(alert));
+                if (!Alerts.Contains(alert))
+                    Alerts.Add(alert);
                 Alerts.Add(alert);
                 ToggleManager.Add(
                     label: Format(alert),
