@@ -10,11 +10,20 @@
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
     <defName>Toggles_1_0_1</defName>
     <assemblyVersion>1.0.1</assemblyVersion>
-    <content>- &lt;i&gt;&lt;b&gt;Hotkeys!&lt;/b&gt;&lt;/i&gt; Players can now assign individual or groups of toggles to key bindings, 
+    <content>- &lt;i&gt;&lt;b&gt;The 'Hotkey' Update!&lt;/b&gt;&lt;/i&gt; Players can now assign individual or groups of toggles to key bindings, 
     and toggle them instantly while playing.
 - Added toggles for hiding &lt;i&gt;&lt;b&gt;Weather Overlays&lt;/b&gt;&lt;/i&gt;.
 - Fixed bug where Caravan Trading Window would be blank or yield errors.
-      
+    </content>
+  </HugsLib.UpdateFeatureDef>
+
+  <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+    <defName>Toggles_1_0_2</defName>
+    <assemblyVersion>1.0.2</assemblyVersion>
+    <content>- &lt;i&gt;&lt;b&gt;The 'Notify Me Later' Update!&lt;/b&gt;&lt;/i&gt; Right-click an alert on the screen to put it to sleep. Set number of sleep hours in the mod settings. If the alert is still relevant after that time, it'll reappear.
+- Added helpful info icons to the mod settings explaining the different functions.
+- Fixed bug where Incident-button wouldn't show.
+- (Probably) Fixed bug where Toggles messed up some textures on other mods.
     </content>
   </HugsLib.UpdateFeatureDef>
 </Defs>

@@ -8,7 +8,7 @@
   <KeyBindingsButton>Keybindings</KeyBindingsButton>
   
   <AlertMeLater>Notify Me Later</AlertMeLater>
-  <AlertMeLaterDesc>Click on an alert on the screen while playing to hide it for {0} in-game hours.\n\nAdjust the timer here.</AlertMeLaterDesc>
+  <AlertMeLaterDesc>Right-click on an alert on the screen while playing to hide it for {0} in-game hours.\n\nAdjust the timer here.</AlertMeLaterDesc>
   <AlertSleepCount>Hours to hide alert: {0}</AlertSleepCount>
 
   <AlertsDesc>Alerts are notifications that stay on screen until fixed.\n\nToggle these to prevent them from appearing.\n\nNote: Only blocks the notification, not the underlying cause of it.</AlertsDesc>

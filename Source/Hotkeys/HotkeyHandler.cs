@@ -30,6 +30,7 @@ namespace Toggles.Hotkeys
                     {
                         ActiveHotkey = hotkey.Def.defName;
                         ToggleManager.ToggleMany(ActiveHotkey);
+                        Mod_Toggles.thisMod.WriteSettings();
                     }
                 }
             }

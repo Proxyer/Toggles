@@ -7,16 +7,16 @@
   </supportedVersions>
   <description>
     &lt;b&gt;Toggles Everything!&lt;/b&gt;
-
-    &lt;b&gt;Update:&lt;/b&gt; Assign toggles to hotkeys and toggle while playing.
     
-    Hide and disable things:
+    Hide and disable:
     - &lt;i&gt;Incidents&lt;/i&gt;
     - &lt;i&gt;Alerts&lt;/i&gt;
     - &lt;i&gt;Letters&lt;/i&gt;
     - &lt;i&gt;Buttons&lt;/i&gt;
     - &lt;i&gt;Weather Overlays&lt;/i&gt;
     - &lt;i&gt;Etc&lt;/i&gt;
+
+    Assign toggles to hotkeys and toggle while playing.
 
     &lt;b&gt;Dependencies&lt;/b&gt;
     - HugsLib

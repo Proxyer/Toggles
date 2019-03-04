@@ -16,7 +16,7 @@ namespace Toggles.Patches
                 .ForEach(overlay => ToggleManager.Add(
                     label: Format(overlay),
                     root: ButtonCat.PlayScreen,
-                    group: ButtonCat.Overlay
+                    group: ButtonCat.Overlays
                     ));
 
         static string Format(Type overlay) => overlay.Name;

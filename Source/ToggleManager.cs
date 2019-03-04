@@ -21,14 +21,16 @@ namespace Toggles
         // Creates and adds toggle to settings.
         internal static void Add(string label, string root, string group)
         {
-            Toggle toggle = new Toggle(
-                    label: label,
-                    root: root,
-                    group: group
-                    );
-
-            Toggles.Add(toggle);
-            ToggleActive.Add(label, toggle);
+            if (!Exists(label))
+            {
+                Toggle toggle = new Toggle(
+                        label: label,
+                        root: root,
+                        group: group
+                        );
+                Toggles.Add(toggle);
+                ToggleActive.Add(label, toggle);
+            }
         }
 
         internal static void ToggleMany(string hotkeyLabel)
