@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!--Windows-->
+  <DeactivateOptions>
+    \n「オプション」ボタンを無効にしようとしています。
+    \n\n実行すると、これらのMod設定を入力して再起動することはできません。Modを無効にするか、設定ファイルを変更する必要があります。
+    \n\n本当に無効にしてもよろしいですか？
+  </DeactivateOptions>
+
+  <!--StartScreen Buttons-->
+  <ButtonsEntry_Tutorial>操作方法の説明</ButtonsEntry_Tutorial>
+  <ButtonsEntry_NewColony>新しくはじめる</ButtonsEntry_NewColony>
+  <ButtonsEntry_LoadGame>ロード</ButtonsEntry_LoadGame>
+  <ButtonsEntry_Options>オブション</ButtonsEntry_Options>
+  <ButtonsEntry_SaveTranslationReport>翻訳の報告を保存</ButtonsEntry_SaveTranslationReport>
+  <ButtonsEntry_Mods>MOD</ButtonsEntry_Mods>
+  <ButtonsEntry_Credits>クレジット</ButtonsEntry_Credits>
+  <ButtonsEntry_QuitToOS>ゲーム終了</ButtonsEntry_QuitToOS>
+
+  <!--StartScreen Links-->
+  <LinksEntry_BuySoundtrack>サントラを購入</LinksEntry_BuySoundtrack>
+  <LinksEntry_TynansDesignBook>Tynanの書籍</LinksEntry_TynansDesignBook>
+  <LinksEntry_FictionPrimer>創作入門</LinksEntry_FictionPrimer>
+  <LinksEntry_Forums>フォーラム</LinksEntry_Forums>
+  <LinksEntry_LudeonBlog>Ludeonブログ</LinksEntry_LudeonBlog>
+  <LinksEntry_OfficialWiki>公式Wiki</LinksEntry_OfficialWiki>
+  <LinksEntry_HelpTranslateRimWorld>RimWorld翻訳手伝い</LinksEntry_HelpTranslateRimWorld>
+  <LinksEntry_TynansTwitter>Tynanのツィッター</LinksEntry_TynansTwitter>
+
+  <!--StartScreen Misc-->
+  <MiscEntry_GameTitle>ゲームタイトル</MiscEntry_GameTitle>
+  <MiscEntry_LudeonLogoSmall>Ludeonのロゴ</MiscEntry_LudeonLogoSmall>
+  <MiscEntry_LangIcon>言語アイコン</MiscEntry_LangIcon>
+  <MiscEntry_Background>背景</MiscEntry_Background>
+  <MiscEntry_VersionControl>Version管理</MiscEntry_VersionControl>
+  <MiscEntry_MainPageCredit>クレジットの文字</MiscEntry_MainPageCredit>
+
+  <!--PauseScreen Buttons-->
+  <ButtonsPlay_Options>オプション</ButtonsPlay_Options>
+  <ButtonsPlay_QuitToMainMenu>メニューに戻る</ButtonsPlay_QuitToMainMenu>
+  <ButtonsPlay_QuitToOS>ゲーム終了</ButtonsPlay_QuitToOS>
+  <ButtonsPlay_ReviewScenario>シナリオを確認</ButtonsPlay_ReviewScenario>
+  <ButtonsPlay_Save>セーブ</ButtonsPlay_Save>
+  <ButtonsPlay_LoadGame>ロード</ButtonsPlay_LoadGame>
+
+  <!--PauseScreen Links-->
+  <LinksPlay_BuySoundtrack>サントラ購入</LinksPlay_BuySoundtrack>
+  <LinksPlay_TynansDesignBook>Tynanの書籍</LinksPlay_TynansDesignBook>
+  <LinksPlay_FictionPrimer>創作入門</LinksPlay_FictionPrimer>
+  <LinksPlay_Forums>フォーラム</LinksPlay_Forums>
+  <LinksPlay_LudeonBlog>Ludeonブログ</LinksPlay_LudeonBlog>
+  <LinksPlay_OfficialWiki>公式Wiki</LinksPlay_OfficialWiki>
+  <LinksPlay_HelpTranslateRimWorld>RimWorld翻訳手伝い</LinksPlay_HelpTranslateRimWorld>
+  <LinksPlay_TynansTwitter>Tynanのツィッター</LinksPlay_TynansTwitter>
+
+  <!--PauseScreen Misc-->
+  <MiscPlay_VersionControl>Version管理</MiscPlay_VersionControl>
+
+  <!--PlayScreen Buttons-->
+  <ToggleButtons_ColonistBar>入植者一覧</ToggleButtons_ColonistBar>
+  <ToggleButtons_TimeControls>速度変更</ToggleButtons_TimeControls>
+  <ToggleButtons_LearningHelperToggle>ラーニングヘルパー</ToggleButtons_LearningHelperToggle>
+  <ToggleButtons_ZoneVisibilityToggle>ゾーン切替</ToggleButtons_ZoneVisibilityToggle>
+  <ToggleButtons_ShowBeautyToggle>美しさ</ToggleButtons_ShowBeautyToggle>
+  <ToggleButtons_ShowRoomStatsToggle>部屋の状態</ToggleButtons_ShowRoomStatsToggle>
+  <ToggleButtons_ShowColonistBarToggle>入植者一覧</ToggleButtons_ShowColonistBarToggle>
+  <ToggleButtons_ShowRoofOverlayToggle>屋根範囲</ToggleButtons_ShowRoofOverlayToggle>
+  <ToggleButtons_AutoHomeAreaToggle>ホームエリア自動化</ToggleButtons_AutoHomeAreaToggle>
+  <ToggleButtons_AutoRebuildToggle>自動再建築</ToggleButtons_AutoRebuildToggle>
+  <ToggleButtons_CategorizedResourceReadoutToggle>資源の分類</ToggleButtons_CategorizedResourceReadoutToggle>
+
+  <!--PlayScreen Readouts-->
+  <Readouts_Date>日付</Readouts_Date>
+  <Readouts_Temperature>気温</Readouts_Temperature>
+  <Readouts_MouseoverReadout>マウスオーバー表示</Readouts_MouseoverReadout>
+  <Readouts_Weather>天気</Readouts_Weather>
+  <Readouts_ResourceReadout>資源</Readouts_ResourceReadout>
+
+  <!--Events Letters-->
+  <Letters_ThreatBig>大きな脅威</Letters_ThreatBig>
+  <Letters_ThreatSmall>小さな脅威</Letters_ThreatSmall>
+  <Letters_NegativeEvent>悪いイベント</Letters_NegativeEvent>
+  <Letters_PositiveEvent>良いイベント</Letters_PositiveEvent>
+  <Letters_NeutralEvent>通常イベント</Letters_NeutralEvent>
+  <Letters_Death>死亡</Letters_Death>
+  <Letters_RansomDemand>身代金</Letters_RansomDemand>
+
+</LanguageData>

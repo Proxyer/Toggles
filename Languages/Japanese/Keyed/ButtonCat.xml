@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!--Root labels and groups-->
+  <StartScreen>スタート画面</StartScreen>
+  <ButtonsEntry>ボタン</ButtonsEntry>
+  <ButtonsPlay>ボタン</ButtonsPlay>
+  <LinksEntry>リンク</LinksEntry>
+  <LinksPlay>リンク</LinksPlay>
+  <MiscEntry>その他</MiscEntry>
+  <MiscPlay>その他</MiscPlay>
+  <PauseScreen>一時停止画面</PauseScreen>
+  <PlayScreen>ゲーム画面</PlayScreen>
+  <ToggleButtons>ボタン切替</ToggleButtons>
+  <Readouts>読み出し</Readouts>
+  <Misc>その他</Misc>
+  <Overlays>オーバーレイ</Overlays>
+  <Events>イベント</Events>
+  <Alerts>警告</Alerts>
+  <Incidents>事件</Incidents>
+  <Letters>メッセージ</Letters>
+  <MetaModSettings>Mod全般設定</MetaModSettings>
+
+</LanguageData>
